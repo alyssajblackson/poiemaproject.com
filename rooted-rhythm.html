@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooted Rhythm — Poiema Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2744;
+      --lavender: #b8a9c9;
+      --lavender-light: #d9d0e8;
+      --off-white: #f5f2ee;
+      --dusty-purple: #7d6e8a;
+      --taupe: #c4b5a5;
+      --taupe-light: #ede5dc;
+      --text-dark: #1a2744;
+      --text-mid: #3a3555;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(245,242,238,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(196,181,165,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--navy); }
+
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+
+    /* HERO */
+    .rr-hero {
+      padding-top: 80px;
+      min-height: 70vh;
+      background: var(--taupe-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 6rem;
+      padding-right: 6rem;
+      padding-bottom: 6rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(196,181,165,0.4);
+    }
+
+    .rr-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,169,201,0.25) 0%, transparent 70%);
+    }
+
+    .rr-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,165,0.3) 0%, transparent 70%);
+    }
+
+    .rr-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dusty-purple);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .rr-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .rr-title em {
+      font-style: italic;
+      color: var(--dusty-purple);
+    }
+
+    .rr-tagline {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .rr-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: var(--navy);
+      color: var(--off-white);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--dusty-purple); }
+
+    .btn-outline {
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--navy); color: var(--off-white); }
+
+    /* WHAT IT IS */
+    .rr-about {
+      padding: 8rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 7rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(196,181,165,0.25);
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dusty-purple);
+      margin-bottom: 1.5rem;
+    }
+
+    .rr-about-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .rr-about-heading em {
+      font-style: italic;
+      color: var(--dusty-purple);
+    }
+
+    .rr-about-right p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .rr-about-right p:last-child { margin-bottom: 0; }
+
+    /* PILLARS */
+    .rr-pillars {
+      background: var(--navy);
+      padding: 7rem 6rem;
+      border-bottom: 1px solid rgba(184,169,201,0.15);
+    }
+
+    .rr-pillars-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .rr-pillars-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--off-white);
+      margin-bottom: 4rem;
+      max-width: 500px;
+    }
+
+    .rr-pillars-heading em {
+      font-style: italic;
+      color: var(--lavender);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(184,169,201,0.15);
+    }
+
+    .pillar-card {
+      background: rgba(255,255,255,0.04);
+      padding: 3rem;
+      transition: background 0.3s;
+    }
+
+    .pillar-card:hover { background: rgba(184,169,201,0.1); }
+
+    .pillar-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--lavender);
+      margin-bottom: 1.2rem;
+    }
+
+    .pillar-card h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 1rem;
+    }
+
+    .pillar-card p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(245,242,238,0.88);
+    }
+
+    /* WHERE TO FIND US */
+    .rr-find {
+      padding: 7rem 6rem;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(196,181,165,0.25);
+    }
+
+    .rr-find-header {
+      margin-bottom: 4rem;
+    }
+
+    .rr-find-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    .rr-find-header h2 em {
+      font-style: italic;
+      color: var(--dusty-purple);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(196,181,165,0.3);
+    }
+
+    .platform-card {
+      background: var(--off-white);
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.3s;
+    }
+
+    .platform-card:hover { background: var(--taupe-light); }
+
+    .platform-name {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dusty-purple);
+    }
+
+    .platform-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    .platform-card p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      max-width: 360px;
+    }
+
+    .platform-arrow {
+      font-size: 1.2rem;
+      color: var(--taupe);
+      margin-top: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 4rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(196,181,165,0.3);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: var(--taupe); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      .rr-hero { padding: 6rem 2.5rem 4rem; }
+      .rr-about { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+      .rr-pillars { padding: 5rem 2.5rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .rr-find { padding: 5rem 2.5rem; }
+      .platform-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Poiema Project</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="mold-campaign.html">Mold Campaign</a></li>
+      <li><a href="rooted-rhythm.html" class="active">Rooted Rhythm</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="mold-campaign.html#take-action" class="nav-cta">Take Action</a>
+  </nav>
+
+  <section class="rr-hero">
+    <p class="rr-eyebrow">A Publication by Poiema Project</p>
+    <h1 class="rr-title">Rooted<br /><em>Rhythm</em></h1>
+    <p class="rr-tagline">
+      A publication for college-aged women navigating health, identity, and the in-between.
+      Real stories. Honest conversations. A community that shows up.
+    </p>
+    <div class="rr-actions">
+      <a href="#" class="btn-primary">Read on Substack</a>
+      <a href="#" class="btn-outline">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <section class="rr-about">
+    <div>
+      <p class="section-label reveal">What It Is</p>
+      <h2 class="rr-about-heading reveal">For the woman <em>in the middle</em> of figuring it out.</h2>
+    </div>
+    <div class="rr-about-right reveal">
+      <p>
+        Rooted Rhythm is the publication arm of Poiema Project. It exists for college-aged
+        women who are in the thick of it -- navigating health, identity, relationships,
+        ambition, and everything that does not fit neatly into a category.
+      </p>
+      <p>
+        The name is intentional. Rooted -- because the goal is depth, not just surface-level
+        wellness content. Rhythm -- because health is not a destination, it is something
+        you build a relationship with over time.
+      </p>
+      <p>
+        No quick fixes. No unrealistic standards. Just honest conversation from someone
+        who is in it too.
+      </p>
+    </div>
+  </section>
+
+  <section class="rr-pillars">
+    <p class="rr-pillars-label reveal">What We Cover</p>
+    <h2 class="rr-pillars-heading reveal">The conversations <em>worth having.</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <p class="pillar-icon">Health</p>
+        <h3>Physical Wellness</h3>
+        <p>
+          Your body deserves honest information -- not fear-based content or impossible
+          standards. We cover what it actually feels like to take care of yourself in college.
+        </p>
+      </div>
+      <div class="pillar-card reveal">
+        <p class="pillar-icon">Mind</p>
+        <h3>Mental Health</h3>
+        <p>
+          The emotional side of college that nobody warns you about. We talk about it
+          directly, without stigma and without scripts.
+        </p>
+      </div>
+      <div class="pillar-card reveal">
+        <p class="pillar-icon">Identity</p>
+        <h3>Who You Are Becoming</h3>
+        <p>
+          College is one of the few times in life where you get to ask big questions
+          about who you are. We think that deserves space and real conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rr-find">
+    <div class="rr-find-header reveal">
+      <p class="section-label">Find Us</p>
+      <h2>Where to read and <em>follow along.</em></h2>
+    </div>
+    <div class="platform-grid">
+      <a href="#" class="platform-card reveal">
+        <p class="platform-name">Long-form</p>
+        <h3>Substack</h3>
+        <p>
+          Essays, stories, and deeper dives. Subscribe to get every piece delivered
+          directly to your inbox -- free.
+        </p>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="#" class="platform-card reveal">
+        <p class="platform-name">Community</p>
+        <h3>Instagram</h3>
+        <p>
+          Daily content, conversation, and community. Follow along for the in-between
+          moments that do not make it into the essays.
+        </p>
+        <span class="platform-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Poiema Project</span>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="mold-campaign.html">Mold Campaign</a></li>
+      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Poiema Project</span>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>
