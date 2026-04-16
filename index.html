@@ -6,609 +6,155 @@
   <title>Poiema Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy: #1a2744;
-      --lavender: #b8a9c9;
-      --lavender-light: #d9d0e8;
-      --off-white: #f5f2ee;
-      --dusty-purple: #7d6e8a;
-      --taupe: #c4b5a5;
-      --taupe-light: #ede5dc;
-      --text-dark: #1a2744;
-      --text-mid: #3a3555;
-    }
-
+    :root { --navy: #1a2744; --lavender: #b8a9c9; --lavender-light: #d9d0e8; --off-white: #f5f2ee; --dusty-purple: #7d6e8a; --taupe: #c4b5a5; --taupe-light: #ede5dc; --text-dark: #1a2744; --text-mid: #3a3555; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--off-white);
-      color: var(--text-dark);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.4rem 4rem;
-      background: rgba(245,242,238,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(196,181,165,0.3);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--navy); }
-
-    .nav-cta {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.4rem;
-      border: 1px solid var(--navy);
-      color: var(--navy);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--navy);
-      color: var(--off-white);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 80px;
-    }
-
-    .hero-left {
-      background: var(--navy);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 5rem 6rem 6rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,169,201,0.15) 0%, transparent 70%);
-    }
-
-    .hero-left::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -60px;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(196,181,165,0.1) 0%, transparent 70%);
-    }
-
-    .hero-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.2s;
-    }
-
-    .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--off-white);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.4s;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--lavender);
-    }
-
-    .hero-body {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: rgba(245,242,238,0.7);
-      max-width: 380px;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.6s;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.8s;
-    }
-
-    .btn-primary {
-      padding: 0.85rem 2rem;
-      background: var(--lavender);
-      color: var(--navy);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--off-white);
-    }
-
-    .btn-outline {
-      padding: 0.85rem 2rem;
-      border: 1px solid rgba(245,242,238,0.4);
-      color: var(--off-white);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--off-white);
-      background: rgba(245,242,238,0.08);
-    }
-
-    .hero-right {
-      background: var(--taupe-light);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 5rem;
-      position: relative;
-    }
-
-    .hero-mission-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dusty-purple);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.5s;
-    }
-
-    .hero-mission {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.6;
-      color: var(--navy);
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.7s;
-    }
-
-    .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.9s;
-    }
-
-    .pillar {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .pillar-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--dusty-purple);
-      flex-shrink: 0;
-    }
-
-    .pillar-text {
-      font-size: 0.82rem;
-      letter-spacing: 0.06em;
-      color: var(--navy);
-      text-transform: uppercase;
-      font-weight: 400;
-    }
-
-    /* SECTION: WHAT WE ARE */
-    .section-intro {
-      padding: 8rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 6rem;
-      align-items: start;
-      border-bottom: 1px solid rgba(196,181,165,0.3);
-      background: var(--off-white);
-    }
-
-    .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dusty-purple);
-      padding-top: 0.5rem;
-    }
-
-    .section-intro-content h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--navy);
-      margin-bottom: 2rem;
-    }
-
-    .section-intro-content h2 em {
-      font-style: italic;
-      color: var(--dusty-purple);
-    }
-
-    .section-intro-content p {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: #3a3555;
-      max-width: 580px;
-    }
-
-    /* ARMS */
-    .arms {
-      padding: 6rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: rgba(196,181,165,0.2);
-    }
-
-    .arm-card {
-      background: var(--off-white);
-      padding: 4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      transition: background 0.3s;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .arm-card:hover {
-      background: var(--navy);
-    }
-
-    .arm-card:hover .arm-number,
-    .arm-card:hover .arm-title,
-    .arm-card:hover .arm-desc {
-      color: var(--off-white);
-    }
-
-    .arm-card:hover .arm-arrow {
-      color: var(--lavender);
-    }
-
-    .arm-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      color: var(--taupe);
-      transition: color 0.3s;
-    }
-
-    .arm-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--navy);
-      transition: color 0.3s;
-    }
-
-    .arm-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      background: var(--lavender-light);
-      color: var(--dusty-purple);
-      border-radius: 2px;
-      width: fit-content;
-    }
-
-    .arm-desc {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--text-mid);
-      max-width: 380px;
-      transition: color 0.3s;
-    }
-
-    .arm-arrow {
-      font-size: 1.2rem;
-      color: var(--taupe);
-      margin-top: auto;
-      transition: color 0.3s;
-    }
-
-    /* STAT STRIP */
-    .stat-strip {
-      background: var(--navy);
-      padding: 5rem 6rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      border-top: 1px solid rgba(184,169,201,0.2);
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--lavender);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,242,238,0.85);
-      line-height: 1.5;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 4rem 6rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(196,181,165,0.3);
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-    }
-
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--taupe);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
+    body { background: var(--off-white); color: var(--text-dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(245,242,238,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(196,181,165,0.3); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; font-weight: 400; color: var(--navy); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+    .nav-logo-img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links > li > a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links > li > a:hover { color: var(--navy); }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--off-white); border: 1px solid rgba(196,181,165,0.4); min-width: 220px; padding: 0.4rem 0; z-index: 200; box-shadow: 0 4px 20px rgba(26,39,68,0.08); }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .dropdown-menu li a:hover { background: var(--taupe-light); color: var(--navy); }
+    .nav-cta { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--navy); color: var(--navy); text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; }
+    .hero-left { background: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem 6rem 6rem; position: relative; overflow: hidden; }
+    .hero-left::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(184,169,201,0.15) 0%, transparent 70%); }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .hero-headline { font-family: 'Libre Baskerville', serif; font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 400; line-height: 1.2; color: var(--off-white); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .hero-headline em { font-style: italic; color: var(--lavender); }
+    .hero-body { font-size: 0.95rem; line-height: 1.8; color: rgba(245,242,238,0.82); max-width: 380px; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+    .btn-primary { padding: 0.85rem 2rem; background: var(--lavender); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+    .btn-primary:hover { background: var(--off-white); }
+    .btn-outline { padding: 0.85rem 2rem; border: 1px solid rgba(245,242,238,0.4); color: var(--off-white); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--off-white); background: rgba(245,242,238,0.08); }
+    .hero-right { background: var(--taupe-light); display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem; }
+    .hero-mission-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s; font-weight: 500; }
+    .hero-mission { font-family: 'Libre Baskerville', serif; font-size: clamp(1.1rem, 1.6vw, 1.45rem); font-weight: 400; font-style: italic; line-height: 1.75; color: var(--navy); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s; }
+    .pillars { display: flex; flex-direction: column; gap: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s; }
+    .pillar { display: flex; align-items: center; gap: 1rem; }
+    .pillar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dusty-purple); flex-shrink: 0; }
+    .pillar-text { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--navy); text-transform: uppercase; font-weight: 400; }
+    .section-intro { padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; border-bottom: 1px solid rgba(196,181,165,0.3); background: var(--off-white); }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); padding-top: 0.5rem; font-weight: 500; }
+    .section-intro-content h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; line-height: 1.3; color: var(--navy); margin-bottom: 2rem; }
+    .section-intro-content h2 em { font-style: italic; color: var(--dusty-purple); }
+    .section-intro-content p { font-size: 1.05rem; line-height: 1.85; color: var(--text-mid); max-width: 580px; }
+    .arms { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(196,181,165,0.2); }
+    .arm-card { background: var(--off-white); padding: 4rem; display: flex; flex-direction: column; gap: 1.5rem; transition: background 0.3s; text-decoration: none; color: inherit; }
+    .arm-card:hover { background: var(--navy); }
+    .arm-card:hover .arm-number, .arm-card:hover .arm-title, .arm-card:hover .arm-desc { color: var(--off-white); }
+    .arm-card:hover .arm-arrow { color: var(--lavender); }
+    .arm-number { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; color: var(--taupe); transition: color 0.3s; }
+    .arm-title { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; font-weight: 400; color: var(--navy); transition: color 0.3s; line-height: 1.2; }
+    .arm-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.8rem; background: var(--lavender-light); color: var(--dusty-purple); width: fit-content; }
+    .arm-desc { font-size: 0.95rem; line-height: 1.75; color: var(--text-mid); max-width: 380px; transition: color 0.3s; }
+    .arm-arrow { font-size: 1.2rem; color: var(--taupe); margin-top: auto; transition: color 0.3s; }
+    .stat-strip { background: var(--navy); padding: 5rem 6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+    .stat-item { text-align: center; }
+    .stat-number { font-family: 'Libre Baskerville', serif; font-size: 3.5rem; font-weight: 400; color: var(--lavender); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,238,0.88); line-height: 1.6; }
+    footer { padding: 4rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,181,165,0.3); }
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; color: var(--navy); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
+    .footer-copy { font-size: 0.75rem; color: var(--taupe); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 5rem 2.5rem; }
-      .hero-right { padding: 4rem 2.5rem; }
+      nav { padding: 1.2rem 2rem; } .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; } .hero-left { padding: 5rem 2.5rem; } .hero-right { padding: 4rem 2.5rem; }
       .section-intro { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 2rem; }
-      .arms { grid-template-columns: 1fr; padding: 3rem 0; }
-      .arm-card { padding: 3rem 2.5rem; }
+      .arms { grid-template-columns: 1fr; } .arm-card { padding: 3rem 2.5rem; }
       .stat-strip { grid-template-columns: 1fr; padding: 4rem 2.5rem; gap: 2rem; }
-      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 3rem 2rem; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 3rem 2rem; } .footer-links { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">Poiema Project</a>
+    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" />Poiema Project</a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="mold-campaign.html">Mold Campaign</a></li>
-      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li class="nav-dropdown"><a href="#">Issues ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li></ul></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="mold-campaign.html#take-action" class="nav-cta">Take Action</a>
+    <a href="clean-dorm-air-act.html#take-action" class="nav-cta">Take Action</a>
   </nav>
-
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <p class="hero-eyebrow">Poiema Project</p>
-      <h1 class="hero-headline">
-        Built for girls<br />who deserve <em>better.</em>
-      </h1>
-      <p class="hero-body">
-        Poiema Project is a wellness and health organization dedicated to the women
-        who are building the future. We work at the intersection of policy, education,
-        and community to create environments where they can actually thrive.
-      </p>
+      <h1 class="hero-headline">Built for girls<br />who deserve <em>better.</em></h1>
+      <p class="hero-body">Poiema Project is a wellness and health organization dedicated to the women who are building the future. We work at the intersection of policy, education, and community to create environments where they can actually thrive.</p>
       <div class="hero-actions">
-        <a href="mold-campaign.html" class="btn-primary">The Mold Campaign</a>
+        <a href="clean-dorm-air-act.html" class="btn-primary">The Clean Dorm Air Act</a>
         <a href="about.html" class="btn-outline">Our Story</a>
       </div>
     </div>
     <div class="hero-right">
       <p class="hero-mission-label">Our Mission</p>
-      <p class="hero-mission">
-        "Poiema Project is a student-led nonprofit dedicated to advocating for healthy
-        learning environments through policy change, education, and community action."
-      </p>
+      <p class="hero-mission">"Poiema Project is a student-led nonprofit dedicated to advocating for healthy learning environments through policy change, education, and community action."</p>
       <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-dot"></div>
-          <span class="pillar-text">Policy Change</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-dot"></div>
-          <span class="pillar-text">Education</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-dot"></div>
-          <span class="pillar-text">Community Action</span>
-        </div>
+        <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Policy Change</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Education</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Community Action</span></div>
       </div>
     </div>
   </section>
-
-  <!-- WHAT WE ARE -->
   <section class="section-intro">
-    <div>
-      <p class="section-label reveal">What We Are</p>
-    </div>
+    <div><p class="section-label reveal">What We Are</p></div>
     <div class="section-intro-content">
       <h2 class="reveal">A platform built on the belief that <em>where you live shapes who you become.</em></h2>
-      <p class="reveal">
-        Poiema is the Greek word for a work of art — something carefully and intentionally made.
-        That is how we see every young woman we serve. Our work spans wellness education, policy
-        advocacy, and media, all in service of one idea: that the environments girls live and
-        learn in should be safe, healthy, and worthy of them.
-      </p>
+      <p class="reveal">Poiema is the Greek word for a work of art — something carefully and intentionally made. That is how we see every young woman we serve. Our work spans wellness education, policy advocacy, and media, all in service of one idea: that the environments girls live and learn in should be safe, healthy, and worthy of them.</p>
     </div>
   </section>
-
-  <!-- ARMS -->
   <section class="arms">
-    <a href="mold-campaign.html" class="arm-card">
+    <a href="clean-dorm-air-act.html" class="arm-card">
       <p class="arm-number">01</p>
-      <h3 class="arm-title">The Mold<br />Campaign</h3>
+      <h3 class="arm-title">Clean Dorm<br />Air Act</h3>
       <span class="arm-tag">Nonprofit Advocacy</span>
-      <p class="arm-desc">
-        Alabama ranks 4th in the nation for mold risk. Zero state laws require testing
-        in student housing. We are changing that — one building, one bill, one student at a time.
-      </p>
+      <p class="arm-desc">Alabama ranks 4th in the nation for mold risk. Zero state laws require testing in student housing. We are changing that.</p>
       <span class="arm-arrow">→</span>
     </a>
     <a href="rooted-rhythm.html" class="arm-card">
       <p class="arm-number">02</p>
       <h3 class="arm-title">Rooted<br />Rhythm</h3>
       <span class="arm-tag">Publication</span>
-      <p class="arm-desc">
-        A publication for college-aged women navigating health, identity, and the
-        in-between. Real stories, honest conversations, and a community that shows up.
-      </p>
+      <p class="arm-desc">A publication for college-aged women navigating health, identity, and the in-between. Real stories, honest conversations, and a community that shows up.</p>
       <span class="arm-arrow">→</span>
     </a>
   </section>
-
-  <!-- STATS -->
   <div class="stat-strip">
-    <div class="stat-item reveal">
-      <p class="stat-number">40%</p>
-      <p class="stat-label">of U.S. student housing shows documented signs of mold</p>
-    </div>
-    <div class="stat-item reveal">
-      <p class="stat-number">#4</p>
-      <p class="stat-label">Alabama ranks 4th nationally in mold risk — with zero state testing laws</p>
-    </div>
-    <div class="stat-item reveal">
-      <p class="stat-number">44%</p>
-      <p class="stat-label">higher depression risk found in moldy environments (Brown University)</p>
-    </div>
+    <div class="stat-item reveal"><p class="stat-number">40%</p><p class="stat-label">of U.S. student housing shows documented signs of mold</p></div>
+    <div class="stat-item reveal"><p class="stat-number">#4</p><p class="stat-label">Alabama ranks 4th nationally in mold risk with zero state testing laws</p></div>
+    <div class="stat-item reveal"><p class="stat-number">44%</p><p class="stat-label">higher depression risk found in moldy environments (Brown University)</p></div>
   </div>
-
-  <!-- FOOTER -->
   <footer>
     <span class="footer-logo">Poiema Project</span>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="mold-campaign.html">Mold Campaign</a></li>
-      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <span class="footer-copy">© 2026 Poiema Project</span>
   </footer>
-
   <script>
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.15 });
     reveals.forEach(r => observer.observe(r));
   </script>
 </body>

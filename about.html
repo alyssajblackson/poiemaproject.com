@@ -6,505 +6,108 @@
   <title>About — Poiema Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy: #1a2744;
-      --lavender: #b8a9c9;
-      --lavender-light: #d9d0e8;
-      --off-white: #f5f2ee;
-      --dusty-purple: #7d6e8a;
-      --taupe: #c4b5a5;
-      --taupe-light: #ede5dc;
-      --text-dark: #1a2744;
-      --text-mid: #3a3555;
-    }
-
+    :root { --navy: #1a2744; --lavender: #b8a9c9; --lavender-light: #d9d0e8; --off-white: #f5f2ee; --dusty-purple: #7d6e8a; --taupe: #c4b5a5; --taupe-light: #ede5dc; --text-dark: #1a2744; --text-mid: #3a3555; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--off-white);
-      color: var(--text-dark);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.4rem 4rem;
-      background: rgba(245,242,238,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(196,181,165,0.3);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--navy); }
-
-    .nav-cta {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.4rem;
-      border: 1px solid var(--navy);
-      color: var(--navy);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
+    body { background: var(--off-white); color: var(--text-dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(245,242,238,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(196,181,165,0.3); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; color: var(--navy); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+    .nav-logo-img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links > li > a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--navy); }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--off-white); border: 1px solid rgba(196,181,165,0.4); min-width: 220px; padding: 0.4rem 0; z-index: 200; box-shadow: 0 4px 20px rgba(26,39,68,0.08); }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
+    .dropdown-menu li a:hover { background: var(--taupe-light); color: var(--navy); }
+    .nav-cta { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--navy); color: var(--navy); text-decoration: none; transition: all 0.2s; }
     .nav-cta:hover { background: var(--navy); color: var(--off-white); }
-
-    /* FOUNDER HERO */
-    .founder-hero {
-      padding-top: 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 90vh;
-    }
-
-    .founder-photo-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .founder-photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-
-    .founder-photo-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 40%;
-      background: linear-gradient(to top, rgba(26,39,68,0.5), transparent);
-    }
-
-    .founder-intro {
-      background: var(--navy);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .founder-intro::before {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,169,201,0.1) 0%, transparent 70%);
-    }
-
-    .founder-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.2s;
-    }
-
-    .founder-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 4vw, 3.8rem);
-      font-weight: 300;
-      color: var(--off-white);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.4s;
-    }
-
-    .founder-title {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.5s;
-    }
-
-    .founder-bio {
-      font-size: 0.95rem;
-      line-height: 1.9;
-      color: rgba(245,242,238,0.88);
-      max-width: 420px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.7s;
-    }
-
+    .founder-hero { padding-top: 72px; display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; }
+    .founder-photo-wrap { position: relative; overflow: hidden; }
+    .founder-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .founder-photo-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(26,39,68,0.4), transparent); }
+    .founder-intro { background: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem; position: relative; overflow: hidden; }
+    .founder-intro::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(184,169,201,0.1) 0%, transparent 70%); }
+    .founder-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; font-weight: 500; }
+    .founder-name { font-family: 'Libre Baskerville', serif; font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 400; color: var(--off-white); line-height: 1.15; margin-bottom: 0.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .founder-title { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lavender); margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s; font-weight: 500; }
+    .founder-bio { font-size: 0.95rem; line-height: 1.9; color: rgba(245,242,238,0.88); max-width: 420px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s; }
     .founder-bio p { margin-bottom: 1.2rem; }
     .founder-bio p:last-child { margin-bottom: 0; }
-
-    /* ORIGIN STORY */
-    .origin {
-      padding: 8rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 7rem;
-      align-items: start;
-      background: var(--off-white);
-      border-bottom: 1px solid rgba(196,181,165,0.25);
-    }
-
-    .origin-left {
-      position: sticky;
-      top: 120px;
-    }
-
-    .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dusty-purple);
-      margin-bottom: 1.5rem;
-    }
-
-    .origin-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--navy);
-    }
-
-    .origin-heading em {
-      font-style: italic;
-      color: var(--dusty-purple);
-    }
-
-    .origin-right p {
-      font-size: 1rem;
-      line-height: 1.9;
-      color: var(--text-mid);
-      margin-bottom: 1.8rem;
-    }
-
+    .origin { padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.6fr; gap: 7rem; align-items: start; background: var(--off-white); border-bottom: 1px solid rgba(196,181,165,0.25); }
+    .origin-left { position: sticky; top: 120px; }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 1.5rem; font-weight: 500; }
+    .origin-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--navy); }
+    .origin-heading em { font-style: italic; color: var(--dusty-purple); }
+    .origin-right p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.8rem; }
     .origin-right p:last-child { margin-bottom: 0; }
-
-    .origin-pull {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.5;
-      border-left: 3px solid var(--lavender);
-      padding-left: 2rem;
-      margin: 2.5rem 0;
-    }
-
-    /* WHAT POIEMA MEANS */
-    .meaning {
-      background: var(--taupe-light);
-      padding: 7rem 6rem;
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 7rem;
-      align-items: center;
-      border-bottom: 1px solid rgba(196,181,165,0.25);
-    }
-
-    .meaning-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--navy);
-      margin-bottom: 2rem;
-    }
-
-    .meaning-text h2 em {
-      font-style: italic;
-      color: var(--dusty-purple);
-    }
-
-    .meaning-text p {
-      font-size: 1rem;
-      line-height: 1.9;
-      color: var(--text-mid);
-      margin-bottom: 1.5rem;
-    }
-
-    .meaning-word {
-      text-align: center;
-    }
-
-    .meaning-greek {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .meaning-transliteration {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dusty-purple);
-      margin-bottom: 1rem;
-    }
-
-    .meaning-definition {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--text-mid);
-      font-style: italic;
-    }
-
-    /* WHAT WE ARE BUILDING */
-    .building {
-      background: var(--navy);
-      padding: 7rem 6rem;
-    }
-
-    .building-header {
-      margin-bottom: 5rem;
-    }
-
-    .building-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      opacity: 0.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .building-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--off-white);
-      max-width: 600px;
-    }
-
-    .building-heading em {
-      font-style: italic;
-      color: var(--lavender);
-    }
-
-    .building-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(184,169,201,0.15);
-    }
-
-    .building-card {
-      background: rgba(255,255,255,0.04);
-      padding: 3rem;
-      transition: background 0.3s;
-    }
-
-    .building-card:hover {
-      background: rgba(184,169,201,0.1);
-    }
-
-    .building-card-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--lavender);
-      opacity: 0.4;
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .building-card h3 {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      margin-bottom: 1rem;
-    }
-
-    .building-card p {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: rgba(245,242,238,0.88);
-    }
-
-    /* CTA */
-    .about-cta {
-      padding: 6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4rem;
-      border-top: 1px solid rgba(196,181,165,0.3);
-      background: var(--off-white);
-    }
-
-    .about-cta h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.2;
-    }
-
-    .about-cta h3 em {
-      font-style: italic;
-      color: var(--dusty-purple);
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-
-    .btn-primary {
-      padding: 0.85rem 2rem;
-      background: var(--navy);
-      color: var(--off-white);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
+    .origin-pull { font-family: 'Libre Baskerville', serif; font-size: 1.35rem; font-style: italic; color: var(--navy); line-height: 1.55; border-left: 3px solid var(--lavender); padding-left: 2rem; margin: 2.5rem 0; }
+    /* POIEMA MEANING with flower */
+    .meaning { background: var(--taupe-light); padding: 7rem 6rem; border-bottom: 1px solid rgba(196,181,165,0.25); }
+    .meaning-inner { display: grid; grid-template-columns: 1.4fr 1fr 0.7fr; gap: 5rem; align-items: center; }
+    .meaning-text h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--navy); margin-bottom: 2rem; }
+    .meaning-text h2 em { font-style: italic; color: var(--dusty-purple); }
+    .meaning-text p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .meaning-word { text-align: center; }
+    .meaning-greek { font-family: 'Libre Baskerville', serif; font-size: 4rem; font-weight: 400; font-style: italic; color: var(--navy); line-height: 1; margin-bottom: 0.5rem; }
+    .meaning-transliteration { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 1rem; font-weight: 500; }
+    .meaning-definition { font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); font-style: italic; }
+    .meaning-flower { display: flex; align-items: center; justify-content: center; }
+    .meaning-flower img { width: 100%; max-width: 220px; opacity: 0.85; }
+    .building { background: var(--navy); padding: 7rem 6rem; }
+    .building-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); opacity: 0.8; margin-bottom: 1.5rem; font-weight: 500; }
+    .building-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.2; color: var(--off-white); margin-bottom: 4rem; max-width: 500px; }
+    .building-heading em { font-style: italic; color: var(--lavender); }
+    .building-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(184,169,201,0.15); }
+    .building-card { background: rgba(255,255,255,0.04); padding: 3rem; transition: background 0.3s; }
+    .building-card:hover { background: rgba(184,169,201,0.1); }
+    .building-card-num { font-family: 'Libre Baskerville', serif; font-size: 2.2rem; font-weight: 400; color: var(--lavender); opacity: 0.4; line-height: 1; margin-bottom: 1.5rem; }
+    .building-card h3 { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1rem; font-weight: 500; }
+    .building-card p { font-size: 0.95rem; line-height: 1.75; color: rgba(245,242,238,0.88); }
+    .about-cta { padding: 6rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; border-top: 1px solid rgba(196,181,165,0.3); background: var(--off-white); }
+    .about-cta h3 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; color: var(--navy); line-height: 1.25; }
+    .about-cta h3 em { font-style: italic; color: var(--dusty-purple); }
+    .cta-buttons { display: flex; gap: 1rem; flex-shrink: 0; }
+    .btn-primary { padding: 0.85rem 2rem; background: var(--navy); color: var(--off-white); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.2s; }
     .btn-primary:hover { background: var(--dusty-purple); }
-
-    .btn-outline {
-      padding: 0.85rem 2rem;
-      border: 1px solid var(--navy);
-      color: var(--navy);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
+    .btn-outline { padding: 0.85rem 2rem; border: 1px solid var(--navy); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
     .btn-outline:hover { background: var(--navy); color: var(--off-white); }
-
-    /* FOOTER */
-    footer {
-      padding: 4rem 6rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(196,181,165,0.3);
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      text-decoration: none;
-    }
-
+    footer { padding: 4rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,181,165,0.3); }
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; color: var(--navy); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
     .footer-copy { font-size: 0.75rem; color: var(--taupe); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
-      .nav-links { display: none; }
-      .founder-hero { grid-template-columns: 1fr; min-height: auto; }
-      .founder-photo-wrap { height: 60vw; }
-      .founder-intro { padding: 4rem 2.5rem; }
-      .origin { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
-      .origin-left { position: static; }
-      .meaning { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
-      .building { padding: 5rem 2.5rem; }
-      .building-grid { grid-template-columns: 1fr; }
+      nav { padding: 1.2rem 2rem; } .nav-links { display: none; }
+      .founder-hero { grid-template-columns: 1fr; min-height: auto; } .founder-photo-wrap { height: 60vw; } .founder-intro { padding: 4rem 2.5rem; }
+      .origin { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; } .origin-left { position: static; }
+      .meaning { padding: 5rem 2.5rem; } .meaning-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .building { padding: 5rem 2.5rem; } .building-grid { grid-template-columns: 1fr; }
       .about-cta { flex-direction: column; align-items: flex-start; padding: 4rem 2.5rem; }
-      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <a href="index.html" class="nav-logo">Poiema Project</a>
+    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" />Poiema Project</a>
     <ul class="nav-links">
       <li><a href="about.html" class="active">About</a></li>
-      <li><a href="mold-campaign.html">Mold Campaign</a></li>
-      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li class="nav-dropdown"><a href="#">Issues ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li></ul></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="mold-campaign.html#take-action" class="nav-cta">Take Action</a>
+    <a href="clean-dorm-air-act.html#take-action" class="nav-cta">Take Action</a>
   </nav>
 
-  <!-- FOUNDER HERO -->
   <section class="founder-hero">
     <div class="founder-photo-wrap">
       <img src="alyssa.jpeg" alt="Alyssa Blackson, Founder of Poiema Project" />
@@ -515,154 +118,76 @@
       <h1 class="founder-name">Alyssa<br />Blackson</h1>
       <p class="founder-title">Founder, Poiema Project</p>
       <div class="founder-bio">
-        <p>
-          Alyssa Blackson is a student, advocate, and founder based in Birmingham, Alabama.
-          She started Poiema Project after her own experience with undetected dorm mold
-          left her navigating months of unexplained health symptoms and a healthcare system
-          with no answers.
-        </p>
-        <p>
-          What began as a personal search for accountability became a statewide policy campaign,
-          a publication, and a vision for what girls' wellness could look like when someone
-          actually builds for it.
-        </p>
+        <p>Alyssa Blackson is a student, advocate, and founder based in Birmingham, Alabama. She started Poiema Project after her own experience with undetected dorm mold left her navigating months of unexplained health symptoms and a healthcare system with no answers.</p>
+        <p>What began as a personal search for accountability became a statewide policy campaign, a publication, and a vision for what girls' wellness could look like when someone actually builds for it.</p>
       </div>
     </div>
   </section>
 
-  <!-- ORIGIN STORY -->
   <section class="origin">
     <div class="origin-left">
       <p class="section-label reveal">The Origin</p>
-      <h2 class="origin-heading reveal">
-        Where it <em>started</em> and where it is going.
-      </h2>
+      <h2 class="origin-heading reveal">Where it <em>started</em> and where it is going.</h2>
     </div>
     <div class="origin-right reveal">
-      <p>
-        I came to college so excited. I unpacked my room, met my friends, and started
-        something new. Three months later I had deep cystic acne, hair loss, brain fog,
-        and a depression that felt physical, not emotional.
-      </p>
-      <p>
-        I spent the money I had saved for college on doctors chasing answers nobody
-        could give me. It was mold. In the room I was paying to live in.
-      </p>
-      <div class="origin-pull">
-        "I am not alone. And that is the whole point."
-      </div>
-      <p>
-        Nearly 40% of universities in the United States show documented signs of mold.
-        Alabama ranks 4th in the nation for mold risk. And there are zero state laws
-        requiring mold testing in student housing here.
-      </p>
-      <p>
-        Poiema Project exists because the gap between what students deserve and what they
-        are actually given is too wide to ignore. The mold campaign is the first step.
-        But it is not the last. This organization is built for the long arc of girls'
-        health and wellness -- the policies, the conversations, and the community that
-        make it possible.
-      </p>
+      <p>I came to college so excited. I unpacked my room, met my friends, and started something new. Three months later I had deep cystic acne, hair loss, brain fog, and a depression that felt physical, not emotional.</p>
+      <p>I spent the money I had saved for college on doctors chasing answers nobody could give me. It was mold. In the room I was paying to live in.</p>
+      <div class="origin-pull">"I am not alone. And that is the whole point."</div>
+      <p>Nearly 40% of universities in the United States show documented signs of mold. Alabama ranks 4th in the nation for mold risk. And there are zero state laws requiring mold testing in student housing here.</p>
+      <p>Poiema Project exists because the gap between what students deserve and what they are actually given is too wide to ignore. The mold campaign is the first step. But it is not the last. This organization is built for the long arc of girls' health and wellness.</p>
     </div>
   </section>
 
-  <!-- WHAT POIEMA MEANS -->
   <section class="meaning">
-    <div class="meaning-text reveal">
-      <p class="section-label">The Name</p>
-      <h2>A word that holds <em>everything.</em></h2>
-      <p>
-        Poiema is the Greek word for a work of art -- something carefully and intentionally
-        made. It is used in the New Testament to describe the way human beings are created:
-        as masterworks, not accidents.
-      </p>
-      <p>
-        That is the lens this organization operates from. Every young woman we serve is
-        a poiema. The environments she lives and learns in should reflect that. The policies
-        that govern her housing should reflect that. The conversations we have about her
-        health should reflect that.
-      </p>
-    </div>
-    <div class="meaning-word reveal">
-      <p class="meaning-greek">ποίημα</p>
-      <p class="meaning-transliteration">poiema</p>
-      <p class="meaning-definition">
-        Greek noun. A work of art.<br />
-        Something carefully and<br />intentionally made.
-      </p>
+    <div class="meaning-inner">
+      <div class="meaning-text reveal">
+        <p class="section-label">The Name</p>
+        <h2>A word that holds <em>everything.</em></h2>
+        <p>Poiema is the Greek word for a work of art — something carefully and intentionally made. It is used in the New Testament to describe the way human beings are created: as masterworks, not accidents.</p>
+        <p>That is the lens this organization operates from. Every young woman we serve is a poiema. The environments she lives and learns in should reflect that.</p>
+      </div>
+      <div class="meaning-word reveal">
+        <p class="meaning-greek">ποίημα</p>
+        <p class="meaning-transliteration">poiema</p>
+        <p class="meaning-definition">Greek noun. A work of art.<br />Something carefully and<br />intentionally made.</p>
+      </div>
+      <div class="meaning-flower reveal">
+        <img src="flower-bouquet.png" alt="" />
+      </div>
     </div>
   </section>
 
-  <!-- WHAT WE ARE BUILDING -->
   <section class="building">
-    <div class="building-header reveal">
-      <p class="building-label">What We Are Building</p>
-      <h2 class="building-heading">
-        Three arms. <em>One mission.</em>
-      </h2>
-    </div>
+    <p class="building-label reveal">What We Are Building</p>
+    <h2 class="building-heading reveal">Three arms. <em>One mission.</em></h2>
     <div class="building-grid">
-      <div class="building-card reveal">
-        <p class="building-card-num">01</p>
-        <h3>Policy Advocacy</h3>
-        <p>
-          The nonprofit arm. Starting with a statewide campaign for mandatory annual
-          mold and moisture testing in Alabama university dormitories -- and building
-          from there toward a broader vision of healthy learning environments.
-        </p>
-      </div>
-      <div class="building-card reveal">
-        <p class="building-card-num">02</p>
-        <h3>Rooted Rhythm</h3>
-        <p>
-          A publication for college-aged women. Real stories about health, identity,
-          and the in-between. Delivered through Instagram and Substack to a community
-          that deserves honest conversation.
-        </p>
-      </div>
-      <div class="building-card reveal">
-        <p class="building-card-num">03</p>
-        <h3>What Comes Next</h3>
-        <p>
-          Poiema Project is in its first chapter. The policy work and the publication
-          are the foundation. The broader vision -- for girls' wellness, health education,
-          and systemic change -- is being built one step at a time.
-        </p>
-      </div>
+      <div class="building-card reveal"><p class="building-card-num">01</p><h3>Policy Advocacy</h3><p>The nonprofit arm. Starting with a statewide campaign for mandatory annual mold and moisture testing in Alabama university dormitories — and building from there toward a broader vision of healthy learning environments.</p></div>
+      <div class="building-card reveal"><p class="building-card-num">02</p><h3>Rooted Rhythm</h3><p>A publication for college-aged women. Real stories about health, identity, and the in-between. Delivered through Instagram and Substack to a community that deserves honest conversation.</p></div>
+      <div class="building-card reveal"><p class="building-card-num">03</p><h3>What Comes Next</h3><p>Poiema Project is in its first chapter. The policy work and the publication are the foundation. The broader vision for girls' wellness, health education, and systemic change is being built one step at a time.</p></div>
     </div>
   </section>
 
-  <!-- CTA -->
   <div class="about-cta reveal">
-    <h3>The mold campaign is <em>where we start.</em></h3>
+    <h3>The Clean Dorm Air Act is <em>where we start.</em></h3>
     <div class="cta-buttons">
-      <a href="mold-campaign.html" class="btn-primary">Read the Campaign</a>
-      <a href="mold-campaign.html#take-action" class="btn-outline">Take Action</a>
+      <a href="clean-dorm-air-act.html" class="btn-primary">Read the Campaign</a>
+      <a href="clean-dorm-air-act.html#take-action" class="btn-outline">Take Action</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <span class="footer-logo">Poiema Project</span>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="mold-campaign.html">Mold Campaign</a></li>
-      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <span class="footer-copy">© 2026 Poiema Project</span>
   </footer>
-
   <script>
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
   </script>
 </body>
