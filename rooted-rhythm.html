@@ -13,8 +13,9 @@
     html { scroll-behavior: smooth; }
     body { background: var(--off-white); color: var(--text-dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(245,242,238,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(196,181,165,0.3); }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-logo-img { height: 36px; width: auto; object-fit: contain; }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 0.55rem; }
+    .nav-logo-img { height: 28px; width: 28px; object-fit: contain; }
+    .nav-logo-text { font-family: 'Libre Baskerville', serif; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); }
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links > li > a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
     .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--navy); }
@@ -90,7 +91,7 @@
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-logo"><img src="poiema-logo.png" alt="Poiema Project" class="nav-logo-img" /></a>
+    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" /><span class="nav-logo-text">Poiema Project</span></a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
       <li class="nav-dropdown"><a href="#">Issues ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li></ul></li>
