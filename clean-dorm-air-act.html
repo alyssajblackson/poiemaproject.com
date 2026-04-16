@@ -125,6 +125,9 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .nav-cta { display: none !important; }
+      .hamburger { display: flex !important; }
       nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
       .nav-logo-img { height: 24px; width: 24px; }
       .nav-logo-text { font-size: 0.78rem; letter-spacing: 0.12em; }
@@ -136,6 +139,21 @@
       .framework-cost { grid-template-columns: 1fr; gap: 1.5rem; } .action-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; }
     }
+
+    /* HAMBURGER MENU -- hidden on desktop, shown on mobile only */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 62px; left: 0; right: 0; background: var(--off-white); border-bottom: 1px solid rgba(196,181,165,0.3); z-index: 99; padding: 1.5rem 2rem; flex-direction: column; gap: 0; box-shadow: 0 8px 24px rgba(26,39,68,0.08); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(196,181,165,0.2); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--navy); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu-section { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); padding: 1rem 0 0.4rem; font-weight: 500; }
+    .mobile-menu .mobile-issue { padding-left: 1rem; font-size: 0.78rem; color: var(--dusty-purple); }
+    .mobile-menu .mobile-cta { margin-top: 0.5rem; padding: 0.9rem 1.5rem; background: var(--navy); color: var(--off-white) !important; text-align: center; border-bottom: none !important; }
   </style>
 </head>
 <body>
@@ -327,6 +345,23 @@
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+      });
+      // Close on link click
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
     // Dropdown click toggle for reliability
     document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
       trigger.addEventListener('click', function(e) {
@@ -343,5 +378,15 @@
       }
     });
   </script>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About</a>
+    <span class="mobile-menu-section">Issues</span>
+    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
+    <a href="projects.html">Projects</a>
+    <a href="rooted-rhythm.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="clean-dorm-air-act.html#take-action" class="mobile-cta">Take Action</a>
+  </div>
 </body>
 </html>
