@@ -22,7 +22,7 @@
     .nav-links > li > a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
     .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--navy); }
     .nav-dropdown { position: relative; }
-    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--off-white); border: 1px solid rgba(196,181,165,0.4); min-width: 220px; padding: 0.4rem 0; z-index: 200; box-shadow: 0 4px 20px rgba(26,39,68,0.08); margin-top: 0; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--off-white); border: 1px solid rgba(196,181,165,0.4); min-width: 220px; padding: 0.4rem 0; z-index: 200; box-shadow: 0 4px 20px rgba(26,39,68,0.08); }
     .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; }
     .nav-dropdown:hover .dropdown-menu { display: block; }
     .dropdown-menu li { list-style: none; }
@@ -30,6 +30,7 @@
     .dropdown-menu li a:hover { background: var(--taupe-light); color: var(--navy); }
     .nav-cta { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--navy); color: var(--navy); text-decoration: none; transition: all 0.2s; }
     .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+
     /* HERO */
     .rr-hero { padding-top: 72px; min-height: 70vh; background: var(--taupe-light); display: flex; flex-direction: column; justify-content: center; padding-left: 6rem; padding-right: 6rem; padding-bottom: 6rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(196,181,165,0.4); }
     .rr-hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,169,201,0.25) 0%, transparent 70%); }
@@ -38,64 +39,64 @@
     .rr-title { font-family: 'Libre Baskerville', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; line-height: 1; color: var(--navy); }
     .rr-title em { font-style: italic; color: var(--dusty-purple); }
     .rr-logo { width: clamp(80px, 10vw, 130px); opacity: 0.85; flex-shrink: 0; }
-    .rr-tagline { font-size: 1.05rem; line-height: 1.8; color: var(--text-mid); max-width: 520px; margin-bottom: 3.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .rr-tagline { font-family: 'Libre Baskerville', serif; font-size: clamp(1rem, 1.6vw, 1.25rem); font-style: italic; line-height: 1.8; color: var(--text-mid); max-width: 560px; margin-bottom: 3.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
     .rr-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
     .btn-primary { padding: 0.85rem 2rem; background: var(--navy); color: var(--off-white); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.2s; }
     .btn-primary:hover { background: var(--dusty-purple); }
     .btn-outline { padding: 0.85rem 2rem; border: 1px solid var(--navy); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
     .btn-outline:hover { background: var(--navy); color: var(--off-white); }
-    /* ABOUT */
-    .rr-about { padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.6fr; gap: 7rem; align-items: center; border-bottom: 1px solid rgba(196,181,165,0.25); }
-    .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 1.5rem; font-weight: 500; }
-    .rr-about-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--navy); }
-    .rr-about-heading em { font-style: italic; color: var(--dusty-purple); }
-    .rr-about-right p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.5rem; }
-    /* PILLARS */
-    .rr-pillars { background: var(--navy); padding: 7rem 6rem; border-bottom: 1px solid rgba(184,169,201,0.15); }
-    .rr-pillars-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); opacity: 0.8; margin-bottom: 1.5rem; font-weight: 500; }
-    .rr-pillars-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--off-white); margin-bottom: 4rem; max-width: 500px; }
-    .rr-pillars-heading em { font-style: italic; color: var(--lavender); }
-    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(184,169,201,0.15); }
-    .pillar-card { background: rgba(255,255,255,0.04); padding: 3rem; transition: background 0.3s; }
-    .pillar-card:hover { background: rgba(184,169,201,0.1); }
-    .pillar-icon { font-family: 'Libre Baskerville', serif; font-size: 1.6rem; font-style: italic; color: var(--lavender); margin-bottom: 1.2rem; }
-    .pillar-card h3 { font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1rem; font-weight: 500; }
-    .pillar-card p { font-size: 0.95rem; line-height: 1.75; color: rgba(245,242,238,0.88); }
+
+    /* WELCOME */
+    .rr-welcome { padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.6fr; gap: 7rem; align-items: start; border-bottom: 1px solid rgba(196,181,165,0.25); background: var(--off-white); }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 1.5rem; font-weight: 500; display: block; }
+    .rr-welcome-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--navy); }
+    .rr-welcome-heading em { font-style: italic; color: var(--dusty-purple); }
+    .rr-welcome-right p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.5rem; }
+
+    /* WHY RHYTHM */
+    .rr-why { background: var(--navy); padding: 7rem 6rem; border-bottom: 1px solid rgba(184,169,201,0.15); }
+    .rr-why-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); opacity: 0.8; margin-bottom: 1.5rem; font-weight: 500; }
+    .rr-why-heading { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; line-height: 1.25; color: var(--off-white); margin-bottom: 4rem; max-width: 500px; }
+    .rr-why-heading em { font-style: italic; color: var(--lavender); }
+    .rr-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(184,169,201,0.15); }
+    .rr-why-card { background: rgba(255,255,255,0.04); padding: 3rem; transition: background 0.3s; }
+    .rr-why-card:hover { background: rgba(184,169,201,0.1); }
+    .rr-why-card-label { font-family: 'Libre Baskerville', serif; font-size: 1.3rem; font-style: italic; color: var(--lavender); margin-bottom: 1.2rem; }
+    .rr-why-card h3 { font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1rem; font-weight: 500; }
+    .rr-why-card p { font-size: 0.95rem; line-height: 1.75; color: rgba(245,242,238,0.88); }
+
+    /* STORY */
+    .rr-story { padding: 8rem 6rem; display: grid; grid-template-columns: 1.6fr 1fr; gap: 7rem; align-items: center; border-bottom: 1px solid rgba(196,181,165,0.25); background: var(--off-white); }
+    .rr-story-text p { font-size: 1.05rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .rr-story-text p:first-of-type { font-family: 'Libre Baskerville', serif; font-size: 1.35rem; font-style: italic; color: var(--navy); line-height: 1.6; }
+    .rr-story-callout { background: var(--taupe-light); padding: 3rem; }
+    .rr-story-callout p { font-family: 'Libre Baskerville', serif; font-size: 1.2rem; font-style: italic; color: var(--navy); line-height: 1.65; margin-bottom: 1.5rem; }
+    .rr-story-callout cite { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dusty-purple); font-style: normal; }
+
     /* FIND US */
-    .rr-find { padding: 7rem 6rem; background: var(--off-white); border-bottom: 1px solid rgba(196,181,165,0.25); }
+    .rr-find { padding: 7rem 6rem; background: var(--taupe-light); border-bottom: 1px solid rgba(196,181,165,0.25); }
     .rr-find-header { margin-bottom: 4rem; }
     .rr-find-header h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; color: var(--navy); }
     .rr-find-header h2 em { font-style: italic; color: var(--dusty-purple); }
     .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(196,181,165,0.3); }
     .platform-card { background: var(--off-white); padding: 4rem; display: flex; flex-direction: column; gap: 1.5rem; text-decoration: none; color: inherit; transition: background 0.3s; }
-    .platform-card:hover { background: var(--taupe-light); }
-    .platform-name { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; }
-    .platform-card h3 { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; font-weight: 400; color: var(--navy); }
-    .platform-card p { font-size: 0.95rem; line-height: 1.75; color: var(--text-mid); max-width: 360px; }
-    .platform-arrow { font-size: 1.2rem; color: var(--taupe); margin-top: auto; }
+    .platform-card:hover { background: var(--navy); }
+    .platform-card:hover .platform-name, .platform-card:hover h3, .platform-card:hover p, .platform-card:hover .platform-arrow { color: var(--off-white); }
+    .platform-name { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; transition: color 0.3s; }
+    .platform-card h3 { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; font-weight: 400; color: var(--navy); transition: color 0.3s; }
+    .platform-card p { font-size: 0.95rem; line-height: 1.75; color: var(--text-mid); max-width: 360px; transition: color 0.3s; }
+    .platform-arrow { font-size: 1.2rem; color: var(--taupe); margin-top: auto; transition: color 0.3s; }
+
     footer { padding: 4rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,181,165,0.3); }
     .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; color: var(--navy); }
     .footer-links { display: flex; gap: 2rem; list-style: none; }
     .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
     .footer-copy { font-size: 0.75rem; color: var(--taupe); }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 1100px) {
-      .nav-links { display: none !important; }
-      .nav-cta { display: none !important; }
-      .hamburger { display: flex !important; }
-      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
-      .nav-logo-img { height: 24px; width: 24px; }
-      .nav-logo-text { font-size: 0.78rem; letter-spacing: 0.12em; }
-      .rr-hero { padding: 6rem 2.5rem 4rem; } .rr-title-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .rr-about { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
-      .rr-pillars { padding: 5rem 2.5rem; } .pillars-grid { grid-template-columns: 1fr; }
-      .rr-find { padding: 5rem 2.5rem; } .platform-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; }
-    }
 
-    /* HAMBURGER MENU -- hidden on desktop, shown on mobile only */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -109,6 +110,17 @@
     .mobile-menu-section { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); padding: 1rem 0 0.4rem; font-weight: 500; }
     .mobile-menu .mobile-issue { padding-left: 1rem; font-size: 0.82rem; color: var(--navy); font-weight: 500; border-bottom: 1px solid rgba(196,181,165,0.2); padding-top: 0.9rem; padding-bottom: 0.9rem; display: block; }
     .mobile-menu .mobile-cta { margin-top: 0.5rem; padding: 0.9rem 1.5rem; background: var(--navy); color: var(--off-white) !important; text-align: center; border-bottom: none !important; }
+
+    @media (max-width: 1100px) {
+      .nav-links { display: none !important; } .nav-cta { display: none !important; } .hamburger { display: flex !important; }
+      nav { padding: 1rem 1.5rem; } .nav-logo-img { height: 24px; width: 24px; } .nav-logo-text { font-size: 0.78rem; }
+      .rr-hero { padding: 6rem 2.5rem 4rem; } .rr-title-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .rr-welcome { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+      .rr-why { padding: 5rem 2.5rem; } .rr-why-grid { grid-template-columns: 1fr; }
+      .rr-story { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
+      .rr-find { padding: 5rem 2.5rem; } .platform-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -131,51 +143,76 @@
       <h1 class="rr-title">Rooted <em>Rhythm</em></h1>
       <img src="logo-flower.png" alt="Rooted Rhythm" class="rr-logo" />
     </div>
-    <p class="rr-tagline">A publication for college-aged women navigating health, identity, and the in-between. Real stories. Honest conversations. A community that shows up.</p>
+    <p class="rr-tagline">Helping women find their God-given rhythm rooted in truth, biology, and scripture.</p>
     <div class="rr-actions">
       <a href="https://rootedrhythm.substack.com/" class="btn-primary">Read on Substack</a>
       <a href="https://www.instagram.com/rootedrhythmjournal/" class="btn-outline">Follow on Instagram</a>
     </div>
   </section>
 
-  <section class="rr-about">
+  <section class="rr-welcome">
     <div>
-      <p class="section-label reveal">What It Is</p>
-      <h2 class="rr-about-heading reveal">For the woman <em>in the middle</em> of figuring it out.</h2>
+      <span class="section-label reveal">Welcome</span>
+      <h2 class="rr-welcome-heading reveal">Returning to the rhythm <em>God designed for you.</em></h2>
     </div>
-    <div class="rr-about-right reveal">
-      <p>Rooted Rhythm is the publication arm of Poiema Project. It exists for college-aged women who are in the thick of it — navigating health, identity, relationships, ambition, and everything that does not fit neatly into a category.</p>
-      <p>The name is intentional. Rooted — because the goal is depth, not just surface-level wellness content. Rhythm — because health is not a destination, it is something you build a relationship with over time.</p>
-      <p>No quick fixes. No unrealistic standards. Just honest conversation from someone who is in it too.</p>
+    <div class="rr-welcome-right reveal">
+      <p>There is no shortage of health information, especially for college-aged women. Diets, supplements, routines, and trends are everywhere, and most of them promise clarity while creating more confusion. When every voice claims to have the answer, it becomes difficult to know what is actually true, what applies to you, and what is worth your attention.</p>
+      <p>Rooted Rhythm exists to slow things down. This is a space for sifting through the noise, asking better questions, and returning to what is grounded, honest, and life-giving.</p>
     </div>
   </section>
 
-  <section class="rr-pillars">
-    <p class="rr-pillars-label reveal">What We Cover</p>
-    <h2 class="rr-pillars-heading reveal">The conversations <em>worth having.</em></h2>
-    <div class="pillars-grid">
-      <div class="pillar-card reveal"><p class="pillar-icon">Health</p><h3>Physical Wellness</h3><p>Your body deserves honest information — not fear-based content or impossible standards. We cover what it actually feels like to take care of yourself in college.</p></div>
-      <div class="pillar-card reveal"><p class="pillar-icon">Mind</p><h3>Mental Health</h3><p>The emotional side of college that nobody warns you about. We talk about it directly, without stigma and without scripts.</p></div>
-      <div class="pillar-card reveal"><p class="pillar-icon">Identity</p><h3>Who You Are Becoming</h3><p>College is one of the few times in life where you get to ask big questions about who you are. We think that deserves space and real conversation.</p></div>
+  <section class="rr-why">
+    <p class="rr-why-label reveal">What This Space Is About</p>
+    <h2 class="rr-why-heading reveal">Not about doing <em>more.</em> About understanding better.</h2>
+    <div class="rr-why-grid">
+      <div class="rr-why-card reveal">
+        <p class="rr-why-card-label">Faith</p>
+        <h3>Rooted in Scripture</h3>
+        <p>Your body was designed with intention. Rooted Rhythm brings a foundation in Scripture that reminds us health was never meant to be a performance or a trend.</p>
+      </div>
+      <div class="rr-why-card reveal">
+        <p class="rr-why-card-label">Biology</p>
+        <h3>Grounded in Truth</h3>
+        <p>We take complex and often conflicting health information and translate it into clarity that fits real college life, including cycles, hormones, food, stress, and healing.</p>
+      </div>
+      <div class="rr-why-card reveal">
+        <p class="rr-why-card-label">Wisdom</p>
+        <h3>Practical Guidance</h3>
+        <p>Thoughtful, doable steps for women with limited time, money, and cooking access. No rigid rules, no perfect routines. Just grounded education and steady growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rr-story">
+    <div class="rr-story-text reveal">
+      <span class="section-label">Why I Created Rooted Rhythm</span>
+      <p>I know what it feels like to want to do everything right and still feel lost.</p>
+      <p>As an oldest child and a recovering perfectionist, I believed that if I could find the right diet, the right supplement, or the right routine, my health would finally fall into place. Instead, I became overwhelmed. Chronic acne, constant restriction, and a cabinet full of supplements left me exhausted and disconnected from my body.</p>
+      <p>Eventually I realized I was consuming so much advice that I no longer knew what my own natural rhythm felt like. Healing did not begin when I found the perfect plan. It began when I slowed down, questioned what I had accepted, and returned to the simple design God created from the beginning.</p>
+      <p>Rooted Rhythm grew out of that process of learning, unlearning, and discernment.</p>
+    </div>
+    <div class="rr-story-callout reveal">
+      <p>"Health was never meant to be copied."</p>
+      <cite>Alyssa Blackson, Founder</cite>
     </div>
   </section>
 
   <section class="rr-find">
     <div class="rr-find-header reveal">
-      <p class="section-label">Find Us</p>
+      <span class="section-label">Find Us</span>
       <h2>Where to read and <em>follow along.</em></h2>
     </div>
     <div class="platform-grid">
       <a href="https://rootedrhythm.substack.com/" class="platform-card reveal">
         <p class="platform-name">Long-form</p>
         <h3>Substack</h3>
-        <p>Essays, stories, and deeper dives. Subscribe to get every piece delivered directly to your inbox — free.</p>
+        <p>Essays, reflections, and practical guides delivered directly to your inbox. Subscribe free and join the conversation.</p>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://www.instagram.com/rootedrhythmjournal/" class="platform-card reveal">
         <p class="platform-name">Community</p>
         <h3>Instagram</h3>
-        <p>Daily content, conversation, and community. Follow along for the in-between moments that do not make it into the essays.</p>
+        <p>Daily content, honest conversation, and a community of women learning to listen to their bodies with wisdom and grace.</p>
         <span class="platform-arrow">→</span>
       </a>
     </div>
@@ -191,28 +228,21 @@
     </ul>
     <span class="footer-copy">© 2026 Poiema Project</span>
   </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About</a>
+    <span class="mobile-menu-section">Issues</span>
+    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
+    <a href="projects.html">Projects</a>
+    <a href="rooted-rhythm.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="clean-dorm-air-act.html#take-action" class="mobile-cta">Take Action</a>
+  </div>
+
   <script>
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
-
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
-      // Close on link click
-      mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-        });
-      });
-    }
-    // Dropdown click toggle for reliability
     document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
       trigger.addEventListener('click', function(e) {
         e.preventDefault();
@@ -223,43 +253,14 @@
       });
     });
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('.nav-dropdown')) {
-        document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; });
-      }
+      if (!e.target.closest('.nav-dropdown')) { document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; }); }
     });
-  </script>
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="about.html">About</a>
-    <span class="mobile-menu-section">Issues</span>
-    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
-    <a href="projects.html">Projects</a>
-    <a href="rooted-rhythm.html">Resources</a>
-    <a href="contact.html">Contact</a>
-    <a href="clean-dorm-air-act.html#take-action" class="mobile-cta">Take Action</a>
-  </div>
-  <script>
-    // Hamburger menu
     var hamburger = document.getElementById('hamburger');
     var mobileMenu = document.getElementById('mobileMenu');
     if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-        });
-      });
-      document.addEventListener('click', function(e) {
-        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-        }
-      });
+      hamburger.addEventListener('click', function(e) { e.stopPropagation(); hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+      mobileMenu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', function() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
+      document.addEventListener('click', function(e) { if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); } });
     }
   </script>
 </body>
