@@ -258,6 +258,10 @@
     reveals.forEach(r => observer.observe(r));
     document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
       trigger.addEventListener('click', function(e) {
+        // If the link has an href that isn't just '#', let it navigate
+        if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+          return; // let the link navigate normally
+        }
         e.preventDefault();
         var menu = this.nextElementSibling;
         var isOpen = menu.style.display === 'block';
