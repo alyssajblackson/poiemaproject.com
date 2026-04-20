@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Poiema Project</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy: #1a2744; --lavender: #b8a9c9; --lavender-light: #d9d0e8; --off-white: #f5f2ee; --dusty-purple: #7d6e8a; --taupe: #c4b5a5; --taupe-light: #ede5dc; --text-dark: #1a2744; --text-mid: #3a3555; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--off-white); color: var(--text-dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(245,242,238,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(196,181,165,0.3); }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 0.55rem; }
+    .nav-logo-img { height: 28px; width: 28px; object-fit: contain; }
+    .nav-logo-text { font-family: 'Libre Baskerville', serif; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links > li > a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--navy); }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--off-white); border: 1px solid rgba(196,181,165,0.4); min-width: 220px; padding: 0.4rem 0; z-index: 200; box-shadow: 0 4px 20px rgba(26,39,68,0.08); }
+    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
+    .dropdown-menu li a:hover { background: var(--taupe-light); color: var(--navy); }
+    .nav-cta { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--navy); color: var(--navy); text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+
+    /* PAGE HERO */
+    .support-hero { padding-top: 72px; background: var(--navy); min-height: 45vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5rem; padding-left: 6rem; padding-right: 6rem; position: relative; overflow: hidden; }
+    .support-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,169,201,0.1) 0%, transparent 70%); }
+    .support-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1.5rem; font-weight: 500; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .support-hero h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; line-height: 1.1; color: var(--off-white); max-width: 700px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .support-hero h1 em { font-style: italic; color: var(--lavender); }
+    .support-hero-sub { font-size: 1.05rem; line-height: 1.8; color: rgba(245,242,238,0.75); max-width: 560px; margin-top: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+
+    /* LANES */
+    .support-lanes { padding: 7rem 6rem; display: flex; flex-direction: column; gap: 2px; background: rgba(196,181,165,0.2); }
+
+    .lane { background: var(--off-white); padding: 5rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .lane:nth-child(2) { background: var(--taupe-light); }
+    .lane:nth-child(3) { background: var(--off-white); }
+
+    .lane-number { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; color: var(--taupe); margin-bottom: 1rem; }
+    .lane-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; margin-bottom: 1rem; display: block; }
+    .lane-title { font-family: 'Libre Baskerville', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 1.5rem; }
+    .lane-title em { font-style: italic; color: var(--dusty-purple); }
+    .lane-body { font-size: 1rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 2.5rem; }
+    .lane-btn { display: inline-block; padding: 0.9rem 2.2rem; background: var(--navy); color: var(--off-white); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+    .lane-btn:hover { background: var(--dusty-purple); }
+    .lane-btn-outline { display: inline-block; padding: 0.9rem 2.2rem; border: 1px solid var(--navy); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; margin-left: 1rem; }
+    .lane-btn-outline:hover { background: var(--navy); color: var(--off-white); }
+
+    /* GOAL BAR */
+    .goal-box { background: var(--navy); padding: 3rem; }
+    .goal-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lavender); opacity: 0.7; margin-bottom: 1rem; font-weight: 500; }
+    .goal-amount { font-family: 'Libre Baskerville', serif; font-size: 3rem; font-weight: 400; color: var(--lavender); line-height: 1; margin-bottom: 0.4rem; }
+    .goal-sub { font-size: 0.82rem; color: rgba(245,242,238,0.6); margin-bottom: 2rem; letter-spacing: 0.05em; }
+    .goal-bar-wrap { background: rgba(184,169,201,0.2); height: 6px; width: 100%; margin-bottom: 0.75rem; }
+    .goal-bar { height: 6px; background: var(--lavender); width: 0%; transition: width 1.5s ease; }
+    .goal-bar.animate { width: 0%; }
+    .goal-note { font-size: 0.78rem; color: rgba(245,242,238,0.5); font-style: italic; }
+
+    /* PLEDGE FORM */
+    .pledge-section { padding: 7rem 6rem; background: var(--taupe-light); border-top: 1px solid rgba(196,181,165,0.3); }
+    .pledge-header { margin-bottom: 4rem; }
+    .pledge-header h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; color: var(--navy); }
+    .pledge-header h2 em { font-style: italic; color: var(--dusty-purple); }
+    .pledge-header p { font-size: 1rem; line-height: 1.8; color: var(--text-mid); margin-top: 1rem; max-width: 560px; }
+    .pledge-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 720px; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; }
+    .form-group input, .form-group select, .form-group textarea { padding: 0.9rem 1.2rem; border: 1px solid rgba(196,181,165,0.5); background: var(--off-white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--navy); outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--taupe); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--lavender); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { cursor: pointer; color: var(--navy); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237d6e8a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; padding-right: 2.5rem; background-color: var(--off-white); }
+    .form-submit { margin-top: 0.5rem; padding: 1rem 2.5rem; background: var(--navy); color: var(--off-white); border: none; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .form-submit:hover { background: var(--dusty-purple); }
+
+    footer { padding: 4rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,181,165,0.3); background: var(--off-white); }
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; color: var(--navy); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; }
+    .footer-copy { font-size: 0.75rem; color: var(--taupe); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 62px; left: 0; right: 0; background: var(--off-white); border-bottom: 1px solid rgba(196,181,165,0.3); z-index: 99; padding: 1.5rem 2rem; flex-direction: column; gap: 0; box-shadow: 0 8px 24px rgba(26,39,68,0.08); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(196,181,165,0.2); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--navy); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu-section { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); padding: 1rem 0 0.4rem; font-weight: 500; }
+    .mobile-menu .mobile-issue { padding-left: 1rem; font-size: 0.82rem; color: var(--navy); font-weight: 500; border-bottom: 1px solid rgba(196,181,165,0.2); padding-top: 0.9rem; padding-bottom: 0.9rem; display: block; }
+    .mobile-menu .mobile-cta { margin-top: 0.5rem; padding: 0.9rem 1.5rem; background: var(--navy); color: var(--off-white) !important; text-align: center; border-bottom: none !important; }
+
+    @media (max-width: 1100px) {
+      .nav-links { display: none !important; } .nav-cta { display: none !important; } .hamburger { display: flex !important; }
+      nav { padding: 1rem 1.5rem; } .nav-logo-img { height: 24px; width: 24px; } .nav-logo-text { font-size: 0.78rem; }
+      .support-hero { padding: 6rem 2.5rem 4rem; }
+      .support-lanes { padding: 0; }
+      .lane { grid-template-columns: 1fr; padding: 4rem 2.5rem; gap: 3rem; }
+      .pledge-section { padding: 5rem 2.5rem; }
+      .pledge-form { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .lane-btn-outline { margin-left: 0; margin-top: 1rem; display: block; width: fit-content; }
+      footer { flex-direction: column; gap: 1.5rem; padding: 3rem 2rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" /><span class="nav-logo-text">Poiema Project</span></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="#">Issues ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li></ul></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
+      <li><a href="support.html" class="active">Support</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="support.html" class="nav-cta">Support</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <section class="support-hero">
+    <p class="support-eyebrow">Support the Work</p>
+    <h1>Every person deserves <em>better.</em></h1>
+    <p class="support-hero-sub">Poiema Project is advocacy, education, and community built for people who have been overlooked when it comes to their health. Your support keeps this work moving.</p>
+  </section>
+
+  <div class="support-lanes">
+
+    <!-- LANE 1: POIEMA PROJECT -->
+    <div class="lane reveal">
+      <div>
+        <p class="lane-number">01</p>
+        <span class="lane-tag">General Support</span>
+        <h2 class="lane-title">Support Poiema <em>Project</em></h2>
+        <p class="lane-body">Poiema Project is a wellness and advocacy platform working to close the gap between the health information people need and what they actually have access to. Your support goes directly toward building the research, programs, and resources that make that possible.</p>
+        <a href="https://venmo.com/u/alyssajblackson" target="_blank" class="lane-btn">Donate via Venmo</a>
+      </div>
+      <div style="background: var(--taupe-light); padding: 3rem;">
+        <p style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; margin-bottom: 1rem;">Your support funds</p>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: var(--text-mid); line-height: 1.6;">Research and study development</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: var(--text-mid); line-height: 1.6;">Wellness education and resources</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: var(--text-mid); line-height: 1.6;">Policy advocacy and campaign work</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: var(--text-mid); line-height: 1.6;">Community programs for young women</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANE 2: CLEAN DORM AIR ACT -->
+    <div class="lane reveal">
+      <div>
+        <p class="lane-number">02</p>
+        <span class="lane-tag">Policy Campaign</span>
+        <h2 class="lane-title">Clean Dorm <em>Air Act</em></h2>
+        <p class="lane-body">Alabama ranks 4th in the nation for mold risk and there are zero state laws requiring mold testing in student housing. We are raising $20,000 to conduct independent mold studies in Alabama university dorms and take this legislation to the state capitol.</p>
+        <a href="#pledge" class="lane-btn">Pledge Your Support</a>
+        <a href="clean-dorm-air-act.html" class="lane-btn-outline">Learn More</a>
+      </div>
+      <div class="goal-box">
+        <p class="goal-label">Fundraising Goal</p>
+        <p class="goal-amount">$20,000</p>
+        <p class="goal-sub">to conduct mold studies and pass the Clean Dorm Air Act</p>
+        <div class="goal-bar-wrap">
+          <div class="goal-bar" id="goalBar"></div>
+        </div>
+        <p class="goal-note">Nonprofit filing in progress. Donation processing coming soon.</p>
+      </div>
+    </div>
+
+    <!-- LANE 3: ROOTED RHYTHM -->
+    <div class="lane reveal">
+      <div>
+        <p class="lane-number">03</p>
+        <span class="lane-tag">Publication</span>
+        <h2 class="lane-title">Rooted <em>Rhythm</em></h2>
+        <p class="lane-body">Rooted Rhythm is a publication helping women find their God-given rhythm rooted in truth, biology, and scripture. A paid subscription supports the work and the community of young women learning to understand their bodies.</p>
+        <a href="https://open.substack.com/pub/rootedrhythm" target="_blank" class="lane-btn">Subscribe on Substack</a>
+        <a href="rooted-rhythm.html" class="lane-btn-outline">Learn More</a>
+      </div>
+      <div style="background: var(--navy); padding: 3rem;">
+        <p style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lavender); opacity: 0.7; font-weight: 500; margin-bottom: 1.5rem;">A paid subscription supports</p>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: rgba(245,242,238,0.85); line-height: 1.6;">Research-based health content for young women</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: rgba(245,242,238,0.85); line-height: 1.6;">A growing community rooted in truth and faith</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); margin-top: 0.55rem; flex-shrink: 0;"></div>
+            <p style="font-size: 0.92rem; color: rgba(245,242,242,0.85); line-height: 1.6;">The work of building something women actually need</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLEDGE FORM -->
+  <section class="pledge-section" id="pledge">
+    <div class="pledge-header reveal">
+      <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dusty-purple); font-weight: 500; display: block; margin-bottom: 1rem;">Clean Dorm Air Act</span>
+      <h2>Pledge your <em>support.</em></h2>
+      <p>Sign up to stay informed on the campaign and be notified when donations open. Your pledge helps us show legislators that people are behind this.</p>
+    </div>
+    <div class="pledge-form reveal">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="First name" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Last name" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label>I am a</label>
+        <select>
+          <option value="" disabled selected>Select one</option>
+          <option>Student</option>
+          <option>Parent</option>
+          <option>Educator</option>
+          <option>Healthcare professional</option>
+          <option>Concerned community member</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>University or School (optional)</label>
+        <input type="text" placeholder="Where do you or your student attend?" />
+      </div>
+      <div class="form-group full">
+        <button class="form-submit" type="button">Submit Pledge</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Poiema Project</span>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li>
+      <li><a href="rooted-rhythm.html">Resources</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Poiema Project</span>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About</a>
+    <span class="mobile-menu-section">Issues</span>
+    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
+    <a href="projects.html">Projects</a>
+    <a href="rooted-rhythm.html">Resources</a>
+    <a href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+    <a href="support.html" class="mobile-cta">Support the Work</a>
+  </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          if (e.target.querySelector && e.target.querySelector('#goalBar')) {
+            document.getElementById('goalBar').style.width = '0%';
+          }
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+    document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        var menu = this.nextElementSibling;
+        var isOpen = menu.style.display === 'block';
+        document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; });
+        menu.style.display = isOpen ? 'none' : 'block';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) { document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; }); }
+    });
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function(e) { e.stopPropagation(); hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+      mobileMenu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', function() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
+      document.addEventListener('click', function(e) { if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+    }
+  </script>
+</body>
+</html>
