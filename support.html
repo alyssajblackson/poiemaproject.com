@@ -238,21 +238,22 @@
       <p>Sign up to stay informed on the campaign and be notified when donations open. Your pledge helps us show legislators that people are behind this.</p>
     </div>
     <div class="pledge-form reveal">
+      <form action="https://formspree.io/f/mrerlvro" method="POST" style="display: contents;">
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" placeholder="First name" />
+        <input type="text" name="first_name" placeholder="First name" />
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" placeholder="Last name" />
+        <input type="text" name="last_name" placeholder="Last name" />
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" placeholder="your@email.com" />
+        <input type="email" name="email" placeholder="your@email.com" />
       </div>
       <div class="form-group">
         <label>I am a</label>
-        <select>
+        <select name="role">
           <option value="" disabled selected>Select one</option>
           <option>Student</option>
           <option>Parent</option>
@@ -264,11 +265,12 @@
       </div>
       <div class="form-group full">
         <label>University or School (optional)</label>
-        <input type="text" placeholder="Where do you or your student attend?" />
+        <input type="text" name="school" placeholder="Where do you or your student attend?" />
       </div>
       <div class="form-group full">
-        <button class="form-submit" type="button">Submit Pledge</button>
+        <button class="form-submit" type="submit">Submit Pledge</button>
       </div>
+      </form>
     </div>
   </section>
 
