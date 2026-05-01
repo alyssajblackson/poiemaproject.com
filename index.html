@@ -118,8 +118,25 @@
       .who-we-are { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3rem; }
       .projects-section { padding: 5rem 2.5rem; } .projects-grid { grid-template-columns: 1fr; }
       .project-card { padding: 3rem 2.5rem; }
+      .wwu-grid { grid-template-columns: 1fr; }
+      .work-with-us { padding: 5rem 2.5rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 3rem 2rem; } .footer-links { flex-wrap: wrap; justify-content: center; }
     }
+    /* WORK WITH US */
+    .work-with-us { padding: 7rem 6rem; background: var(--navy); border-bottom: 1px solid rgba(184,169,201,0.15); }
+    .wwu-header { margin-bottom: 4rem; }
+    .wwu-header h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 400; color: var(--off-white); }
+    .wwu-header h2 em { font-style: italic; color: var(--lavender); }
+    .wwu-header .section-label { color: var(--lavender); opacity: 0.7; margin-bottom: 1rem; }
+    .wwu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(184,169,201,0.15); margin-bottom: 4rem; }
+    .wwu-card { background: rgba(255,255,255,0.04); padding: 3rem; transition: background 0.3s; }
+    .wwu-card:hover { background: rgba(184,169,201,0.1); }
+    .wwu-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lavender); opacity: 0.7; font-weight: 500; margin-bottom: 1rem; }
+    .wwu-card h3 { font-family: 'Libre Baskerville', serif; font-size: 1.3rem; font-weight: 400; color: var(--off-white); margin-bottom: 1rem; line-height: 1.3; }
+    .wwu-card p { font-size: 0.92rem; line-height: 1.75; color: rgba(245,242,238,0.82); }
+    .wwu-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .project-card-coming { cursor: default; }
+    .project-card-coming .project-name em { font-style: italic; color: var(--dusty-purple); }
   </style>
 </head>
 <body>
@@ -127,11 +144,11 @@
     <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" /><span class="nav-logo-text">Poiema Project</span></a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li class="nav-dropdown"><a href="projects.html">Projects ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li><li><a href="rooted-rhythm.html">Rooted Rhythm</a></li></ul></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="support.html" class="nav-cta">Support</a>
+    <a href="contact.html" class="nav-cta">Work With Us</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
@@ -143,8 +160,8 @@
     </div>
     <p class="hero-tagline">Poiema Project exists to advocate for wellness and represent those whose health has been overlooked. We believe every person is already a masterpiece and deserves to be treated like one.</p>
     <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">Work With Us</a>
       <a href="about.html" class="btn-outline">About Us</a>
-      <a href="clean-dorm-air-act.html" class="btn-primary">The Clean Dorm Air Act</a>
     </div>
   </section>
 
@@ -177,25 +194,54 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- WORK WITH US -->
+  <section class="work-with-us">
+    <div class="wwu-header reveal">
+      <span class="section-label">Work With Poiema Project</span>
+      <h2>What does it look like to <em>work together?</em></h2>
+    </div>
+    <div class="wwu-grid">
+      <div class="wwu-card reveal">
+        <p class="wwu-tag">Available Now</p>
+        <h3>Wellness Program Development</h3>
+        <p>Work with Poiema Project to build a wellness program for your company, school, or organization. Research-based, practical, and built around the specific needs of your people.</p>
+      </div>
+      <div class="wwu-card reveal">
+        <p class="wwu-tag">Coming Summer 2025</p>
+        <h3>Women's Menstrual Health Education</h3>
+        <p>Once certified in women's menstrual health, Alyssa will offer one-on-one coaching and group education for women who want to understand their cycles, hormones, and health on a deeper level.</p>
+      </div>
+      <div class="wwu-card reveal">
+        <p class="wwu-tag">Future</p>
+        <h3>Research and Advocacy</h3>
+        <p>Poiema Project takes on advocacy and research projects that fight for people whose health has been overlooked. More on this to come.</p>
+      </div>
+    </div>
+    <div class="wwu-cta reveal">
+      <a href="contact.html" class="btn-primary">Get In Touch</a>
+      <a href="projects.html" class="btn-outline">See Our Projects</a>
+    </div>
+  </section>
+
+  <!-- PROJECTS TEASER -->
   <section class="projects-section">
     <div class="projects-header reveal">
-      <span class="section-label">We Are Working On</span>
-      <h2>Two projects. <em>One mission.</em></h2>
+      <span class="section-label">Current Projects</span>
+      <h2>What we are <em>working on.</em></h2>
     </div>
     <div class="projects-grid">
-      <a href="clean-dorm-air-act.html" class="project-card reveal">
-        <p class="project-tag">Nonprofit Advocacy</p>
-        <h3 class="project-name">Clean Dorm<br />Air Act</h3>
-        <p class="project-desc">A nonprofit policy campaign fighting for mandatory mold testing in Alabama university housing. Because the room you sleep in should not make you sick.</p>
-        <span class="project-arrow">Learn More</span>
-      </a>
       <a href="rooted-rhythm.html" class="project-card reveal">
         <p class="project-tag">Publication</p>
         <h3 class="project-name">Rooted<br />Rhythm</h3>
         <p class="project-desc">Helping women find their God-given rhythm rooted in truth, biology, and scripture.</p>
         <span class="project-arrow">Learn More</span>
       </a>
+      <div class="project-card project-card-coming reveal">
+        <p class="project-tag">More Coming</p>
+        <h3 class="project-name">More<br /><em>in the works.</em></h3>
+        <p class="project-desc">New projects are being built. Check back or reach out to learn more about what is coming.</p>
+        <a href="projects.html" style="font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dusty-purple); text-decoration: none; margin-top: auto;">View All Projects</a>
+      </div>
     </div>
   </section>
 
@@ -212,12 +258,10 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="about.html">About</a>
-    <span class="mobile-menu-section">Projects</span>
-    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
-    <a href="rooted-rhythm.html" class="mobile-issue">Rooted Rhythm</a>
+    <a href="projects.html">Projects</a>
     <a href="support.html">Support</a>
     <a href="contact.html">Contact</a>
-    <a href="support.html" class="mobile-cta">Support the Work</a>
+    <a href="contact.html" class="mobile-cta">Work With Us</a>
   </div>
 
   <script>
