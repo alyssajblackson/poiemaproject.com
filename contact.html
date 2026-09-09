@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Poiema Project</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --evergreen: #596756;
+      --evergreen-deep: #4a5748;
+      --lilac: #b0a0ba;
+      --lilac-light: #ddd6e1;
+      --off-white: #f7f4ef;
+      --plum: #816e84;
+      --sage: #a9b8a3;
+      --text-dark: #3e483c;
+      --text-soft: #64705f;
+      --line: rgba(89, 103, 86, 0.22);
+      --font-heading: 'Playfair Display', serif;
+      --font-subheading: 'Archivo Narrow', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+      --max-width: 1280px;
+      --pad-x: clamp(1.5rem, 5vw, 5.5rem);
+      --nav-height: 82px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .wrap {
+      width: min(100%, var(--max-width));
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(247, 244, 239, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(89, 103, 86, 0.12);
+    }
+
+    .nav-inner {
+      width: min(100%, 1500px);
+      height: 100%;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 4vw, 4.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-img {
+      width: 29px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.13rem;
+      font-weight: 400;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 2.4vw, 2.3rem);
+      list-style: none;
+    }
+
+    .nav-links a,
+    .nav-cta {
+      font-family: var(--font-subheading);
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-dark);
+      padding-block: 0.4rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      height: 1px;
+      background: var(--plum);
+      transition: right 0.22s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after { right: 0; }
+
+    .nav-cta {
+      padding: 0.72rem 1.35rem;
+      background: var(--evergreen);
+      color: var(--off-white);
+      border: 1px solid var(--evergreen);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: transparent;
+      color: var(--evergreen);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border: 0;
+      background: none;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--evergreen);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      z-index: 99;
+      padding: 1.25rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+      flex-direction: column;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(89, 103, 86, 0.08);
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-subheading);
+      font-size: 1rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 0.8rem;
+      padding: 0.95rem 1.2rem;
+      text-align: center;
+      color: var(--off-white);
+      background: var(--evergreen);
+      border-bottom: 0;
+    }
+
+    .contact-section {
+      position: relative;
+      overflow: hidden;
+      padding-top: calc(var(--nav-height) + clamp(4.5rem, 8vw, 7rem));
+      padding-bottom: clamp(5rem, 9vw, 8rem);
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      width: clamp(320px, 35vw, 560px);
+      aspect-ratio: 1;
+      left: -9rem;
+      top: 8rem;
+      background: url('logo-flower.png') center / contain no-repeat;
+      opacity: 0.032;
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+      gap: clamp(3.5rem, 8vw, 8rem);
+      align-items: start;
+    }
+
+    .contact-copy {
+      padding-top: clamp(0rem, 2vw, 1.5rem);
+    }
+
+    .contact-copy h1 {
+      max-width: 8ch;
+      font-family: var(--font-heading);
+      font-size: clamp(4rem, 7vw, 7rem);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      color: var(--evergreen-deep);
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-copy p {
+      max-width: 48ch;
+      font-size: clamp(1.04rem, 1.3vw, 1.16rem);
+      line-height: 1.9;
+      color: var(--text-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-copy .reach-line {
+      margin-top: 1.8rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      line-height: 1.45;
+      color: var(--plum);
+    }
+
+    .contact-form-wrap {
+      background: rgba(255, 255, 255, 0.36);
+      border: 1px solid var(--line);
+      padding: clamp(1.8rem, 4vw, 3.4rem);
+      box-shadow: 0 24px 55px rgba(89, 103, 86, 0.08);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .form-group label {
+      font-family: var(--font-subheading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem 0.2rem 0.85rem;
+      border: 0;
+      border-bottom: 1px solid rgba(89, 103, 86, 0.34);
+      background: transparent;
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(100, 112, 95, 0.6);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--plum);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+      padding-top: 0.85rem;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23816e84' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.3rem center;
+      padding-right: 2rem;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      margin-top: 0.45rem;
+      padding: 0.95rem 2rem;
+      border: 1px solid var(--evergreen);
+      background: var(--evergreen);
+      color: var(--off-white);
+      font-family: var(--font-subheading);
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .form-submit:hover {
+      background: transparent;
+      color: var(--evergreen);
+    }
+
+    .contact-strip {
+      position: relative;
+      overflow: hidden;
+      background: var(--lilac-light);
+      padding-block: clamp(4.5rem, 8vw, 6.5rem);
+    }
+
+    .contact-strip::after {
+      content: '';
+      position: absolute;
+      width: clamp(260px, 25vw, 420px);
+      aspect-ratio: 1;
+      right: -8rem;
+      bottom: -8rem;
+      background: url('logo-flower.png') center / contain no-repeat;
+      opacity: 0.035;
+      pointer-events: none;
+    }
+
+    .contact-strip-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-item {
+      min-height: 210px;
+      padding: 0 clamp(1.5rem, 4vw, 3.3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-item:first-child { padding-left: 0; }
+    .contact-item:last-child { padding-right: 0; }
+
+    .contact-item + .contact-item {
+      border-left: 1px solid rgba(89, 103, 86, 0.2);
+    }
+
+    .contact-item h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--evergreen-deep);
+      margin-bottom: 1rem;
+    }
+
+    .contact-item p {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .contact-item a {
+      width: fit-content;
+      font-family: var(--font-subheading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--plum);
+      border-bottom: 1px solid rgba(129, 110, 132, 0.55);
+      padding-bottom: 2px;
+    }
+
+    footer {
+      padding-block: clamp(2.7rem, 5vw, 4rem);
+      border-top: 1px solid var(--line);
+      background: var(--off-white);
+    }
+
+    .footer-top,
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-top { margin-bottom: 2rem; }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+    }
+
+    .footer-links,
+    .footer-social {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .footer-links { gap: 1.5rem; }
+    .footer-social { gap: 1.4rem; }
+
+    .footer-links a,
+    .footer-social a {
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a { color: var(--text-dark); }
+    .footer-social a { color: var(--plum); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--sage);
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 900px) {
+      :root { --nav-height: 72px; }
+      .nav-logo-text { font-size: 1rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-copy h1 { max-width: 10ch; }
+      .contact-form-wrap { max-width: 760px; }
+      .contact-strip-grid { grid-template-columns: 1fr; }
+      .contact-item { min-height: 0; padding: 2rem 0; }
+      .contact-item + .contact-item {
+        border-left: 0;
+        border-top: 1px solid rgba(89, 103, 86, 0.2);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .contact-section {
+        padding-top: calc(var(--nav-height) + 3.2rem);
+        padding-bottom: 4.5rem;
+      }
+
+      .contact-copy h1 {
+        font-size: clamp(3.4rem, 16vw, 4.9rem);
+      }
+
+      .contact-form-wrap { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-strip { padding-block: 3.5rem; }
+      .contact-item h2 { font-size: 2.2rem; }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links,
+      .footer-social {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo-flower.png" alt="" class="nav-logo-img" />
+        <span class="nav-logo-text">Poiema Project</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+        <li><a href="wellness-programming.html">Wellness Programming</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="nav-cta">Work With Me</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="contact-section">
+    <div class="wrap contact-grid">
+      <div class="contact-copy reveal">
+        <h1>Get in touch.</h1>
+        <p>Whether you're building a wellness program, reading Rooted Rhythm, or just have a question about Poiema Project, I want to hear from you.</p>
+        <p class="reach-line">Wellness programming, women's health education, Rooted Rhythm, speaking, collaboration, or something completely different.</p>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" action="https://formspree.io/f/mrerlvro" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input id="first-name" type="text" name="first_name" placeholder="First name" />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" type="text" name="last_name" placeholder="Last name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="your@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="topic">I am reaching out about</label>
+            <select id="topic" name="topic">
+              <option value="" disabled selected>Select a topic</option>
+              <option>Wellness program or education</option>
+              <option>Rooted Rhythm</option>
+              <option>Speaking or collaboration</option>
+              <option>Press or media inquiry</option>
+              <option>General question about Poiema Project</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me what's on your mind..."></textarea>
+          </div>
+
+          <button class="form-submit" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-strip">
+    <div class="wrap contact-strip-grid">
+      <div class="contact-item reveal">
+        <h2>Email me directly</h2>
+        <p>For time sensitive questions or anything that is easier to send by email.</p>
+        <a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a>
+      </div>
+
+      <div class="contact-item reveal">
+        <h2>Rooted Rhythm</h2>
+        <p>For writing, pitches, collaboration, or anything connected to the journal.</p>
+        <a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Visit Instagram</a>
+      </div>
+
+      <div class="contact-item reveal">
+        <h2>Birmingham, Alabama</h2>
+        <p>Based in Birmingham and working with organizations and individuals wherever they are.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <span class="footer-logo">POIEMA PROJECT</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+          <li><a href="wellness-programming.html">Wellness Programming</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a></li>
+        </ul>
+        <span class="footer-copy">© 2026 Poiema Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rooted-rhythm.html">Rooted Rhythm</a>
+    <a href="wellness-programming.html">Wellness Programming</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <script>
+    var reveals = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(function (r) { observer.observe(r); });
+    } else {
+      reveals.forEach(function (r) { r.classList.add('visible'); });
+    }
+
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
