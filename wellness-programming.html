@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellness Programs &amp; Education | Poiema Project</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- PLACEHOLDER: Playfair Display stands in for The Seasons until the licensed webfont files are supplied. Swap --font-heading below once you have them. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&family=Archivo+Narrow:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ---------- Tokens ---------- */
+    :root {
+      --evergreen: #596756;
+      --lilac: #b0a0ba;
+      --lilac-light: #dbd4e0;
+      --off-white: #f5f2ee;
+      --plum: #816e84;
+      --sage: #a9b8a3;
+      --sage-light: #e7ebe5;
+      --text-dark: #596756;
+      --text-mid: #3e483c;
+      --font-heading: 'Playfair Display', serif; /* PLACEHOLDER for The Seasons, swap once licensed */
+      --font-subheading: 'Archivo Narrow', sans-serif;
+      --font-body: 'Poppins', sans-serif; /* PLACEHOLDER for Garet, swap once licensed */
+      --max-width: 1320px;
+      --pad-x: clamp(1.5rem, 5vw, 6rem);
+      --nav-height: 66px;
+    }
+
+    /* ---------- Reset ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* ---------- Shared layout ---------- */
+    .wrap {
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem var(--pad-x);
+      background: rgba(245, 242, 238, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(169, 184, 163, 0.3);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo-img {
+      height: 28px;
+      width: 28px;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.14rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--font-subheading);
+      font-size: 0.936rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--evergreen);
+    }
+    .nav-links a.active {
+      color: var(--evergreen);
+      border-bottom-color: var(--plum);
+    }
+    .nav-cta {
+      font-family: var(--font-subheading);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--evergreen);
+      color: var(--evergreen);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--evergreen);
+      color: var(--off-white);
+    }
+
+    /* ---------- Hamburger + mobile menu ---------- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--evergreen);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(169, 184, 163, 0.3);
+      z-index: 99;
+      padding: 1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+      flex-direction: column;
+      max-height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(89, 103, 86, 0.08);
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
+    .mobile-menu a {
+      font-family: var(--font-subheading);
+      font-size: 1.08rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(169, 184, 163, 0.2);
+    }
+    .mobile-menu a.active {
+      color: var(--evergreen);
+    }
+    .mobile-menu .mobile-cta {
+      margin-top: 0.5rem;
+      padding: 0.9rem 1.5rem;
+      background: var(--evergreen);
+      color: var(--off-white) !important;
+      text-align: center;
+      border-bottom: none !important;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn-primary {
+      font-family: var(--font-subheading);
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--evergreen);
+      color: var(--off-white);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+    }
+    .btn-outline {
+      font-family: var(--font-subheading);
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: transparent;
+      border: 1px solid var(--evergreen);
+      color: var(--evergreen);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--evergreen);
+      color: var(--off-white);
+    }
+
+    /* ---------- Page hero (text only) ---------- */
+    .wp-hero {
+      padding-block: calc(var(--nav-height) + clamp(2.5rem, 8vw, 5rem)) clamp(3rem, 8vw, 5.5rem);
+    }
+    .wp-hero .wrap {
+      max-width: 800px;
+    }
+    .wp-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.64rem, 5.4vw, 3.72rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+    }
+    .wp-hero p {
+      font-size: 1.224rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      max-width: 62ch;
+      margin-bottom: 1.2rem;
+    }
+    .wp-hero .btn-primary {
+      margin-top: 0.8rem;
+    }
+
+    /* ---------- Section labels ---------- */
+    .section-label {
+      font-family: var(--font-subheading);
+      display: inline-block;
+      font-size: 0.864rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--plum);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- Generic content section ---------- */
+    .wp-section {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      padding-inline: var(--pad-x);
+    }
+    .wp-section .wrap {
+      max-width: 800px;
+    }
+    .wp-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.16rem, 3.84vw, 2.76rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      margin-bottom: 1.2rem;
+    }
+    .wp-section p {
+      font-size: 1.224rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ---------- Past Projects ---------- */
+    .past-projects {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      background: var(--sage-light);
+    }
+    .past-projects .wrap {
+      padding-inline: var(--pad-x);
+    }
+    .past-projects h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.16rem, 3.84vw, 2.76rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      margin-bottom: 0.6rem;
+    }
+    .past-projects-intro {
+      font-size: 1.104rem;
+      color: var(--text-mid);
+      max-width: 60ch;
+      margin-bottom: 2rem;
+    }
+    .projects-scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-padding-left: var(--pad-x);
+      padding: 0.25rem var(--pad-x) 1rem;
+      margin-inline: calc(var(--pad-x) * -1);
+      -webkit-overflow-scrolling: touch;
+    }
+    .project-card {
+      flex: 0 0 auto;
+      width: min(78vw, 320px);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      background: var(--off-white);
+      border: 1px solid rgba(169, 184, 163, 0.4);
+      padding: 0;
+      margin: 0;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .project-card:hover,
+    .project-card:focus-visible {
+      box-shadow: 0 16px 30px rgba(89, 103, 86, 0.14);
+      border-color: var(--plum);
+      transform: translateY(-3px);
+    }
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+    }
+    .project-card-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.6rem;
+    }
+    .project-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.44rem;
+      font-weight: 500;
+      color: var(--evergreen);
+      line-height: 1.25;
+    }
+    .project-card-body p {
+      font-size: 1.008rem;
+      line-height: 1.6;
+      color: var(--text-mid);
+    }
+    .project-expand {
+      font-family: var(--font-subheading);
+      font-size: 0.864rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-top: auto;
+      padding-top: 0.4rem;
+    }
+
+    /* ---------- Project modal ---------- */
+    .project-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      padding: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-modal.open {
+      display: flex;
+    }
+    .project-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(89, 103, 86, 0.55);
+    }
+    .project-modal-inner {
+      position: relative;
+      background: var(--off-white);
+      width: 100%;
+      max-width: 640px;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: clamp(2rem, 5vw, 3rem);
+      z-index: 1;
+    }
+    .project-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white);
+      border: 1px solid rgba(169, 184, 163, 0.5);
+      color: var(--evergreen);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .project-modal-inner img {
+      width: 100%;
+      max-width: 260px;
+      margin-bottom: 1.6rem;
+      border: 1px solid rgba(169, 184, 163, 0.5);
+    }
+    .project-modal-inner h3 {
+      font-family: var(--font-heading);
+      font-size: 1.68rem;
+      font-weight: 500;
+      color: var(--evergreen);
+      margin-bottom: 1.1rem;
+    }
+    .project-modal-inner p {
+      font-size: 1.104rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 1.1rem;
+    }
+    .project-modal-inner .btn-primary {
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- Closing CTA ---------- */
+    .closing-cta {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      padding-inline: var(--pad-x);
+      text-align: center;
+      background: var(--sage-light);
+    }
+    .closing-cta .wrap {
+      max-width: 640px;
+    }
+    .closing-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.16rem, 3.84vw, 2.76rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      margin-bottom: 1.1rem;
+    }
+    .closing-cta p {
+      font-size: 1.224rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.8rem;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding-block: clamp(2.5rem, 6vw, 4rem);
+      padding-inline: var(--pad-x);
+      border-top: 1px solid rgba(169, 184, 163, 0.3);
+    }
+    footer .wrap {
+      padding-inline: 0;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.056rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .footer-links a {
+      font-family: var(--font-subheading);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(169, 184, 163, 0.2);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .footer-social a {
+      font-family: var(--font-subheading);
+      font-size: 0.864rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+    .footer-copy {
+      font-size: 0.9rem;
+      color: var(--sage);
+    }
+
+    /* ---------- Scroll reveal (progressive enhancement only, see head script) ---------- */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ---------- Structural breakpoint: hamburger nav ---------- */
+    @media (max-width: 1100px) {
+      .nav-links,
+      .nav-cta {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo-flower.png" alt="" class="nav-logo-img" />
+      <span class="nav-logo-text">Poiema Project</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li><a href="wellness-programming.html" class="active">Wellness Programming</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Work With Us</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="wp-hero">
+    <div class="wrap">
+      <h1>Wellness Programs &amp; Education</h1>
+      <p>I build health education and wellness programs that help organizations give people better tools to understand and care for their health.</p>
+      <p>My work combines research, program design, education, and implementation. Right now, that includes corporate wellness strategy and women's health research, with menstrual health education in development.</p>
+      <a href="contact.html" class="btn-primary">Work With Me</a>
+    </div>
+  </section>
+
+  <!-- PAST PROJECTS -->
+  <section class="past-projects reveal">
+    <div class="wrap">
+      <h2>Past Projects</h2>
+      <p class="past-projects-intro">A few things I have researched, written, and built. Tap a card for the full story.</p>
+      <div class="projects-scroll">
+        <div class="project-card" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="modal-truehealth">
+          <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" />
+          <div class="project-card-body">
+            <h3>True Health</h3>
+            <p>A three year corporate wellness program built for True Homes, a homebuilding company with a distributed workforce across North Carolina and South Carolina.</p>
+            <span class="project-expand">Read More</span>
+          </div>
+        </div>
+
+        <div class="project-card" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="modal-mold">
+          <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" />
+          <div class="project-card-body">
+            <h3>Mold Remediation Policy Pitch</h3>
+            <p>A policy pitch for mandatory mold testing in Alabama university housing. Second place, Samford Policy Pitch Competition.</p>
+            <span class="project-expand">Read More</span>
+          </div>
+        </div>
+
+        <div class="project-card" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="modal-cycle">
+          <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" />
+          <div class="project-card-body">
+            <h3>A Cycle Guide</h3>
+            <p>A one page guide to the four phases of the menstrual cycle: what the body is doing, how it might feel, what to eat, and how to move.</p>
+            <span class="project-expand">Read More</span>
+          </div>
+        </div>
+
+        <div class="project-card" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="modal-paper">
+          <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" />
+          <div class="project-card-body">
+            <h3>The First Twenty Years</h3>
+            <p>A whitepaper on the health issues and gaps in care affecting girls and young women between ages 10 and 30.</p>
+            <span class="project-expand">Read More</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOMEN'S HEALTH EDUCATION -->
+  <section class="wp-section reveal">
+    <div class="wrap">
+      <span class="section-label">In Development</span>
+      <h2>Women's Health Education</h2>
+      <p>A large part of Poiema Project is focused on the gap between the health decisions women are asked to make and how much they have actually been taught about their bodies.</p>
+      <p>I research women's health, menstrual health, and hormone education with a focus on making complex information easier to understand and use.</p>
+      <p>I am currently completing the Women's Hormone Health Certification Program through the Institute for Menstrual Health as I continue developing educational resources and future curriculum.</p>
+    </div>
+  </section>
+
+  <!-- PROJECT MODALS -->
+  <div class="project-modal" id="modal-truehealth" role="dialog" aria-modal="true" aria-labelledby="modal-truehealth-title" aria-hidden="true">
+    <div class="project-modal-backdrop" data-close></div>
+    <div class="project-modal-inner">
+      <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" />
+      <h3 id="modal-truehealth-title">True Health</h3>
+      <p>I designed True Health for True Homes, a homebuilding company with a distributed workforce across North Carolina and South Carolina. The program included a phased three year rollout, wellness incentives, health education, clinical vendor coordination, employee challenges, and a structure for connecting participation to the company's existing health plan.</p>
+      <p>The screenshot above is a look at the program overview. The full interactive build includes confidential company data and isn't publicly linked.</p>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-mold" role="dialog" aria-modal="true" aria-labelledby="modal-mold-title" aria-hidden="true">
+    <div class="project-modal-backdrop" data-close></div>
+    <div class="project-modal-inner">
+      <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" />
+      <h3 id="modal-mold-title">Mold Remediation Policy Pitch</h3>
+      <p>Alabama has no law requiring mold testing in university housing, even though the state ranks fourth in the country for mold risk. This pitch proposed a state policy requiring annual, independent mold and moisture testing in every Alabama university dorm before students move in, with mandatory remediation and clearance testing whenever a problem is found.</p>
+      <p>The proposal has five parts: full building testing every summer, independent ACAC or IAC2 certified inspectors, mandatory remediation before occupancy, post remediation clearance testing, and an annual health summary published for each campus. A phased two year rollout starts with the highest risk buildings before expanding statewide.</p>
+      <p>This pitch placed second in Samford's Policy Pitch Competition.</p>
+      <a href="mold-remediation-pitch.pdf" class="btn-primary" target="_blank" rel="noopener">Download the Pitch</a>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-cycle" role="dialog" aria-modal="true" aria-labelledby="modal-cycle-title" aria-hidden="true">
+    <div class="project-modal-backdrop" data-close></div>
+    <div class="project-modal-inner">
+      <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" />
+      <h3 id="modal-cycle-title">A Cycle Guide</h3>
+      <p>This guide breaks the menstrual cycle into its four phases, menstrual, follicular, ovulatory, and luteal, and lays out what is happening in the body during each one, how it might affect mood and energy, what kind of food supports that phase, and how to adjust movement and exercise accordingly.</p>
+      <p>It is built to be a quick, practical reference for women who want to work with their cycle instead of against it.</p>
+      <a href="rooted-rhythm-cycle-guide.pdf" class="btn-primary" target="_blank" rel="noopener">Download the Guide</a>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-paper" role="dialog" aria-modal="true" aria-labelledby="modal-paper-title" aria-hidden="true">
+    <div class="project-modal-backdrop" data-close></div>
+    <div class="project-modal-inner">
+      <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" />
+      <h3 id="modal-paper-title">The First Twenty Years</h3>
+      <p>I wrote The First Twenty Years to look at the health issues, misconceptions, and gaps in care affecting girls and young women between ages 10 and 30.</p>
+      <p>The paper looks at menstrual health, cycle education, hormone care, nutrition, mental health, and opportunities for better education and support.</p>
+      <a href="the-first-twenty-years.pdf" class="btn-primary" target="_blank" rel="noopener">Download the White Paper</a>
+    </div>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <section class="closing-cta reveal">
+    <div class="wrap">
+      <h2>Have something you want to build?</h2>
+      <p>If your company, school, or organization wants to create a wellness program or better health education for the people you serve, I would love to hear what you are working on.</p>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <span class="footer-logo">POIEMA PROJECT</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+          <li><a href="wellness-programming.html">Wellness Programming</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a></li>
+        </ul>
+        <span class="footer-copy">© 2026 Poiema Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rooted-rhythm.html">Rooted Rhythm</a>
+    <a href="wellness-programming.html" class="active">Wellness Programming</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-cta">Work With Us</a>
+  </div>
+
+  <script>
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function (r) { observer.observe(r); });
+    } else {
+      reveals.forEach(function (r) { r.classList.add('visible'); });
+    }
+
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function openProjectModal(modal) {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var closeBtn = modal.querySelector('.project-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeProjectModal(modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.project-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var modal = document.getElementById(card.getAttribute('aria-controls'));
+        if (modal) openProjectModal(modal);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+    document.querySelectorAll('.project-modal').forEach(function (modal) {
+      modal.querySelectorAll('[data-close]').forEach(function (el) {
+        el.addEventListener('click', function () { closeProjectModal(modal); });
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.project-modal.open').forEach(closeProjectModal);
+      }
+    });
+  </script>
+</body>
+</html>
