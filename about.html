@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Poiema Project</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- PLACEHOLDER: Playfair Display stands in for The Seasons until the licensed webfont files are supplied. Swap --font-heading in styles.css once you have them. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ---------- Tokens ---------- */
+    :root {
+      --evergreen: #596756;
+      --lilac: #b0a0ba;
+      --lilac-light: #dbd4e0;
+      --off-white: #f5f2ee;
+      --plum: #816e84;
+      --sage: #a9b8a3;
+      --sage-light: #e7ebe5;
+      --text-dark: #596756;
+      --text-mid: #3e483c;
+      --font-heading: 'Playfair Display', serif; /* PLACEHOLDER for The Seasons, swap once licensed */
+      --font-body: 'DM Sans', sans-serif;
+      --max-width: 1320px;
+      --pad-x: clamp(1.5rem, 5vw, 6rem);
+      --nav-height: 66px;
+    }
+
+    /* ---------- Reset ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* ---------- Shared layout ---------- */
+    .wrap {
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem var(--pad-x);
+      background: rgba(245, 242, 238, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(169, 184, 163, 0.3);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo-img {
+      height: 28px;
+      width: 28px;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--evergreen);
+    }
+    .nav-links a.active {
+      color: var(--evergreen);
+      border-bottom-color: var(--plum);
+    }
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--evergreen);
+      color: var(--evergreen);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--evergreen);
+      color: var(--off-white);
+    }
+
+    /* ---------- Hamburger + mobile menu ---------- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--evergreen);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(169, 184, 163, 0.3);
+      z-index: 99;
+      padding: 1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+      flex-direction: column;
+      max-height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(89, 103, 86, 0.08);
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
+    .mobile-menu a {
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(169, 184, 163, 0.2);
+    }
+    .mobile-menu a.active {
+      color: var(--evergreen);
+    }
+    .mobile-menu .mobile-cta {
+      margin-top: 0.5rem;
+      padding: 0.9rem 1.5rem;
+      background: var(--evergreen);
+      color: var(--off-white) !important;
+      text-align: center;
+      border-bottom: none !important;
+    }
+
+    /* ---------- Photos ---------- */
+    .photo-frame {
+      border: 1px solid rgba(169, 184, 163, 0.5);
+      overflow: hidden;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-frame--hero {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 4 / 5;
+    }
+    .photo-frame--accent {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 4 / 5;
+      margin: 3rem auto;
+      box-shadow: 0 14px 28px rgba(89, 103, 86, 0.12);
+    }
+    .photo-frame--accent.natural {
+      aspect-ratio: auto;
+    }
+    .photo-frame--accent.tilt-left {
+      transform: rotate(-3deg);
+    }
+    .photo-frame--accent.tilt-right {
+      transform: rotate(2deg);
+    }
+
+    /* ---------- Hero (name, role, intro) ---------- */
+    .hero {
+      padding-block: calc(var(--nav-height) + clamp(2.5rem, 8vw, 5rem)) clamp(3rem, 8vw, 6rem);
+    }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1.3fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .hero-name {
+      font-family: var(--font-heading);
+      font-size: clamp(2.1rem, 5vw, 3.1rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .hero-role {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--plum);
+      font-weight: 500;
+      margin-bottom: 1.6rem;
+    }
+    .hero-greeting {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: var(--evergreen);
+      margin-bottom: 1.2rem;
+      transform: skewX(-10deg);
+    }
+    .hero-copy p {
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      max-width: 56ch;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ---------- Long-form story sections ---------- */
+    .story-section {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      padding-inline: var(--pad-x);
+    }
+    .story-section.alt {
+      background: var(--sage-light);
+    }
+    .story-inner {
+      max-width: 680px;
+      margin-inline: auto;
+    }
+    .story-inner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 500;
+      color: var(--evergreen);
+      margin-bottom: 1.6rem;
+    }
+    .story-inner p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.3rem;
+    }
+    .pivot-line {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 1.35rem;
+      letter-spacing: 0.01em;
+      color: var(--plum);
+      margin-bottom: 1.3rem;
+      transform: skewX(-10deg);
+    }
+
+    /* ---------- Poiema meaning block ---------- */
+    .poiema-section {
+      background: var(--evergreen);
+      padding-block: clamp(4rem, 9vw, 7rem);
+      padding-inline: var(--pad-x);
+    }
+    .poiema-section .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: clamp(2.5rem, 6vw, 6rem);
+      align-items: center;
+      padding-inline: 0;
+    }
+    .poiema-word {
+      text-align: center;
+    }
+    .poiema-greek {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 12vw, 4.5rem);
+      font-weight: 500;
+      color: var(--lilac);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .poiema-pronounce {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 238, 0.55);
+      margin-bottom: 0.5rem;
+    }
+    .poiema-definition {
+      display: inline-block;
+      font-size: 0.88rem;
+      color: rgba(245, 242, 238, 0.6);
+      transform: skewX(-10deg);
+    }
+    .poiema-text {
+      max-width: 60ch;
+    }
+    .poiema-text p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(245, 242, 238, 0.85);
+      margin-bottom: 1.6rem;
+    }
+    .poiema-position {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--lilac);
+      transform: skewX(-10deg);
+    }
+
+    /* ---------- Serve / explore cards ---------- */
+    .serve-section {
+      padding-block: clamp(4rem, 9vw, 7rem);
+      padding-inline: var(--pad-x);
+      background: var(--off-white);
+    }
+    .serve-section .wrap {
+      padding-inline: 0;
+    }
+    .serve-header {
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+    .serve-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 500;
+      color: var(--evergreen);
+    }
+    .serve-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(169, 184, 163, 0.3);
+    }
+    .serve-card {
+      background: var(--off-white);
+      padding: clamp(2.2rem, 5vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      color: inherit;
+      transition: background 0.3s;
+    }
+    .serve-card:hover,
+    .serve-card:focus-visible {
+      background: var(--evergreen);
+    }
+    .serve-card:hover .serve-name,
+    .serve-card:hover .serve-desc,
+    .serve-card:hover .serve-arrow,
+    .serve-card:focus-visible .serve-name,
+    .serve-card:focus-visible .serve-desc,
+    .serve-card:focus-visible .serve-arrow {
+      color: var(--off-white);
+    }
+    .serve-name {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--evergreen);
+      transition: color 0.3s;
+    }
+    .serve-desc {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      transition: color 0.3s;
+    }
+    .serve-arrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-top: auto;
+      transition: color 0.3s;
+    }
+
+    /* ---------- Closing CTA ---------- */
+    .closing-cta {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      padding-inline: var(--pad-x);
+      text-align: center;
+      background: var(--sage-light);
+    }
+    .closing-cta p {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: var(--evergreen);
+      margin-bottom: 2rem;
+      transform: skewX(-10deg);
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--evergreen);
+      color: var(--off-white);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding-block: clamp(2.5rem, 6vw, 4rem);
+      padding-inline: var(--pad-x);
+      border-top: 1px solid rgba(169, 184, 163, 0.3);
+    }
+    footer .wrap {
+      padding-inline: 0;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(169, 184, 163, 0.2);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .footer-social a {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--sage);
+    }
+
+    /* ---------- Scroll reveal (progressive enhancement only, see head script) ---------- */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ---------- Structural breakpoint: single column, hamburger nav ---------- */
+    @media (max-width: 1100px) {
+      .nav-links,
+      .nav-cta {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+      .hero .wrap {
+        grid-template-columns: 1fr;
+      }
+      .photo-frame--hero {
+        margin-inline: auto;
+      }
+      .hero-copy {
+        text-align: center;
+      }
+      .hero-copy p {
+        margin-inline: auto;
+      }
+      .poiema-section .wrap {
+        grid-template-columns: 1fr;
+      }
+      .poiema-text {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .serve-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ---------- Fine-tuning for small phones ---------- */
+    @media (max-width: 420px) {
+      .photo-frame--hero {
+        max-width: 220px;
+      }
+      .photo-frame--accent {
+        max-width: 220px;
+      }
+      .poiema-greek {
+        letter-spacing: -0.02em;
+      }
+      .serve-card {
+        gap: 0.9rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="logo-flower.png" alt="" class="nav-logo-img" />
+      <span class="nav-logo-text">Poiema Project</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+      <li><a href="wellness-programming.html">Wellness Programming</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Work With Us</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="photo-frame photo-frame--hero">
+        <img src="alyssa-hero.jpg" alt="Alyssa Blackson" />
+      </div>
+      <div class="hero-copy">
+        <h1 class="hero-name">Alyssa Blackson</h1>
+        <p class="hero-role">Founder, Poiema Project</p>
+        <p class="hero-greeting">Hi, I'm Alyssa.</p>
+        <p>I'm the founder of Poiema Project and Rooted Rhythm. I'm graduating from Samford University in May 2027 with degrees in Marketing and Entrepreneurship, which is a pretty fitting combination for someone who always seems to be building something.</p>
+        <p>I care deeply about helping women understand their bodies so they can make informed decisions about their health. Right now, that looks like researching, writing, building resources, working toward certification in women's health, and figuring out how to get better health education into the places women already are.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I GOT HERE -->
+  <section class="story-section reveal">
+    <div class="story-inner">
+      <h2>How I got here</h2>
+      <p>I did not grow up planning to work in women's health.</p>
+      <p>I grew up playing sports, working hard, and assuming I understood my body pretty well. College made me realize how much I did not know.</p>
+      <p>I started learning more about nutrition, hormones, cycles, stress, and how much our everyday choices affect the way we feel. Pretty quickly, my questions became less about my own health and more about why no one had taught us any of this.</p>
+    </div>
+
+    <div class="photo-frame photo-frame--accent tilt-left">
+      <img src="alyssa-lake.jpg" alt="Alyssa by a lake in the mountains" />
+    </div>
+
+    <div class="story-inner">
+      <p>Then I started asking my friends.</p>
+      <p>That might have been the point of no return.</p>
+      <p>I realized how many women my age did not understand their cycles, hormones, or some of the health decisions they had been making for years. Most of us had been taught what to do when something went wrong. Very few of us had been taught how our bodies worked in the first place.</p>
+      <p>The information existed. Finding it, understanding it, and figuring out who to trust was a different story.</p>
+      <p>I could not stop thinking about that.</p>
+      <p class="pivot-line">So I started Poiema Project.</p>
+      <p>I wanted to help women understand their bodies before they had to make decisions about them.</p>
+    </div>
+  </section>
+
+  <!-- POIEMA MEANING -->
+  <section class="poiema-section">
+    <div class="wrap">
+      <div class="poiema-word reveal">
+        <p class="poiema-greek">ποίημα</p>
+        <p class="poiema-pronounce">poe-ee-ma</p>
+      </div>
+      <div class="poiema-text reveal">
+        <p>Poiema comes from the Greek word used in Ephesians 2:10 for God's workmanship or masterpiece. That word became the frame for how I think about this work.</p>
+        <p class="poiema-position">Every woman is intentionally made by God. Her body has value. She deserves the opportunity to understand it and care for it well.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I'M BUILDING -->
+  <section class="story-section alt reveal">
+    <div class="story-inner">
+      <h2>What I'm building</h2>
+      <p>I'm still early in this, which is part of the fun.</p>
+    </div>
+
+    <div class="photo-frame photo-frame--accent tilt-right natural">
+      <img src="substack-posts.png" alt="Screenshot of Rooted Rhythm Substack posts" />
+    </div>
+
+    <div class="story-inner">
+      <p>I'm working toward certification in women's health, building Rooted Rhythm, meeting with women one on one, exploring health education for schools, and developing wellness programs for organizations.</p>
+      <p>I'm starting with what I know how to do right now and continuing to learn from there.</p>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="serve-section">
+    <div class="wrap">
+      <div class="serve-header reveal">
+        <h2>Explore the work</h2>
+      </div>
+      <div class="serve-grid">
+        <a href="rooted-rhythm.html" class="serve-card reveal">
+          <h3 class="serve-name">Rooted Rhythm</h3>
+          <p class="serve-desc">Helping women find their God given rhythm rooted in truth, biology, and Scripture.</p>
+          <span class="serve-arrow">Visit Rooted Rhythm</span>
+        </a>
+        <a href="wellness-programming.html" class="serve-card reveal">
+          <h3 class="serve-name">Wellness Programming</h3>
+          <p class="serve-desc">Helping organizations create practical wellness programs that equip people to better understand and care for their health.</p>
+          <span class="serve-arrow">Visit Wellness Programming</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="closing-cta reveal">
+    <p>Interested in working together?</p>
+    <a href="contact.html" class="btn-primary">Work With Us</a>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <span class="footer-logo">POIEMA PROJECT</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+          <li><a href="wellness-programming.html">Wellness Programming</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <!-- PLACEHOLDER: real Instagram / LinkedIn URLs and email -->
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a></li>
+        </ul>
+        <span class="footer-copy">© 2026 Poiema Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="rooted-rhythm.html">Rooted Rhythm</a>
+    <a href="wellness-programming.html">Wellness Programming</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-cta">Work With Us</a>
+  </div>
+
+  <script>
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function (r) { observer.observe(r); });
+    } else {
+      reveals.forEach(function (r) { r.classList.add('visible'); });
+    }
+
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
