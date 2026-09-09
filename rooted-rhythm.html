@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooted Rhythm | Poiema Project</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --evergreen: #596756;
+      --evergreen-deep: #4a5748;
+      --lilac: #b0a0ba;
+      --lilac-light: #ddd6e1;
+      --off-white: #f7f4ef;
+      --plum: #816e84;
+      --sage: #a9b8a3;
+      --sage-light: #e7ebe5;
+      --text-dark: #3e483c;
+      --text-soft: #64705f;
+      --line: rgba(89, 103, 86, 0.22);
+      --font-heading: 'Playfair Display', serif;
+      --font-subheading: 'Archivo Narrow', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+      --max-width: 1280px;
+      --pad-x: clamp(1.5rem, 5vw, 5.5rem);
+      --nav-height: 82px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(100%, var(--max-width));
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(247, 244, 239, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(89, 103, 86, 0.12);
+    }
+
+    .nav-inner {
+      width: min(100%, 1500px);
+      height: 100%;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 4vw, 4.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-img {
+      width: 29px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.13rem;
+      font-weight: 400;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 2.4vw, 2.3rem);
+      list-style: none;
+    }
+
+    .nav-links a,
+    .nav-cta {
+      font-family: var(--font-subheading);
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-dark);
+      padding-block: 0.4rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      height: 1px;
+      background: var(--plum);
+      transition: right 0.22s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--evergreen);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      right: 0;
+    }
+
+    .nav-cta {
+      padding: 0.72rem 1.35rem;
+      background: var(--evergreen);
+      color: var(--off-white);
+      border: 1px solid var(--evergreen);
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: transparent;
+      color: var(--evergreen);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border: 0;
+      background: none;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--evergreen);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      z-index: 99;
+      padding: 1.25rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+      flex-direction: column;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(89, 103, 86, 0.08);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-subheading);
+      font-size: 1rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 0.8rem;
+      padding: 0.95rem 1.2rem;
+      text-align: center;
+      color: var(--off-white);
+      background: var(--evergreen);
+      border-bottom: 0;
+    }
+
+    /* Buttons */
+    .btn-primary,
+    .btn-outline {
+      display: inline-block;
+      padding: 0.95rem 2rem;
+      font-family: var(--font-subheading);
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--evergreen);
+      color: var(--off-white);
+      border: 1px solid var(--evergreen);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--evergreen);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--evergreen);
+      border: 1px solid var(--evergreen);
+    }
+
+    .btn-outline:hover {
+      background: var(--evergreen);
+      color: var(--off-white);
+    }
+
+    /* Rooted Rhythm hero */
+    .rr-hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: calc(var(--nav-height) + clamp(4.5rem, 8vw, 7.5rem));
+      padding-bottom: clamp(5rem, 9vw, 8rem);
+      text-align: center;
+    }
+
+    .rr-hero::before {
+      content: '';
+      position: absolute;
+      inset: auto -5rem -8rem auto;
+      width: clamp(260px, 30vw, 470px);
+      aspect-ratio: 1;
+      background: url('logo-flower.png') center / contain no-repeat;
+      opacity: 0.035;
+      pointer-events: none;
+    }
+
+    .rr-hero::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .rr-hero .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+    }
+
+    .rr-logo-frame {
+      width: min(100%, 760px);
+      margin-inline: auto;
+      padding: clamp(2.2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .rr-logo-frame::before,
+    .rr-logo-frame::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: clamp(28px, 5vw, 70px);
+      height: 1px;
+      background: rgba(129, 110, 132, 0.3);
+    }
+
+    .rr-logo-frame::before { left: 0; }
+    .rr-logo-frame::after { right: 0; }
+
+    .rr-logo {
+      width: min(100%, 570px);
+      height: auto;
+      margin-inline: auto;
+    }
+
+    .rr-tagline {
+      max-width: 17ch;
+      margin: clamp(2.5rem, 5vw, 4.5rem) auto 1.8rem;
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 4.5vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--evergreen-deep);
+    }
+
+    .rr-intro {
+      max-width: 58ch;
+      margin-inline: auto;
+      font-size: clamp(1.02rem, 1.25vw, 1.16rem);
+      line-height: 1.9;
+      color: var(--text-soft);
+    }
+
+    .rr-hero-actions {
+      margin-top: 2.4rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    /* Article feed */
+    .feed-section {
+      padding-block: clamp(5rem, 8vw, 8rem);
+      scroll-margin-top: var(--nav-height);
+      background: var(--off-white);
+    }
+
+    .feed-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 1.6rem;
+      margin-bottom: clamp(2.4rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feed-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 4.8vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.02;
+      color: var(--evergreen-deep);
+    }
+
+    .substack-feed-embed {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.25rem, 2.4vw, 2rem);
+    }
+
+    .substack-loading,
+    .substack-error {
+      grid-column: 1 / -1;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .substack-error a {
+      color: var(--plum);
+      border-bottom: 1px solid var(--plum);
+    }
+
+    .substack-card {
+      display: block;
+      min-width: 0;
+      border-top: 1px solid var(--line);
+      color: inherit;
+      transition: transform 0.25s ease;
+    }
+
+    .substack-card:hover,
+    .substack-card:focus-visible {
+      transform: translateY(-5px);
+      outline: none;
+    }
+
+    .substack-post {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .substack-thumbnail {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--sage-light);
+      margin-top: 1rem;
+      filter: saturate(0.88);
+      transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    .substack-card:hover .substack-thumbnail {
+      filter: saturate(1);
+    }
+
+    .substack-content {
+      padding: 1.45rem 0 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .substack-date {
+      font-family: var(--font-subheading);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 0.8rem;
+    }
+
+    .substack-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.55rem, 2.2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--evergreen-deep);
+      margin-bottom: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .substack-card:hover .substack-title,
+    .substack-card:focus-visible .substack-title {
+      color: var(--plum);
+    }
+
+    .substack-desc {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: var(--text-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .substack-read {
+      margin-top: auto;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(89, 103, 86, 0.12);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+
+    .substack-read::after {
+      content: '→';
+      font-size: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .substack-card:hover .substack-read::after,
+    .substack-card:focus-visible .substack-read::after {
+      transform: translateX(5px);
+    }
+
+    .feed-footer {
+      margin-top: clamp(3rem, 5vw, 4.5rem);
+      text-align: center;
+    }
+
+    .feed-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-subheading);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--plum);
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid rgba(129, 110, 132, 0.45);
+    }
+
+    .feed-footer a::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    .feed-footer a:hover::after {
+      transform: translateX(5px);
+    }
+
+    /* Subscribe */
+    .subscribe-section {
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(5rem, 8vw, 8rem);
+      background: var(--lilac-light);
+      text-align: center;
+    }
+
+    .subscribe-section::before {
+      content: '';
+      position: absolute;
+      left: clamp(-4rem, -3vw, -1rem);
+      bottom: clamp(-5rem, -5vw, -2rem);
+      width: clamp(220px, 24vw, 360px);
+      aspect-ratio: 1;
+      background: url('logo-flower.png') center / contain no-repeat;
+      opacity: 0.045;
+      pointer-events: none;
+    }
+
+    .subscribe-section .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .subscribe-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 400;
+      line-height: 1.04;
+      color: var(--evergreen-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .subscribe-section p {
+      max-width: 58ch;
+      margin-inline: auto;
+      font-size: clamp(1rem, 1.2vw, 1.12rem);
+      line-height: 1.85;
+      color: var(--text-dark);
+    }
+
+    .subscribe-section p + p {
+      margin-top: 0.65rem;
+    }
+
+    .subscribe-section .btn-primary {
+      margin-top: 2rem;
+    }
+
+    .subscribe-social {
+      margin-top: 1.5rem !important;
+    }
+
+    .subscribe-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-subheading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--evergreen-deep);
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid rgba(89, 103, 86, 0.35);
+    }
+
+    .subscribe-social a::after {
+      content: '→';
+    }
+
+    /* Footer */
+    footer {
+      padding-block: 3rem;
+      background: var(--off-white);
+    }
+
+    .footer-top,
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-top {
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen);
+    }
+
+    .footer-links,
+    .footer-social {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .footer-links { gap: 1.5rem; }
+    .footer-social { gap: 1.4rem; }
+
+    .footer-links a,
+    .footer-social a {
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a { color: var(--text-dark); }
+    .footer-social a { color: var(--plum); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--sage);
+    }
+
+    /* Scroll reveal */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .substack-feed-embed {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      :root {
+        --nav-height: 72px;
+      }
+
+      .nav-logo-text {
+        font-size: 1rem;
+      }
+
+      .rr-hero {
+        padding-top: calc(var(--nav-height) + 3.5rem);
+      }
+
+      .rr-logo-frame {
+        padding-inline: 0;
+      }
+
+      .rr-logo-frame::before,
+      .rr-logo-frame::after {
+        display: none;
+      }
+
+      .feed-header {
+        align-items: flex-start;
+      }
+
+      .substack-feed-embed {
+        grid-template-columns: 1fr;
+        gap: 2.8rem;
+      }
+
+      .substack-thumbnail {
+        aspect-ratio: 16 / 10;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links,
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .rr-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .rr-hero-actions a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo-flower.png" alt="" class="nav-logo-img" />
+        <span class="nav-logo-text">Poiema Project</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="rooted-rhythm.html" class="active">Rooted Rhythm</a></li>
+        <li><a href="wellness-programming.html">Wellness Programming</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="nav-cta">Work With Me</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="rr-hero">
+    <div class="wrap">
+      <div class="rr-logo-frame">
+        <h1><img class="rr-logo" src="rooted-rhythm-logo.png" alt="Rooted Rhythm" /></h1>
+      </div>
+
+      <p class="rr-tagline">Helping women find their God given rhythm rooted in truth, biology, and Scripture.</p>
+      <p class="rr-intro">Rooted Rhythm is where I write about women's health, hormones, cycles, food, and the questions I wish someone had helped me understand sooner.</p>
+
+      <div class="rr-hero-actions">
+        <a href="#latest" class="btn-primary">Read the Journal</a>
+        <a href="https://rootedrhythm.substack.com/subscribe" class="btn-outline" target="_blank" rel="noopener">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="feed-section reveal" id="latest">
+    <div class="wrap">
+      <div class="feed-header">
+        <h2>Latest from Rooted Rhythm</h2>
+      </div>
+
+      <div class="substack-feed-embed" data-substack-url="https://rootedrhythm.substack.com">
+        <div class="substack-loading">Loading articles...</div>
+      </div>
+
+      <div class="feed-footer">
+        <a href="https://rootedrhythm.substack.com/" target="_blank" rel="noopener">View All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="subscribe-section reveal">
+    <div class="wrap">
+      <h2>Read along with me.</h2>
+      <p>New Rooted Rhythm articles can go straight to your inbox.</p>
+      <p>I write about the body God gave you, how it works, and how to care for it with a little more understanding and a lot less guessing.</p>
+      <a href="https://rootedrhythm.substack.com/subscribe" class="btn-primary" target="_blank" rel="noopener">Subscribe to Rooted Rhythm</a>
+      <p class="subscribe-social"><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Follow Rooted Rhythm on Instagram</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <span class="footer-logo">POIEMA PROJECT</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+          <li><a href="wellness-programming.html">Wellness Programming</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a></li>
+        </ul>
+        <span class="footer-copy">© 2026 Poiema Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rooted-rhythm.html" class="active">Rooted Rhythm</a>
+    <a href="wellness-programming.html">Wellness Programming</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <script>
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function (r) { observer.observe(r); });
+    } else {
+      reveals.forEach(function (r) { r.classList.add('visible'); });
+    }
+
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+
+  <!-- SUBSTACK ARTICLE FEED -->
+  <script>
+  (function () {
+    var container = document.querySelector('.substack-feed-embed');
+
+    if (!container) return;
+
+    var substackUrl = container.dataset.substackUrl;
+
+    var rssUrl =
+      'https://api.rss2json.com/v1/api.json?rss_url=' +
+      encodeURIComponent(substackUrl + '/feed');
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(new Date(date));
+    }
+
+    function getImage(post) {
+      if (post.thumbnail) return post.thumbnail;
+
+      if (post.enclosure && post.enclosure.link) return post.enclosure.link;
+
+      if (!post.content) return null;
+
+      var match = post.content.match(/<img[^>]+src="([^"]+)"/i);
+
+      return match ? match[1] : null;
+    }
+
+    function cleanDescription(html) {
+      var temp = document.createElement('div');
+      temp.innerHTML = html || '';
+
+      var text = temp.textContent || temp.innerText || '';
+
+      if (text.length > 150) {
+        return text.slice(0, 150).trim() + '...';
+      }
+
+      return text;
+    }
+
+    fetch(rssUrl)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Feed request failed');
+        }
+
+        return response.json();
+      })
+      .then(function (data) {
+        if (data.status !== 'ok' || !data.items) {
+          throw new Error('Feed unavailable');
+        }
+
+        container.innerHTML = '';
+
+        data.items.forEach(function (post) {
+          var image = getImage(post);
+
+          var link = document.createElement('a');
+          link.className = 'substack-card';
+          link.href = post.link;
+          link.target = '_blank';
+          link.rel = 'noopener';
+
+          var article = document.createElement('article');
+          article.className = 'substack-post';
+
+          if (image) {
+            var img = document.createElement('img');
+            img.className = 'substack-thumbnail';
+            img.src = image;
+            img.alt = post.title || 'Rooted Rhythm article';
+            img.loading = 'lazy';
+
+            img.addEventListener('error', function () {
+              img.remove();
+            });
+
+            article.appendChild(img);
+          }
+
+          var content = document.createElement('div');
+          content.className = 'substack-content';
+
+          var date = document.createElement('p');
+          date.className = 'substack-date';
+          date.textContent = formatDate(post.pubDate);
+
+          var title = document.createElement('h3');
+          title.className = 'substack-title';
+          title.textContent = post.title;
+
+          var description = document.createElement('p');
+          description.className = 'substack-desc';
+          description.textContent = cleanDescription(post.description);
+
+          var read = document.createElement('span');
+          read.className = 'substack-read';
+          read.textContent = 'Read Article';
+
+          content.appendChild(date);
+          content.appendChild(title);
+          content.appendChild(description);
+          content.appendChild(read);
+
+          article.appendChild(content);
+          link.appendChild(article);
+          container.appendChild(link);
+        });
+      })
+      .catch(function (error) {
+        console.error(error);
+
+        container.innerHTML =
+          '<p class="substack-error">' +
+          'Articles could not load right now. ' +
+          '<a href="https://rootedrhythm.substack.com/" target="_blank" rel="noopener">' +
+          'Read Rooted Rhythm on Substack.</a></p>';
+      });
+  })();
+  </script>
+</body>
+</html>
