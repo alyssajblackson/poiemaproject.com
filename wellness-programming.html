@@ -4,8 +4,43 @@
   <meta charset="UTF-8" />
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work and Portfolio | Alyssa Blackson, Poiema Project</title>
-  <meta name="description" content="Explore selected work by Alyssa Blackson, including wellness program design, women's health research, policy work, educational resources, and writing." />
+  <title>Alyssa Blackson | Women&#x27;s Health &amp; Wellness Portfolio</title>
+  <meta name="description" content="Explore Alyssa Blackson&#x27;s work in women&#x27;s health research, education, wellness programming, policy, and resources for companies, schools, and organizations." />
+  <link rel="canonical" href="https://poiemaproject.com/wellness-programming.html" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://poiemaproject.com/#alyssa-blackson",
+          "name": "Alyssa Blackson",
+          "url": "https://poiemaproject.com/",
+          "jobTitle": "Women's Health Advocate and Educator",
+          "sameAs": [
+            "https://www.linkedin.com/in/alyssa-blackson-659040266/"
+          ],
+          "knowsAbout": [
+            "Women's health education",
+            "Wellness programming",
+            "Women's health research",
+            "Marketing",
+            "Entrepreneurship"
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://poiemaproject.com/wellness-programming.html#webpage",
+          "url": "https://poiemaproject.com/wellness-programming.html",
+          "name": "Women's Health, Wellness & Education Projects",
+          "description": "Explore Alyssa Blackson's work in women's health research, education, wellness programming, policy, and resources for companies, schools, and organizations.",
+          "about": {
+            "@id": "https://poiemaproject.com/#alyssa-blackson"
+          }
+        }
+      ]
+    }
+  </script>
   <!-- Google Analytics 4 placeholder
        Replace GA_MEASUREMENT_ID in both places with your real GA4 measurement ID,
        then remove the comment markers around this block.
@@ -21,7 +56,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" /></noscript>
 
   <style>
     :root {
@@ -30,11 +66,11 @@
       --lilac: #b0a0ba;
       --lilac-light: #ddd6e1;
       --off-white: #f7f4ef;
-      --plum: #816e84;
+      --plum: #6b556d;
       --sage: #a9b8a3;
       --sage-light: #e7ebe5;
       --text-dark: #3e483c;
-      --text-soft: #64705f;
+      --text-soft: #566252;
       --line: rgba(89, 103, 86, 0.22);
       --font-heading: 'Playfair Display', serif;
       --font-subheading: 'Archivo Narrow', sans-serif;
@@ -81,6 +117,46 @@
       width: min(100%, var(--max-width));
       margin-inline: auto;
       padding-inline: var(--pad-x);
+    }
+
+
+    /* Accessibility */
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      background: var(--evergreen-deep);
+      color: var(--off-white);
+      transform: translateY(-160%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--plum);
+      outline-offset: 3px;
     }
 
     /* Navigation */
@@ -782,7 +858,7 @@
 
     .footer-copy {
       font-size: 0.82rem;
-      color: var(--sage);
+      color: var(--text-soft);
     }
 
     /* Reveal */
@@ -920,10 +996,11 @@
 </head>
 
 <body>
-  <nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav aria-label="Primary navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="logo-flower.png" alt="" class="nav-logo-img" />
+        <img src="logo-flower.png" alt="" class="nav-logo-img" width="29" height="29" decoding="async" />
         <span class="nav-logo-text">Poiema Project</span>
       </a>
 
@@ -931,7 +1008,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
-        <li><a href="wellness-programming.html" class="active">My Work</a></li>
+        <li><a href="wellness-programming.html" class="active" aria-current="page">My Work</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
@@ -943,10 +1020,12 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <section class="wp-hero">
     <div class="wrap">
       <div class="reveal">
-        <h1>Work and Projects</h1>
+        <h1>Women's Health, Wellness &amp; Education Projects</h1>
       </div>
 
       <div class="wp-hero-copy reveal">
@@ -967,7 +1046,7 @@
       <div class="projects-scroll" aria-label="Past projects">
         <button class="project-card" type="button" aria-haspopup="dialog" aria-controls="modal-truehealth">
           <div class="project-card-media">
-            <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" />
+            <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" loading="lazy" decoding="async" />
           </div>
           <div class="project-card-body">
             <h3>True Health</h3>
@@ -978,7 +1057,7 @@
 
         <button class="project-card" type="button" aria-haspopup="dialog" aria-controls="modal-mold">
           <div class="project-card-media">
-            <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" />
+            <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" loading="lazy" decoding="async" />
           </div>
           <div class="project-card-body">
             <h3>Mold Remediation Policy Pitch</h3>
@@ -989,7 +1068,7 @@
 
         <button class="project-card" type="button" aria-haspopup="dialog" aria-controls="modal-cycle">
           <div class="project-card-media">
-            <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" />
+            <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" loading="lazy" decoding="async" />
           </div>
           <div class="project-card-body">
             <h3>A Cycle Guide</h3>
@@ -1000,7 +1079,7 @@
 
         <button class="project-card" type="button" aria-haspopup="dialog" aria-controls="modal-paper">
           <div class="project-card-media">
-            <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" />
+            <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" loading="lazy" decoding="async" />
           </div>
           <div class="project-card-body">
             <h3>The First Twenty Years</h3>
@@ -1031,7 +1110,7 @@
     <div class="project-modal-backdrop" data-close></div>
     <div class="project-modal-inner">
       <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
-      <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" />
+      <img src="true-health-preview.png" alt="Preview of the True Health program overview interface" loading="lazy" decoding="async" />
       <h3 id="modal-truehealth-title">True Health</h3>
       <p>I designed True Health for True Homes, a homebuilding company with a distributed workforce across North Carolina and South Carolina. The program included a phased three year rollout, wellness incentives, health education, clinical vendor coordination, employee challenges, and a structure for connecting participation to the company's existing health plan.</p>
       <p>The screenshot above is a look at the program overview. The full interactive build includes confidential company data and isn't publicly linked.</p>
@@ -1042,7 +1121,7 @@
     <div class="project-modal-backdrop" data-close></div>
     <div class="project-modal-inner">
       <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
-      <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" />
+      <img src="mold-pitch-award-photo.jpg" alt="Alyssa holding a second place award check at the Samford Policy Pitch Competition" loading="lazy" decoding="async" />
       <h3 id="modal-mold-title">Mold Remediation Policy Pitch</h3>
       <p>Alabama has no law requiring mold testing in university housing, even though the state ranks fourth in the country for mold risk. This pitch proposed a state policy requiring annual, independent mold and moisture testing in every Alabama university dorm before students move in, with mandatory remediation and clearance testing whenever a problem is found.</p>
       <p>The proposal has five parts: full building testing every summer, independent ACAC or IAC2 certified inspectors, mandatory remediation before occupancy, post remediation clearance testing, and an annual health summary published for each campus. A phased two year rollout starts with the highest risk buildings before expanding statewide.</p>
@@ -1055,7 +1134,7 @@
     <div class="project-modal-backdrop" data-close></div>
     <div class="project-modal-inner">
       <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
-      <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" />
+      <img src="cycle-guide-cover.png" alt="Rooted Rhythm cycle guide cover" loading="lazy" decoding="async" />
       <h3 id="modal-cycle-title">A Cycle Guide</h3>
       <p>This guide breaks the menstrual cycle into its four phases, menstrual, follicular, ovulatory, and luteal, and lays out what is happening in the body during each one, how it might affect mood and energy, what kind of food supports that phase, and how to adjust movement and exercise accordingly.</p>
       <p>It is built to be a quick, practical reference for women who want to work with their cycle instead of against it.</p>
@@ -1067,7 +1146,7 @@
     <div class="project-modal-backdrop" data-close></div>
     <div class="project-modal-inner">
       <button class="project-modal-close" type="button" aria-label="Close" data-close>&times;</button>
-      <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" />
+      <img src="the-first-twenty-years-cover.png" alt="The First Twenty Years whitepaper cover" loading="lazy" decoding="async" />
       <h3 id="modal-paper-title">The First Twenty Years</h3>
       <p>I wrote The First Twenty Years to look at the health issues, misconceptions, and gaps in care affecting girls and young women between ages 10 and 30.</p>
       <p>The paper looks at menstrual health, cycle education, hormone care, nutrition, mental health, and opportunities for better education and support.</p>
@@ -1082,6 +1161,8 @@
       <a href="contact.html" class="btn-primary">Start a Conversation</a>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="wrap">
@@ -1107,11 +1188,11 @@
     </div>
   </footer>
 
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="rooted-rhythm.html">Rooted Rhythm</a>
-    <a href="wellness-programming.html" class="active">My Work</a>
+    <a href="wellness-programming.html" class="active" aria-current="page">My Work</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="mobile-cta">Work With Me</a>
   </div>

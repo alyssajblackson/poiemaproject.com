@@ -4,8 +4,44 @@
   <meta charset="UTF-8" />
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alyssa Blackson | Women's Health Education & Wellness</title>
-  <meta name="description" content="Explore Alyssa Blackson's work in women's health education, research, wellness programming, and Rooted Rhythm. Learn more, read along, or contact Alyssa." />
+  <title>Alyssa Blackson | Women&#x27;s Health Education &amp; Wellness</title>
+  <meta name="description" content="Explore Alyssa Blackson&#x27;s work in women&#x27;s health education, research, wellness programming, and Rooted Rhythm. Learn more, read along, or contact Alyssa." />
+  <link rel="canonical" href="https://poiemaproject.com/" />
+  <link rel="preload" as="image" href="alyssa.jpeg" fetchpriority="high" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://poiemaproject.com/#alyssa-blackson",
+          "name": "Alyssa Blackson",
+          "url": "https://poiemaproject.com/",
+          "jobTitle": "Women's Health Advocate and Educator",
+          "sameAs": [
+            "https://www.linkedin.com/in/alyssa-blackson-659040266/"
+          ],
+          "knowsAbout": [
+            "Women's health education",
+            "Wellness programming",
+            "Women's health research",
+            "Marketing",
+            "Entrepreneurship"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://poiemaproject.com/#website",
+          "url": "https://poiemaproject.com/",
+          "name": "Alyssa Blackson | Poiema Project",
+          "description": "Explore Alyssa Blackson's work in women's health education, research, wellness programming, and Rooted Rhythm. Learn more, read along, or contact Alyssa.",
+          "about": {
+            "@id": "https://poiemaproject.com/#alyssa-blackson"
+          }
+        }
+      ]
+    }
+  </script>
   <!-- Google Analytics 4 placeholder
        Replace GA_MEASUREMENT_ID in both places with your real GA4 measurement ID,
        then remove the comment markers around this block.
@@ -21,7 +57,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Archivo+Narrow:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" /></noscript>
 
   <style>
     :root {
@@ -30,11 +67,11 @@
       --lilac: #b0a0ba;
       --lilac-light: #ddd6e1;
       --off-white: #f7f4ef;
-      --plum: #816e84;
+      --plum: #6b556d;
       --sage: #a9b8a3;
       --sage-light: #e7ebe5;
       --text-dark: #3e483c;
-      --text-soft: #64705f;
+      --text-soft: #566252;
       --line: rgba(89, 103, 86, 0.22);
       --font-heading: 'Playfair Display', serif;
       --font-subheading: 'Archivo Narrow', sans-serif;
@@ -86,6 +123,46 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--plum);
+    }
+
+
+    /* Accessibility */
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      background: var(--evergreen-deep);
+      color: var(--off-white);
+      transform: translateY(-160%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--plum);
+      outline-offset: 3px;
     }
 
     /* Navigation */
@@ -466,7 +543,7 @@
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(247, 244, 239, 0.58);
+      color: rgba(247, 244, 239, 0.75);
       margin-bottom: 0.45rem;
     }
 
@@ -686,7 +763,7 @@
 
     .footer-copy {
       font-size: 0.82rem;
-      color: var(--sage);
+      color: var(--text-soft);
     }
 
     /* Scroll reveal */
@@ -890,15 +967,16 @@
 </head>
 
 <body>
-  <nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav aria-label="Primary navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="logo-flower.png" alt="" class="nav-logo-img" />
+        <img src="logo-flower.png" alt="" class="nav-logo-img" width="29" height="29" decoding="async" />
         <span class="nav-logo-text">Poiema Project</span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
         <li><a href="wellness-programming.html">My Work</a></li>
@@ -913,11 +991,13 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <section class="hero">
     <div class="wrap">
       <div class="hero-photo-wrap reveal">
         <div class="hero-photo">
-          <img src="alyssa.jpeg" alt="Portrait of Alyssa Blackson standing outside in front of a glass building" />
+          <img src="alyssa.jpeg" alt="Portrait of Alyssa Blackson standing outside in front of a glass building" fetchpriority="high" decoding="async" />
         </div>
       </div>
 
@@ -994,6 +1074,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer>
     <div class="wrap">
       <div class="footer-top">
@@ -1018,8 +1100,8 @@
     </div>
   </footer>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="active">Home</a>
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="active" aria-current="page">Home</a>
     <a href="about.html">About</a>
     <a href="rooted-rhythm.html">Rooted Rhythm</a>
     <a href="wellness-programming.html">My Work</a>
