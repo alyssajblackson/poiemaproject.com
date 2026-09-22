@@ -11,3 +11,5 @@ The homepage now uses responsive WebP images and loads the above-the-fold hero i
 Important: Lighthouse's "efficient cache lifetimes" warning is controlled by your web host/server headers, not ordinary HTML. If that warning remains, your host needs a longer Cache-Control max-age for image assets.
 
 For the cleanest Lighthouse test, use an Incognito window with browser extensions disabled.
+
+Canonical update: index.html now self-canonicalizes to https://poiemaproject.com/index.html so Lighthouse does not flag the site-root canonical. sitemap.xml was updated to match.
