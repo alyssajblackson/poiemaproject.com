@@ -1,0 +1,13 @@
+POIEMA PROJECT PERFORMANCE UPDATE
+
+Upload these HTML files plus:
+- logo-flower.webp
+- alyssa.webp
+- alyssa-480.webp
+- alyssa-768.webp
+
+The homepage now uses responsive WebP images and loads the above-the-fold hero immediately.
+
+Important: Lighthouse's "efficient cache lifetimes" warning is controlled by your web host/server headers, not ordinary HTML. If that warning remains, your host needs a longer Cache-Control max-age for image assets.
+
+For the cleanest Lighthouse test, use an Incognito window with browser extensions disabled.
