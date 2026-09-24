@@ -1079,13 +1079,72 @@
     .bullet-panel li { position: relative; padding-left: 1.5rem; line-height: 1.7; color: var(--text-soft); }
     .bullet-panel li::before { content: '•'; position: absolute; left: 0; color: var(--plum); }
 
-    .topic-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem 2rem; }
-    .topic-grid p { border-bottom: 1px solid var(--line); padding: 1rem 0; line-height: 1.65; color: var(--text-soft); }
+    .question-list {
+      max-width: 960px;
+      display: grid;
+      gap: 0;
+    }
+
+    .question-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .question-item:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .question-item summary {
+      position: relative;
+      list-style: none;
+      cursor: pointer;
+      padding: 1.35rem 3.25rem 1.35rem 0;
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--evergreen-deep);
+    }
+
+    .question-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .question-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 0.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--plum);
+      transition: transform 0.2s ease;
+    }
+
+    .question-item[open] summary::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .question-answer {
+      padding: 0 3.25rem 1.6rem 0;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .question-answer p + p {
+      margin-top: 0.9rem;
+    }
+
+    .question-item summary:focus-visible {
+      outline: 2px solid var(--plum);
+      outline-offset: 4px;
+    }
 
     .note-box { margin-top: 2rem; padding: 1.4rem 1.6rem; background: var(--lilac-light); color: var(--text-dark); line-height: 1.75; }
 
     @media (max-width: 860px) {
-      .page-hero-inner, .service-list, .resource-list, .topic-grid { grid-template-columns: 1fr; }
+      .page-hero-inner, .service-list, .resource-list { grid-template-columns: 1fr; }
       .service-item:nth-child(odd), .resource-item:nth-child(odd), .service-item:nth-child(even), .resource-item:nth-child(even) { padding-left: 0; padding-right: 0; border-left: 0; }
     }
 
@@ -1153,19 +1212,94 @@
     <div class="wrap">
       <div class="section-heading">
         <h2>Questions I wish we were taught to ask</h2>
-        <p>These are the kinds of questions I wish more young women understood before they were expected to make decisions about their health. I am building more education around each one.</p>
+        <p>These are the kinds of questions I wish more young women understood before they were expected to make decisions about their health. Click any question to read a simple answer.</p>
       </div>
-      <div class="topic-grid">
-        <p>Is my period the main event of my cycle?</p>
-        <p>Does my cycle matter if I do not want to get pregnant?</p>
-        <p>Is a birth control bleed the same thing as a period?</p>
-        <p>How much period pain is too much?</p>
-        <p>Why do my energy and mood feel different throughout the month?</p>
-        <p>How do I know if I am ovulating?</p>
-        <p>Can stress, food, sleep, and exercise affect my cycle?</p>
-        <p>Are irregular periods normal when you are a teenager?</p>
-        <p>Are progesterone and progestin the same thing?</p>
-        <p>Does birth control fix period problems?</p>
+      <div class="question-list">
+        <details class="question-item">
+          <summary>Is my period the main event of my cycle?</summary>
+          <div class="question-answer">
+            <p>Your period gets most of the attention because it is the part you can see, but ovulation is a huge part of the story.</p>
+            <p>Ovulation is when your ovary releases an egg, but its importance goes beyond fertility. A healthy ovulatory cycle involves the production of hormones like estrogen and progesterone, which have effects throughout your body. Your bleed gives you information, but understanding whether and how you are ovulating can tell you even more about what is happening throughout your cycle.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Does my cycle matter if I do not want to get pregnant?</summary>
+          <div class="question-answer">
+            <p>Yes. Your menstrual cycle can tell you a lot about your health, even if pregnancy is nowhere on your radar.</p>
+            <p>Your cycle is connected to your hormones, bones, metabolism, brain, and reproductive health. Changes in cycle length, missing periods, unusual bleeding, or other symptoms can sometimes be your body's way of telling you that something deserves attention. Your cycle is worth understanding simply because it is part of how your body works.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Is a birth control bleed the same thing as a period?</summary>
+          <div class="question-answer">
+            <p>They can look similar, but they are not the same thing.</p>
+            <p>A natural menstrual period happens at the end of an ovulatory cycle when pregnancy does not occur and hormone levels fall. With many forms of hormonal birth control, ovulation is suppressed. The bleeding that happens during the placebo week of a combined birth control pill is called a withdrawal bleed because it happens in response to the temporary drop in synthetic hormones.</p>
+            <p>Knowing that difference can help you understand what your body is doing both on and off birth control.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>How much period pain is too much?</summary>
+          <div class="question-answer">
+            <p>Cramps are common. Pain that keeps you from going to class, work, exercising, sleeping, or living your normal life deserves attention.</p>
+            <p>The same goes for very heavy bleeding, bleeding that lasts longer than expected, or symptoms that seem to be getting worse. There are several possible causes, including conditions like endometriosis and adenomyosis. You do not have to diagnose yourself, but you can pay attention to your symptoms, track what is happening, and bring that information to a healthcare professional.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Why do my energy and mood feel different throughout the month?</summary>
+          <div class="question-answer">
+            <p>Your hormones change throughout your cycle, so it makes sense that you may notice changes too.</p>
+            <p>Estrogen generally rises during the follicular phase and peaks around ovulation. After ovulation, progesterone rises during the luteal phase. Those hormonal shifts can influence things like body temperature, appetite, sleep, mood, and how you feel physically.</p>
+            <p>I think this is one of the coolest parts of learning your cycle. Instead of assuming you should feel exactly the same every day, you can start noticing your own patterns and learning what your body is communicating.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>How do I know if I am ovulating?</summary>
+          <div class="question-answer">
+            <p>Having a bleed does not always confirm that ovulation happened, which is why learning your body's signs can be helpful.</p>
+            <p>One sign is cervical fluid. Around your fertile window, it often becomes wetter, clearer, and more slippery. You can also track basal body temperature. Progesterone causes a small temperature increase after ovulation, so a sustained rise can help confirm that ovulation likely occurred. Some fertility awareness methods also track changes in the cervix.</p>
+            <p>The important part is learning patterns over time instead of trying to interpret one random day.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Can stress, food, sleep, and exercise affect my cycle?</summary>
+          <div class="question-answer">
+            <p>Yes. Your reproductive system does not operate separately from the rest of your body.</p>
+            <p>Your brain is constantly receiving information about things like energy availability, stress, sleep, illness, and physical activity. Significant stress, underfueling, or excessive exercise can disrupt the hormonal signals involved in ovulation for some women. Sometimes one of the first places you notice that disruption is your cycle.</p>
+            <p>That is one reason I love thinking about the menstrual cycle as information. It gives us another window into what may be happening throughout the body.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Are irregular periods normal when you are a teenager?</summary>
+          <div class="question-answer">
+            <p>Some irregularity can be normal during the first few years after your first period because the hormonal systems involved in ovulation are still maturing.</p>
+            <p>That does not mean every irregular cycle should automatically be ignored. Going three months without a period, experiencing very heavy bleeding, having severe pain, or noticing symptoms that interfere with everyday life are all good reasons to talk with a healthcare professional.</p>
+            <p>There is a difference between giving your body time to mature and assuming every symptom is something you just have to live with.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Are progesterone and progestin the same thing?</summary>
+          <div class="question-answer">
+            <p>The names sound similar, which makes this one confusing.</p>
+            <p>Progesterone is a hormone your body naturally produces, especially after ovulation. Progestins are synthetic compounds designed to act on progesterone receptors and are used in many forms of hormonal contraception and other medications.</p>
+            <p>They can have overlapping effects, but they are not chemically identical. Understanding that distinction makes conversations about hormones and birth control much easier to follow.</p>
+          </div>
+        </details>
+
+        <details class="question-item">
+          <summary>Does birth control fix period problems?</summary>
+          <div class="question-answer">
+            <p>Hormonal birth control can be very helpful for managing symptoms such as heavy bleeding, painful periods, acne, and irregular bleeding. At the same time, symptom management and identifying the underlying cause are two different questions.</p>
+            <p>If someone has painful periods because of endometriosis, for example, birth control may reduce her symptoms while the underlying condition still exists. The same idea can apply to other menstrual or hormonal concerns.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1176,7 +1310,7 @@
         <h2>Read Rooted Rhythm</h2>
         <p>Rooted Rhythm is where I go deeper on periods, hormones, food, medications, faith, and the questions that come up when you are trying to understand your body in real life.</p>
       </div>
-      <a href="rooted-rhythm.html" class="btn-primary">Explore Rooted Rhythm</a>
+      <a href="https://rootedrhythm.substack.com/" class="btn-primary" target="_blank" rel="noopener">Explore Rooted Rhythm</a>
     </div>
   </section>
 
