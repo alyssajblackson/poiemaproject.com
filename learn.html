@@ -4,43 +4,33 @@
   <meta charset="UTF-8" />
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poiema Project | Women&#x27;s Health Education &amp; Wellness</title>
-  <meta name="description" content="Poiema Project helps women understand menstrual health and hormones, and helps organizations build women&#x27;s health education, wellness programs, research, and speaking." />
-  <link rel="canonical" href="https://poiemaproject.com/index.html" />
+  <title>Women&#x27;s Health Education for Young Women | Poiema Project</title>
+  <meta name="description" content="Simple women&#x27;s health education for high school and college women on periods, menstrual cycles, hormones, ovulation, birth control, and caring for your body." />
+  <link rel="canonical" href="https://poiemaproject.com/learn.html" />
   <link rel="preload" as="image" href="alyssa.webp" imagesrcset="alyssa-480.webp 480w, alyssa-768.webp 768w, alyssa.webp 931w" imagesizes="(max-width: 860px) calc(100vw - 3rem), 520px" fetchpriority="high" />
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://poiemaproject.com/#alyssa-blackson",
-          "name": "Alyssa Blackson",
-          "url": "https://poiemaproject.com/",
-          "jobTitle": "Women's Health Advocate and Educator",
-          "sameAs": [
-            "https://www.linkedin.com/in/alyssa-blackson-659040266/"
-          ],
-          "knowsAbout": [
-            "Women's health education",
-            "Wellness programming",
-            "Women's health research",
-            "Marketing",
-            "Entrepreneurship"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://poiemaproject.com/#website",
-          "url": "https://poiemaproject.com/",
-          "name": "Alyssa Blackson | Poiema Project",
-          "description": "Poiema Project helps women understand menstrual health and hormones, while helping organizations build women's health education, wellness programs, and speaking opportunities.",
-          "about": {
-            "@id": "https://poiemaproject.com/#alyssa-blackson"
-          }
-        }
-      ]
+      "@type": "Person",
+      "@id": "https://poiemaproject.com/#alyssa-blackson",
+      "name": "Alyssa Blackson",
+      "url": "https://poiemaproject.com/",
+      "jobTitle": "Women's Health Advocate and Educator"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://poiemaproject.com/learn.html#webpage",
+      "url": "https://poiemaproject.com/learn.html",
+      "name": "Women's Health Education and Resources",
+      "description": "Simple women's health education for high school and college women on periods, menstrual cycles, hormones, ovulation, birth control, and caring for your body.",
+      "about": {
+        "@id": "https://poiemaproject.com/#alyssa-blackson"
+      }
     }
+  ]
+}
   </script>
   <!-- Google Analytics 4 placeholder
        Replace GA_MEASUREMENT_ID in both places with your real GA4 measurement ID,
@@ -991,6 +981,114 @@
       color: var(--off-white);
     }
 
+  
+
+    .page-hero {
+      padding-top: calc(var(--nav-height) + clamp(4.5rem, 8vw, 7rem));
+      padding-bottom: clamp(4.5rem, 8vw, 7rem);
+      background: var(--off-white);
+    }
+
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: end;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      line-height: 1.02;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      color: var(--evergreen-deep);
+    }
+
+    .page-hero-copy p {
+      font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+      line-height: 1.9;
+      color: var(--text-soft);
+      max-width: 58ch;
+    }
+
+    .page-hero-copy p + p { margin-top: 1rem; }
+    .page-hero-copy .btn-primary { margin-top: 1.6rem; }
+
+    .content-section { padding-block: clamp(4.8rem, 8vw, 7.5rem); }
+    .content-section.alt { background: var(--sage-light); }
+    .content-section.dark { background: var(--evergreen-deep); }
+
+    .section-heading { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .section-heading h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 4.7vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: 1rem;
+    }
+    .section-heading p { color: var(--text-soft); line-height: 1.85; max-width: 62ch; }
+    .dark .section-heading h2 { color: var(--lilac-light); }
+    .dark .section-heading p { color: rgba(247,244,239,.82); }
+
+    .service-list, .resource-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .service-item, .resource-item {
+      padding: clamp(2rem,4vw,3.3rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .service-item:nth-child(odd), .resource-item:nth-child(odd) { padding-right: clamp(1.5rem,4vw,4rem); }
+    .service-item:nth-child(even), .resource-item:nth-child(even) { padding-left: clamp(1.5rem,4vw,4rem); border-left: 1px solid var(--line); }
+    .service-item h3, .resource-item h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: .8rem;
+    }
+    .service-item p, .resource-item p { line-height: 1.8; color: var(--text-soft); max-width: 52ch; }
+    .resource-item a, .text-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: var(--font-subheading);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+
+    .bullet-panel {
+      background: var(--off-white);
+      border: 1px solid var(--line);
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+    .bullet-panel h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem,4vw,4rem);
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: 1.5rem;
+    }
+    .bullet-panel ul { list-style: none; display: grid; gap: .85rem; }
+    .bullet-panel li { position: relative; padding-left: 1.5rem; line-height: 1.7; color: var(--text-soft); }
+    .bullet-panel li::before { content: '•'; position: absolute; left: 0; color: var(--plum); }
+
+    .topic-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem 2rem; }
+    .topic-grid p { border-bottom: 1px solid var(--line); padding: 1rem 0; line-height: 1.65; color: var(--text-soft); }
+
+    .note-box { margin-top: 2rem; padding: 1.4rem 1.6rem; background: var(--lilac-light); color: var(--text-dark); line-height: 1.75; }
+
+    @media (max-width: 860px) {
+      .page-hero-inner, .service-list, .resource-list, .topic-grid { grid-template-columns: 1fr; }
+      .service-item:nth-child(odd), .resource-item:nth-child(odd), .service-item:nth-child(even), .resource-item:nth-child(even) { padding-left: 0; padding-right: 0; border-left: 0; }
+    }
+
   </style>
 </head>
 
@@ -1004,8 +1102,8 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-        <li><a href="learn.html">Learn</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="learn.html" class="active" aria-current="page">Learn</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -1020,94 +1118,85 @@
   </nav>
 
   <main id="main-content">
+  <section class="page-hero">
+    <div class="wrap page-hero-inner">
+      <div><p class="eyebrow">Learn</p><h1>Your body should not feel like a mystery.</h1></div>
+      <div class="page-hero-copy">
+        <p>If you're in high school or college, you are already making decisions about your health, even if no one has ever explained what is happening in your body. Poiema Project is here to help you understand your cycle, hormones, period health, and the questions you may never have been taught to ask.</p>
+        <p>You do not need to know every science word to start understanding what your body is doing.</p>
+      </div>
+    </div>
+  </section>
 
-  <section class="hero">
+  <section class="content-section alt">
     <div class="wrap">
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <img src="alyssa.webp" srcset="alyssa-480.webp 480w, alyssa-768.webp 768w, alyssa.webp 931w" sizes="(max-width: 860px) calc(100vw - 3rem), 520px" width="931" height="1408" alt="Portrait of Alyssa Blackson standing outside in front of a glass building" fetchpriority="high" decoding="async" />
-        </div>
+      <div class="section-heading">
+        <h2>Start with your cycle</h2>
+        <p>Your period gets most of the attention because it is the part you can see, but it is only one part of your cycle. Learning what happens before and after your bleed can help you make sense of your hormones and the patterns you notice throughout the month.</p>
       </div>
-
-      <div class="hero-copy">
-                <h1 class="hero-tagline">Helping women understand their bodies so they can make informed decisions about their health.</h1>
-        <p class="hero-intro">I'm Alyssa, the founder of Poiema Project and Rooted Rhythm. I started Poiema to help women better understand their bodies and to help organizations better educate and care for the women they serve. My work includes menstrual health education, women's health research, wellness programming, and speaking.</p>
-
-        <div class="hero-actions">
-          <a href="learn.html" class="btn-primary">Start Learning</a>
-          <a href="work-with-me.html" class="btn-secondary">Work With Me</a>
+      <div class="resource-list">
+        <div class="resource-item">
+          <h3>The Cycle Guide</h3>
+          <p>A simple phase-by-phase guide to the menstrual, follicular, ovulatory, and luteal phases, including what is happening in the body and patterns you may notice.</p>
+          <a href="rooted-rhythm-cycle-guide.pdf" target="_blank" rel="noopener">Open the Guide</a>
         </div>
-
-        <div class="hero-signoff">
-          <div>
-            <p class="hero-name">Alyssa Blackson</p>
-            <p class="hero-role">Women's Health Advocate and Educator</p>
-          </div>
+        <div class="resource-item">
+          <h3>The Cycle You Were Never Taught</h3>
+          <p>A Rooted Rhythm article explaining the menstrual cycle and why understanding ovulation matters for more than pregnancy.</p>
+          <a href="https://rootedrhythm.substack.com/p/the-cycle-you-were-never-taught-68a" target="_blank" rel="noopener">Read the Article</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="problem-section reveal">
-    <div class="problem-inner">
-      <div class="problem-heading">
-                <h2>The problem I kept seeing</h2>
-      </div>
-
-      <div class="problem-copy">
-        <p>Too many women are making decisions about their health without ever being taught how their bodies actually work. The information exists, but it is often scattered, confusing, and difficult to know who to trust.</p>
-        <p class="problem-pivot">So I started Poiema Project.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="poiema-section">
+  <section class="content-section">
     <div class="wrap">
-      <div class="poiema-word reveal">
-        <p class="poiema-greek">ποίημα</p>
-        <p class="poiema-pronounce">poe-ee-ma</p>
-        <p class="poiema-definition">Greek. Workmanship, masterpiece.</p>
+      <div class="section-heading">
+        <h2>Questions I wish we were taught to ask</h2>
+        <p>These are the kinds of questions I wish more young women understood before they were expected to make decisions about their health. I am building more education around each one.</p>
       </div>
-
-      <div class="poiema-text reveal">
-        <p>Poiema is the Greek word for workmanship or masterpiece. It reflects a belief at the center of this work: every woman is intentionally made by God, and her body deserves to be understood and cared for well.</p>
-        <p class="poiema-position">Poiema Project advocates for the health and wholeness of young women, giving them the research, resources, and representation they deserve.</p>
+      <div class="topic-grid">
+        <p>Is my period the main event of my cycle?</p>
+        <p>Does my cycle matter if I do not want to get pregnant?</p>
+        <p>Is a birth control bleed the same thing as a period?</p>
+        <p>How much period pain is too much?</p>
+        <p>Why do my energy and mood feel different throughout the month?</p>
+        <p>How do I know if I am ovulating?</p>
+        <p>Can stress, food, sleep, and exercise affect my cycle?</p>
+        <p>Are irregular periods normal when you are a teenager?</p>
+        <p>Are progesterone and progestin the same thing?</p>
+        <p>Does birth control fix period problems?</p>
       </div>
     </div>
   </section>
 
-  <section class="serve-section">
+  <section class="content-section dark">
     <div class="wrap">
-      <div class="serve-header reveal">
-        <div>
-                    <h2>Two ways to start</h2>
-        </div>
+      <div class="section-heading">
+        <h2>Read Rooted Rhythm</h2>
+        <p>Rooted Rhythm is where I go deeper on periods, hormones, food, medications, faith, and the questions that come up when you are trying to understand your body in real life.</p>
       </div>
-
-      <div class="serve-grid">
-        <a href="learn.html" class="serve-card reveal">
-          <h3 class="serve-name">Learn</h3>
-          <p class="serve-desc">Start with simple, research-informed education on your menstrual cycle, hormones, period health, and what it can look like to care for your body well.</p>
-          <span class="serve-arrow">Explore Women's Health</span>
-        </a>
-
-        <a href="work-with-me.html" class="serve-card reveal">
-          <h3 class="serve-name">Work With Me</h3>
-          <p class="serve-desc">If you serve women and want to offer better health education, I can help through wellness programming, research, speaking, or workshops.</p>
-          <span class="serve-arrow">See How I Can Help</span>
-        </a>
-      </div>
+      <a href="rooted-rhythm.html" class="btn-primary">Explore Rooted Rhythm</a>
     </div>
   </section>
 
-  <section class="closing-cta reveal">
-    <div class="closing-cta-inner">
-            <p>Want to build something that helps the women you serve understand their health better?</p>
-      <a href="work-with-me.html" class="btn-primary">See How I Can Help</a>
+  <section class="content-section">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2>A few places to keep learning</h2>
+      </div>
+      <div class="resource-list">
+        <div class="resource-item"><h3>What is period pain?</h3><p>What cramps can tell us, when pain deserves more attention, and why tracking symptoms can matter.</p><a href="https://rootedrhythm.substack.com/p/what-is-period-pain" target="_blank" rel="noopener">Read on Rooted Rhythm</a></div>
+        <div class="resource-item"><h3>What Moms Need to Know About Their Daughter's Period</h3><p>A simple guide to what is common, what is worth watching, and when it may be time to ask more questions.</p><a href="https://rootedrhythm.substack.com/p/what-moms-need-to-know-about-their" target="_blank" rel="noopener">Read on Rooted Rhythm</a></div>
+        <div class="resource-item"><h3>What does Jesus say about periods?</h3><p>A faith-based look at the body, menstruation, and what Scripture can teach us about how women are seen and valued.</p><a href="https://rootedrhythm.substack.com/p/what-does-jesus-say-about-periods" target="_blank" rel="noopener">Read on Rooted Rhythm</a></div>
+        <div class="resource-item"><h3>What is Cycle Syncing?</h3><p>A practical introduction to the phases of the cycle and how food, movement, and energy can change throughout the month.</p><a href="https://rootedrhythm.substack.com/p/what-is-cycle-syncing-printable-guide" target="_blank" rel="noopener">Read on Rooted Rhythm</a></div>
+      </div>
+      <div class="note-box">Poiema Project provides health education, not individual medical care. These resources are designed to help you understand your body, notice patterns, and ask informed questions with a qualified healthcare professional.</div>
     </div>
   </section>
 
-  </main>
+  <section class="closing-cta reveal"><div class="closing-cta-inner"><p>Have a question about your period, hormones, or something you heard online and do not know what to believe?</p><a href="contact.html" class="btn-primary">Send It My Way</a></div></section>
+</main>
 
   <footer>
     <div class="wrap">
@@ -1135,8 +1224,8 @@
   </footer>
 
   <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-    <a href="index.html" class="active" aria-current="page">Home</a>
-    <a href="learn.html">Learn</a>
+    <a href="index.html">Home</a>
+    <a href="learn.html" class="active" aria-current="page">Learn</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>

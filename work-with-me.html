@@ -4,43 +4,33 @@
   <meta charset="UTF-8" />
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poiema Project | Women&#x27;s Health Education &amp; Wellness</title>
-  <meta name="description" content="Poiema Project helps women understand menstrual health and hormones, and helps organizations build women&#x27;s health education, wellness programs, research, and speaking." />
-  <link rel="canonical" href="https://poiemaproject.com/index.html" />
+  <title>Women&#x27;s Health Speaking &amp; Wellness Programs | Poiema Project</title>
+  <meta name="description" content="Work with Alyssa Blackson on women&#x27;s health education, speaking, workshops, research, consulting, and employee wellness programming for organizations." />
+  <link rel="canonical" href="https://poiemaproject.com/work-with-me.html" />
   <link rel="preload" as="image" href="alyssa.webp" imagesrcset="alyssa-480.webp 480w, alyssa-768.webp 768w, alyssa.webp 931w" imagesizes="(max-width: 860px) calc(100vw - 3rem), 520px" fetchpriority="high" />
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://poiemaproject.com/#alyssa-blackson",
-          "name": "Alyssa Blackson",
-          "url": "https://poiemaproject.com/",
-          "jobTitle": "Women's Health Advocate and Educator",
-          "sameAs": [
-            "https://www.linkedin.com/in/alyssa-blackson-659040266/"
-          ],
-          "knowsAbout": [
-            "Women's health education",
-            "Wellness programming",
-            "Women's health research",
-            "Marketing",
-            "Entrepreneurship"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://poiemaproject.com/#website",
-          "url": "https://poiemaproject.com/",
-          "name": "Alyssa Blackson | Poiema Project",
-          "description": "Poiema Project helps women understand menstrual health and hormones, while helping organizations build women's health education, wellness programs, and speaking opportunities.",
-          "about": {
-            "@id": "https://poiemaproject.com/#alyssa-blackson"
-          }
-        }
-      ]
+      "@type": "Person",
+      "@id": "https://poiemaproject.com/#alyssa-blackson",
+      "name": "Alyssa Blackson",
+      "url": "https://poiemaproject.com/",
+      "jobTitle": "Women's Health Advocate and Educator"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://poiemaproject.com/work-with-me.html#webpage",
+      "url": "https://poiemaproject.com/work-with-me.html",
+      "name": "Work With Alyssa Blackson",
+      "description": "Work with Alyssa Blackson on women's health education, speaking, workshops, research, consulting, and employee wellness programming for organizations.",
+      "about": {
+        "@id": "https://poiemaproject.com/#alyssa-blackson"
+      }
     }
+  ]
+}
   </script>
   <!-- Google Analytics 4 placeholder
        Replace GA_MEASUREMENT_ID in both places with your real GA4 measurement ID,
@@ -991,6 +981,114 @@
       color: var(--off-white);
     }
 
+  
+
+    .page-hero {
+      padding-top: calc(var(--nav-height) + clamp(4.5rem, 8vw, 7rem));
+      padding-bottom: clamp(4.5rem, 8vw, 7rem);
+      background: var(--off-white);
+    }
+
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: end;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      line-height: 1.02;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      color: var(--evergreen-deep);
+    }
+
+    .page-hero-copy p {
+      font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+      line-height: 1.9;
+      color: var(--text-soft);
+      max-width: 58ch;
+    }
+
+    .page-hero-copy p + p { margin-top: 1rem; }
+    .page-hero-copy .btn-primary { margin-top: 1.6rem; }
+
+    .content-section { padding-block: clamp(4.8rem, 8vw, 7.5rem); }
+    .content-section.alt { background: var(--sage-light); }
+    .content-section.dark { background: var(--evergreen-deep); }
+
+    .section-heading { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .section-heading h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 4.7vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: 1rem;
+    }
+    .section-heading p { color: var(--text-soft); line-height: 1.85; max-width: 62ch; }
+    .dark .section-heading h2 { color: var(--lilac-light); }
+    .dark .section-heading p { color: rgba(247,244,239,.82); }
+
+    .service-list, .resource-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .service-item, .resource-item {
+      padding: clamp(2rem,4vw,3.3rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .service-item:nth-child(odd), .resource-item:nth-child(odd) { padding-right: clamp(1.5rem,4vw,4rem); }
+    .service-item:nth-child(even), .resource-item:nth-child(even) { padding-left: clamp(1.5rem,4vw,4rem); border-left: 1px solid var(--line); }
+    .service-item h3, .resource-item h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: .8rem;
+    }
+    .service-item p, .resource-item p { line-height: 1.8; color: var(--text-soft); max-width: 52ch; }
+    .resource-item a, .text-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: var(--font-subheading);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+
+    .bullet-panel {
+      background: var(--off-white);
+      border: 1px solid var(--line);
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+    .bullet-panel h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem,4vw,4rem);
+      font-weight: 400;
+      color: var(--evergreen-deep);
+      margin-bottom: 1.5rem;
+    }
+    .bullet-panel ul { list-style: none; display: grid; gap: .85rem; }
+    .bullet-panel li { position: relative; padding-left: 1.5rem; line-height: 1.7; color: var(--text-soft); }
+    .bullet-panel li::before { content: '•'; position: absolute; left: 0; color: var(--plum); }
+
+    .topic-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem 2rem; }
+    .topic-grid p { border-bottom: 1px solid var(--line); padding: 1rem 0; line-height: 1.65; color: var(--text-soft); }
+
+    .note-box { margin-top: 2rem; padding: 1.4rem 1.6rem; background: var(--lilac-light); color: var(--text-dark); line-height: 1.75; }
+
+    @media (max-width: 860px) {
+      .page-hero-inner, .service-list, .resource-list, .topic-grid { grid-template-columns: 1fr; }
+      .service-item:nth-child(odd), .resource-item:nth-child(odd), .service-item:nth-child(even), .resource-item:nth-child(even) { padding-left: 0; padding-right: 0; border-left: 0; }
+    }
+
   </style>
 </head>
 
@@ -1004,14 +1102,14 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="learn.html">Learn</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <a href="work-with-me.html" class="nav-cta">Work With Me</a>
+      <a href="work-with-me.html" class="nav-cta" aria-current="page">Work With Me</a>
 
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -1020,94 +1118,80 @@
   </nav>
 
   <main id="main-content">
+  <section class="page-hero">
+    <div class="wrap page-hero-inner">
+      <div><p class="eyebrow">Work With Me</p><h1>Help the women you serve understand their health better.</h1></div>
+      <div class="page-hero-copy">
+        <p>If you serve women and want to understand their health needs or give them useful health education, I would love to help.</p>
+        <p>That could look like building or improving a wellness program, researching a women's health topic, creating educational resources, or speaking with the women in your organization.</p>
+        <p>I can step in for the research and consulting side, or help carry an idea through to a full program or resource.</p>
+        <a href="contact.html" class="btn-primary">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
 
-  <section class="hero">
+  <section class="content-section alt">
     <div class="wrap">
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <img src="alyssa.webp" srcset="alyssa-480.webp 480w, alyssa-768.webp 768w, alyssa.webp 931w" sizes="(max-width: 860px) calc(100vw - 3rem), 520px" width="931" height="1408" alt="Portrait of Alyssa Blackson standing outside in front of a glass building" fetchpriority="high" decoding="async" />
-        </div>
-      </div>
-
-      <div class="hero-copy">
-                <h1 class="hero-tagline">Helping women understand their bodies so they can make informed decisions about their health.</h1>
-        <p class="hero-intro">I'm Alyssa, the founder of Poiema Project and Rooted Rhythm. I started Poiema to help women better understand their bodies and to help organizations better educate and care for the women they serve. My work includes menstrual health education, women's health research, wellness programming, and speaking.</p>
-
-        <div class="hero-actions">
-          <a href="learn.html" class="btn-primary">Start Learning</a>
-          <a href="work-with-me.html" class="btn-secondary">Work With Me</a>
-        </div>
-
-        <div class="hero-signoff">
-          <div>
-            <p class="hero-name">Alyssa Blackson</p>
-            <p class="hero-role">Women's Health Advocate and Educator</p>
-          </div>
-        </div>
+      <div class="bullet-panel">
+        <h2>I can help if you want to...</h2>
+        <ul>
+          <li>Build or improve a wellness program</li>
+          <li>Understand the health needs of the women in your organization</li>
+          <li>Research a women's health topic</li>
+          <li>Create health education or practical resources</li>
+          <li>Bring women's health education into your school, workplace, ministry, or organization</li>
+          <li>Host a speaker or workshop for women or students</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="problem-section reveal">
-    <div class="problem-inner">
-      <div class="problem-heading">
-                <h2>The problem I kept seeing</h2>
-      </div>
-
-      <div class="problem-copy">
-        <p>Too many women are making decisions about their health without ever being taught how their bodies actually work. The information exists, but it is often scattered, confusing, and difficult to know who to trust.</p>
-        <p class="problem-pivot">So I started Poiema Project.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="poiema-section">
+  <section class="content-section">
     <div class="wrap">
-      <div class="poiema-word reveal">
-        <p class="poiema-greek">ποίημα</p>
-        <p class="poiema-pronounce">poe-ee-ma</p>
-        <p class="poiema-definition">Greek. Workmanship, masterpiece.</p>
+      <div class="section-heading"><h2>Wellness Programming</h2><p>I work with organizations to understand what they already offer, what the women they serve would benefit from, and how existing benefits or resources can be used more intentionally.</p></div>
+      <div class="service-list">
+        <div class="service-item"><h3>Audit what already exists</h3><p>I can review current wellness efforts, health benefits, employee resources, and education to understand what is already working and where there may be gaps.</p></div>
+        <div class="service-item"><h3>Understand what people need</h3><p>I can help gather employee or participant feedback to understand what people would use, where they have questions, and what would make a wellness program more useful.</p></div>
+        <div class="service-item"><h3>Research practical options</h3><p>I can research benefits, vendors, health education, and programming opportunities with attention to both usefulness and cost.</p></div>
+        <div class="service-item"><h3>Build the plan</h3><p>From research and consulting to a fuller program build, I can help turn the information into a practical plan that fits your organization.</p></div>
       </div>
-
-      <div class="poiema-text reveal">
-        <p>Poiema is the Greek word for workmanship or masterpiece. It reflects a belief at the center of this work: every woman is intentionally made by God, and her body deserves to be understood and cared for well.</p>
-        <p class="poiema-position">Poiema Project advocates for the health and wholeness of young women, giving them the research, resources, and representation they deserve.</p>
-      </div>
+      <p><a href="portfolio.html#project-true-health" class="text-link">See True Health in my portfolio</a></p>
     </div>
   </section>
 
-  <section class="serve-section">
+  <section class="content-section alt">
     <div class="wrap">
-      <div class="serve-header reveal">
-        <div>
-                    <h2>Two ways to start</h2>
-        </div>
+      <div class="section-heading"><h2>Speaking + Workshops</h2><p>I am available to speak with colleges, schools, businesses, churches, Bible studies, women's groups, nonprofits, classrooms, and events.</p><p>Speaking can be tailored to the setting. In a faith-based setting, I can include Scripture and talk about what it means to care for a body designed by God alongside the health education. In a secular setting, I can keep the conversation focused on the science and research.</p></div>
+      <div class="topic-grid">
+        <p>Understanding the menstrual cycle and what every young woman should know</p>
+        <p>Understanding hormone changes throughout the menstrual cycle</p>
+        <p>Understanding hormonal birth control and how it works</p>
+        <p>Building a healthier lifestyle through everyday choices</p>
+        <p>Lifestyle and environmental factors that can affect women's health</p>
+        <p>Faith, the female body, and caring for what God designed</p>
       </div>
-
-      <div class="serve-grid">
-        <a href="learn.html" class="serve-card reveal">
-          <h3 class="serve-name">Learn</h3>
-          <p class="serve-desc">Start with simple, research-informed education on your menstrual cycle, hormones, period health, and what it can look like to care for your body well.</p>
-          <span class="serve-arrow">Explore Women's Health</span>
-        </a>
-
-        <a href="work-with-me.html" class="serve-card reveal">
-          <h3 class="serve-name">Work With Me</h3>
-          <p class="serve-desc">If you serve women and want to offer better health education, I can help through wellness programming, research, speaking, or workshops.</p>
-          <span class="serve-arrow">See How I Can Help</span>
-        </a>
-      </div>
+      <div class="note-box">Speaking fees vary based on the format, preparation, travel, and scope. I also set aside some time for pro bono opportunities when the cause is a good fit.</div>
     </div>
   </section>
 
-  <section class="closing-cta reveal">
-    <div class="closing-cta-inner">
-            <p>Want to build something that helps the women you serve understand their health better?</p>
-      <a href="work-with-me.html" class="btn-primary">See How I Can Help</a>
+  <section class="content-section">
+    <div class="wrap">
+      <div class="section-heading"><h2>Research + Women's Health Education</h2><p>You may not need a full program. Maybe your organization has a question about women's health or needs research before making a decision. I can also help turn complex information into education people can use.</p></div>
+      <div class="service-list">
+        <div class="service-item"><h3>Research + consulting</h3><p>I can research women's health topics, organize findings, identify education gaps, and help your team think through what matters for the women you serve.</p></div>
+        <div class="service-item"><h3>Education + resources</h3><p>I can help create guides, presentations, curriculum support, and other health education materials built for a specific audience.</p></div>
+      </div>
+      <p><a href="portfolio.html#project-first-twenty-years" class="text-link">See The First Twenty Years research</a></p>
     </div>
   </section>
 
-  </main>
+  <section class="content-section dark">
+    <div class="wrap">
+      <div class="section-heading"><h2>Not sure exactly what you need yet?</h2><p>If you know you want to better serve or educate the women in your organization, tell me what you are working on. We can talk through what would be most useful.</p></div>
+      <a href="contact.html" class="btn-primary">Tell Me What You Are Working On</a>
+    </div>
+  </section>
+</main>
 
   <footer>
     <div class="wrap">
@@ -1135,12 +1219,12 @@
   </footer>
 
   <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="index.html">Home</a>
     <a href="learn.html">Learn</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="work-with-me.html" class="mobile-cta">Work With Me</a>
+    <a href="work-with-me.html" class="mobile-cta active" aria-current="page">Work With Me</a>
   </div>
 
   <script>
