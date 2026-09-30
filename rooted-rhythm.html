@@ -856,18 +856,7 @@
   
 
     /* Unified site footer */
-    /* Prevent footer navigation groups from inheriting the fixed top-nav styles */
-    .site-footer nav {
-      position: static;
-      inset: auto;
-      z-index: auto;
-      height: auto;
-      background: transparent;
-      backdrop-filter: none;
-      border-bottom: 0;
-    }
-
-    .site-footer {
+.site-footer {
       display: block;
       background: var(--off-white);
       border-top: 1px solid var(--line, rgba(89, 103, 86, 0.18));
@@ -1089,7 +1078,7 @@
         <p>Women’s health education, research, advocacy, and thoughtful resources for women who want to understand their bodies well.</p>
       </div>
 
-      <nav aria-label="Explore">
+      <div class="site-footer-group" aria-label="Explore">
         <p class="site-footer-heading">Explore</p>
         <ul class="site-footer-links">
           <li><a href="index.html">Home</a></li>
@@ -1097,22 +1086,22 @@
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </nav>
+      </div>
 
-      <nav aria-label="Work">
+      <div class="site-footer-group" aria-label="Work">
         <p class="site-footer-heading">Work</p>
         <ul class="site-footer-links">
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="work-with-me.html">Work With Me</a></li>
         </ul>
-      </nav>
+      </div>
 
-      <nav aria-label="Projects">
+      <div class="site-footer-group" aria-label="Projects">
         <p class="site-footer-heading">Projects</p>
         <ul class="site-footer-links">
           <li><a href="rooted-rhythm.html" aria-current="page">Rooted Rhythm</a></li>
         </ul>
-      </nav>
+      </div>
 
       <div>
         <p class="site-footer-heading">Connect</p>
