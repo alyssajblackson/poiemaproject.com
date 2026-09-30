@@ -856,6 +856,17 @@
   
 
     /* Unified site footer */
+    /* Prevent footer navigation groups from inheriting the fixed top-nav styles */
+    .site-footer nav {
+      position: static;
+      inset: auto;
+      z-index: auto;
+      height: auto;
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: 0;
+    }
+
     .site-footer {
       display: block;
       background: var(--off-white);
