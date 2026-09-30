@@ -1,0 +1,38 @@
+POIEMA PROJECT: MARK 460 ENHANCEMENT PASS
+
+SEO foundations
+- Updated title tags so the primary pages use unique, keyword-focused titles in the professor's 3 to 8 word target.
+- Confirmed or rewrote meta descriptions so the primary pages stay within the 120 to 160 character target.
+- Added Open Graph and Twitter summary metadata.
+- Kept canonical URLs in place and added missing metadata to the Clean Dorm Air Act page.
+
+On-page SEO
+- Strengthened the Portfolio H1 and H2 around the page's primary topic: women's health work.
+- Kept each major page focused on a distinct topic.
+
+Polish and connections
+- Confirmed Alyssa's LinkedIn profile is linked in the footer across the main site and included in Person structured data where present.
+- Added contextual internal links on the Contact page.
+- Fixed outdated broken internal links on the Clean Dorm Air Act page.
+
+Work samples
+- Replaced generic Read More text on Portfolio cards with project-specific labels.
+- Added My role and Project result details to all four project modals using information already supported by the site.
+- No resume link was added.
+
+Accessibility and performance
+- Added descriptive aria-labels to Portfolio project controls and modal close buttons.
+- Added autocomplete attributes to contact form name and email fields.
+- Added intrinsic width and height attributes to major images to reduce layout shift.
+- Added a skip link and improved navigation semantics on the Clean Dorm Air Act page.
+
+Still intentionally left for Alyssa
+- A second certification was not invented. The site currently names the Women's Hormone Health Certification Program through the Institute for Menstrual Health. Add the second certification when you have the exact name and status.
+- Run the professor's requested Siteimprove accessibility checker on the published site and save a screenshot for the Decision Log.
+- Google Analytics remains a later-stage setup item unless you already have a GA4 Measurement ID.
+
+FOOTER NAVIGATION UPDATE
+- Reorganized every full site footer into clear Explore, Work, Projects, and Connect sections.
+- Added links to every public content page, including Rooted Rhythm and the Clean Dorm Air Act.
+- Added a direct Rooted Rhythm Substack link, Instagram, LinkedIn, and email.
+- Added responsive footer layouts for desktop, tablet, and mobile.

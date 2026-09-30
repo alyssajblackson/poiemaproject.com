@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clean Dorm Air Act — Poiema Project</title>
+  <title>Clean Dorm Air Act | Poiema Project</title>
+  <meta name="description" content="Read Alyssa Blackson&#x27;s Clean Dorm Air Act proposal for annual mold testing, independent inspection, remediation, and clearer health standards in Alabama dorms." />
+  <link rel="canonical" href="https://poiemaproject.com/clean-dorm-air-act.html" />
+  <!-- Social sharing metadata -->
+  <meta property="og:site_name" content="Poiema Project" />
+  <meta property="og:title" content="Clean Dorm Air Act | Poiema Project" />
+  <meta property="og:description" content="Read Alyssa Blackson&#x27;s Clean Dorm Air Act proposal for annual mold testing, independent inspection, remediation, and clearer health standards in Alabama dorms." />
+  <meta property="og:url" content="https://poiemaproject.com/clean-dorm-air-act.html" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,7 +69,7 @@
     .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(196,181,165,0.3); }
     .problem-card { background: var(--off-white); padding: 3rem; }
     .problem-card-num { font-family: 'Libre Baskerville', serif; font-size: 3rem; font-weight: 400; color: var(--lavender); line-height: 1; margin-bottom: 0.5rem; }
-    .problem-card-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); margin-bottom: 1rem; font-weight: 500; }
+    .problem-card-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dusty-purple); margin-bottom: 1rem; font-weight: 500; }
     .problem-card-body { font-size: 0.95rem; line-height: 1.75; color: var(--text-mid); }
     .data-statement { margin-top: 4rem; padding: 3rem; background: var(--navy); display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
     .data-statement-big { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-style: italic; color: var(--lavender); }
@@ -154,20 +163,170 @@
     .mobile-menu-section { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); padding: 1rem 0 0.4rem; font-weight: 500; }
     .mobile-menu .mobile-issue { padding-left: 1rem; font-size: 0.82rem; color: var(--navy); font-weight: 500; border-bottom: 1px solid rgba(196,181,165,0.2); padding-top: 0.9rem; padding-bottom: 0.9rem; display: block; }
     .mobile-menu .mobile-cta { margin-top: 0.5rem; padding: 0.9rem 1.5rem; background: var(--navy); color: var(--off-white) !important; text-align: center; border-bottom: none !important; }
+    .skip-link { position: fixed; top: 0.75rem; left: 0.75rem; z-index: 999; padding: 0.7rem 1rem; background: var(--off-white); color: var(--navy); border: 1px solid var(--navy); text-decoration: none; transform: translateY(-180%); transition: transform 0.2s ease; }
+    .skip-link:focus { transform: translateY(0); }
+  
+
+    /* Unified site footer */
+    .site-footer {
+      display: block;
+      background: var(--off-white);
+      border-top: 1px solid var(--line, rgba(89, 103, 86, 0.18));
+      padding: clamp(3rem, 6vw, 4.75rem) 0 2rem;
+      text-align: left;
+    }
+
+    .site-footer-inner {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(130px, 1fr));
+      gap: clamp(1.75rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .site-footer-brand {
+      max-width: 300px;
+    }
+
+    .site-footer-brand-name {
+      display: inline-block;
+      font-family: var(--font-heading, Georgia, serif);
+      font-size: 1rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen, var(--navy, #1a2744));
+      text-decoration: none;
+      margin-bottom: 0.8rem;
+    }
+
+    .site-footer-brand p {
+      margin: 0;
+      max-width: 29ch;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-soft, var(--text-mid, #5f625f));
+    }
+
+    .site-footer-heading {
+      margin: 0 0 0.9rem;
+      font-family: var(--font-subheading, Arial, sans-serif);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--evergreen, var(--navy, #1a2744));
+    }
+
+    .site-footer-links {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.62rem;
+    }
+
+    .site-footer-links a {
+      display: inline-block;
+      font-family: var(--font-subheading, Arial, sans-serif);
+      font-size: 0.84rem;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: 0.015em;
+      text-transform: none;
+      color: var(--text-dark, var(--text-mid, #464a46));
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .site-footer-links a:hover,
+    .site-footer-links a:focus-visible {
+      color: var(--plum, var(--navy, #1a2744));
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .site-footer-links a[aria-current="page"] {
+      color: var(--plum, var(--navy, #1a2744));
+      font-weight: 600;
+    }
+
+    .site-footer-meta {
+      width: min(1180px, calc(100% - 3rem));
+      margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line, rgba(89, 103, 86, 0.18));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--text-soft, var(--text-mid, #6f716f));
+    }
+
+    .site-footer-substack {
+      color: var(--plum, var(--navy, #1a2744)) !important;
+    }
+
+    @media (max-width: 980px) {
+      .site-footer-inner {
+        grid-template-columns: minmax(220px, 1.5fr) repeat(2, minmax(140px, 1fr));
+      }
+
+      .site-footer-brand {
+        grid-row: span 2;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-footer {
+        padding-top: 3rem;
+      }
+
+      .site-footer-inner {
+        width: min(100% - 2.5rem, 560px);
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
+      }
+
+      .site-footer-brand {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        max-width: none;
+        padding-bottom: 0.4rem;
+      }
+
+      .site-footer-meta {
+        width: min(100% - 2.5rem, 560px);
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .site-footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" /><span class="nav-logo-text">Poiema Project</span></a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav aria-label="Primary navigation">
+    <a href="index.html" class="nav-logo"><img src="logo-flower.png" alt="" class="nav-logo-img" width="1197" height="1215" /><span class="nav-logo-text">Poiema Project</span></a>
     <ul class="nav-links">
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="about.html">About</a></li>
-      <li class="nav-dropdown"><a href="projects.html">Projects ▾</a><ul class="dropdown-menu"><li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li><li><a href="rooted-rhythm.html">Rooted Rhythm</a></li></ul></li>
-      <li><a href="support.html">Support</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="#take-action" class="nav-cta">Take Action</a>
+    <a href="work-with-me.html" class="nav-cta">Work With Me</a>
+    <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </nav>
 
+  <main id="main-content">
   <section class="page-hero">
     <p class="page-hero-tag">Issues — Clean Dorm Air Act</p>
     <h1>Mold is the <em>hidden</em> student health crisis.</h1>
@@ -330,87 +489,108 @@
     </div>
   </section>
 
-  <footer>
-    <span class="footer-logo">POIEMA PROJECT</span>
-    <ul class="footer-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="support.html">Support</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 Poiema Project</span>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <a href="index.html" class="site-footer-brand-name">Poiema Project</a>
+        <p>Women’s health education, research, advocacy, and thoughtful resources for women who want to understand their bodies well.</p>
+      </div>
+
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Explore</p>
+        <ul class="site-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Work</p>
+        <ul class="site-footer-links">
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="work-with-me.html">Work With Me</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Projects</p>
+        <ul class="site-footer-links">
+          <li><a href="rooted-rhythm.html">Rooted Rhythm</a></li>
+          <li><a href="clean-dorm-air-act.html" aria-current="page">Clean Dorm Air Act</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="site-footer-heading">Connect</p>
+        <ul class="site-footer-links">
+          <li><a class="site-footer-substack" href="https://rootedrhythm.substack.com/" target="_blank" rel="noopener noreferrer">Read Rooted Rhythm</a></li>
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer-meta">
+      <span>© 2026 Poiema Project</span>
+      <span>Built with purpose by Alyssa Blackson</span>
+    </div>
   </footer>
   <script>
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
-    reveals.forEach(r => observer.observe(r));
-
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
-      // Close on link click
-      mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-      });
+      }, { threshold: 0.1 });
+      reveals.forEach((item) => observer.observe(item));
+    } else {
+      reveals.forEach((item) => item.classList.add('visible'));
     }
-    // Dropdown click toggle for reliability
-    document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
-      trigger.addEventListener('click', function(e) {
-        // If the link has an href that isn't just '#', let it navigate
-        if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
-          return; // let the link navigate normally
-        }
-        e.preventDefault();
-        var menu = this.nextElementSibling;
-        var isOpen = menu.style.display === 'block';
-        document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; });
-        menu.style.display = isOpen ? 'none' : 'block';
-      });
-    });
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.nav-dropdown')) {
-        document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.style.display = 'none'; });
-      }
-    });
   </script>
   <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="learn.html">Learn</a>
+    <a href="portfolio.html">Portfolio</a>
     <a href="about.html">About</a>
-    <span class="mobile-menu-section">Projects</span>
-    <a href="clean-dorm-air-act.html" class="mobile-issue">Clean Dorm Air Act</a>
-    <a href="rooted-rhythm.html" class="mobile-issue">Rooted Rhythm</a>
-    <a href="support.html">Support</a>
     <a href="contact.html">Contact</a>
-    <a href="support.html" class="mobile-cta">Support the Work</a>
+    <a href="work-with-me.html" class="mobile-cta">Work With Me</a>
   </div>
   <script>
-    // Hamburger menu
     var hamburger = document.getElementById('hamburger');
     var mobileMenu = document.getElementById('mobileMenu');
+
+    function closeMobileMenu() {
+      if (!hamburger || !mobileMenu) return;
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
     if (hamburger && mobileMenu) {
       hamburger.addEventListener('click', function(e) {
         e.stopPropagation();
-        hamburger.classList.toggle('open');
+        var isOpen = hamburger.classList.toggle('open');
         mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
+
       mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-        });
+        link.addEventListener('click', closeMobileMenu);
       });
+
       document.addEventListener('click', function(e) {
         if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
+          closeMobileMenu();
         }
       });
     }

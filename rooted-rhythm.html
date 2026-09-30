@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rooted Rhythm | Women&#x27;s Health Writing by Alyssa Blackson</title>
-  <meta name="description" content="Read Alyssa Blackson&#x27;s Rooted Rhythm writing on women&#x27;s health, menstrual cycles, hormones, food, and learning to understand and care for your body well." />
+  <title>Rooted Rhythm | Women&#x27;s Health Writing</title>
+  <meta name="description" content="Read Rooted Rhythm by Alyssa Blackson for thoughtful writing on menstrual cycles, hormones, women&#x27;s health, food, faith, and caring for your body." />
   <link rel="canonical" href="https://poiemaproject.com/rooted-rhythm.html" />
+  <!-- Social sharing metadata -->
+  <meta property="og:site_name" content="Poiema Project" />
+  <meta property="og:title" content="Rooted Rhythm | Women&#x27;s Health Writing" />
+  <meta property="og:description" content="Read Rooted Rhythm by Alyssa Blackson for thoughtful writing on menstrual cycles, hormones, women&#x27;s health, food, faith, and caring for your body." />
+  <meta property="og:url" content="https://poiemaproject.com/rooted-rhythm.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preload" as="image" href="rooted-rhythm-logo.png" fetchpriority="high" />
   <script type="application/ld+json">
     {
@@ -846,6 +853,151 @@
         text-align: center;
       }
     }
+  
+
+    /* Unified site footer */
+    .site-footer {
+      display: block;
+      background: var(--off-white);
+      border-top: 1px solid var(--line, rgba(89, 103, 86, 0.18));
+      padding: clamp(3rem, 6vw, 4.75rem) 0 2rem;
+      text-align: left;
+    }
+
+    .site-footer-inner {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(130px, 1fr));
+      gap: clamp(1.75rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .site-footer-brand {
+      max-width: 300px;
+    }
+
+    .site-footer-brand-name {
+      display: inline-block;
+      font-family: var(--font-heading, Georgia, serif);
+      font-size: 1rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--evergreen, var(--navy, #1a2744));
+      text-decoration: none;
+      margin-bottom: 0.8rem;
+    }
+
+    .site-footer-brand p {
+      margin: 0;
+      max-width: 29ch;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-soft, var(--text-mid, #5f625f));
+    }
+
+    .site-footer-heading {
+      margin: 0 0 0.9rem;
+      font-family: var(--font-subheading, Arial, sans-serif);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--evergreen, var(--navy, #1a2744));
+    }
+
+    .site-footer-links {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.62rem;
+    }
+
+    .site-footer-links a {
+      display: inline-block;
+      font-family: var(--font-subheading, Arial, sans-serif);
+      font-size: 0.84rem;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: 0.015em;
+      text-transform: none;
+      color: var(--text-dark, var(--text-mid, #464a46));
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .site-footer-links a:hover,
+    .site-footer-links a:focus-visible {
+      color: var(--plum, var(--navy, #1a2744));
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .site-footer-links a[aria-current="page"] {
+      color: var(--plum, var(--navy, #1a2744));
+      font-weight: 600;
+    }
+
+    .site-footer-meta {
+      width: min(1180px, calc(100% - 3rem));
+      margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line, rgba(89, 103, 86, 0.18));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--text-soft, var(--text-mid, #6f716f));
+    }
+
+    .site-footer-substack {
+      color: var(--plum, var(--navy, #1a2744)) !important;
+    }
+
+    @media (max-width: 980px) {
+      .site-footer-inner {
+        grid-template-columns: minmax(220px, 1.5fr) repeat(2, minmax(140px, 1fr));
+      }
+
+      .site-footer-brand {
+        grid-row: span 2;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-footer {
+        padding-top: 3rem;
+      }
+
+      .site-footer-inner {
+        width: min(100% - 2.5rem, 560px);
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
+      }
+
+      .site-footer-brand {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        max-width: none;
+        padding-bottom: 0.4rem;
+      }
+
+      .site-footer-meta {
+        width: min(100% - 2.5rem, 560px);
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .site-footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -878,7 +1030,7 @@
   <section class="rr-hero">
     <div class="wrap">
       <div class="rr-logo-frame">
-        <h1><span class="sr-only">Rooted Rhythm: Women's Health Writing by Alyssa Blackson</span><img class="rr-logo" src="rooted-rhythm-logo.png" alt="" aria-hidden="true" fetchpriority="high" decoding="async" /></h1>
+        <h1><span class="sr-only">Rooted Rhythm: Women's Health Writing by Alyssa Blackson</span><img class="rr-logo" src="rooted-rhythm-logo.png" alt="" aria-hidden="true" width="828" height="72" fetchpriority="high" decoding="async" /></h1>
       </div>
 
       <p class="rr-tagline">Helping women find their God-given rhythm rooted in truth, biology, and Scripture.</p>
@@ -919,28 +1071,53 @@
 
   </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-top">
-        <span class="footer-logo">POIEMA PROJECT</span>
-        <ul class="footer-links">
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <a href="index.html" class="site-footer-brand-name">Poiema Project</a>
+        <p>Women’s health education, research, advocacy, and thoughtful resources for women who want to understand their bodies well.</p>
+      </div>
+
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Explore</p>
+        <ul class="site-footer-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="learn.html">Learn</a></li>
-          <li><a href="work-with-me.html">Work With Me</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
 
-      <div class="footer-bottom">
-        <ul class="footer-social">
-          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="mailto:info@poiemaproject.com">info@poiemaproject.com</a></li>
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Work</p>
+        <ul class="site-footer-links">
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="work-with-me.html">Work With Me</a></li>
         </ul>
-        <span class="footer-copy">© 2026 Poiema Project</span>
       </div>
+
+      <div class="site-footer-group">
+        <p class="site-footer-heading">Projects</p>
+        <ul class="site-footer-links">
+          <li><a href="rooted-rhythm.html" aria-current="page">Rooted Rhythm</a></li>
+          <li><a href="clean-dorm-air-act.html">Clean Dorm Air Act</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="site-footer-heading">Connect</p>
+        <ul class="site-footer-links">
+          <li><a class="site-footer-substack" href="https://rootedrhythm.substack.com/" target="_blank" rel="noopener noreferrer">Read Rooted Rhythm</a></li>
+          <li><a href="https://www.instagram.com/rootedrhythmjournal/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/alyssa-blackson-659040266/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:info@poiemaproject.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer-meta">
+      <span>© 2026 Poiema Project</span>
+      <span>Built with purpose by Alyssa Blackson</span>
     </div>
   </footer>
 
