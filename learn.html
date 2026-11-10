@@ -1298,6 +1298,22 @@
       }
     }
 
+
+    /* Navigation sizing with the Classes link */
+    @media (min-width: 1121px) {
+      .nav-links { gap: clamp(0.9rem, 1.7vw, 1.75rem); }
+      .nav-links a, .nav-cta { letter-spacing: 0.10em; font-size: 0.81rem; }
+    }
+
+
+    /* Learn page invitation to in-person classes */
+    .classes-learn-promo { background: var(--sage-light); padding-block: clamp(4.5rem,7vw,6rem); }
+    .classes-learn-promo .wrap { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(2rem,6vw,6rem); align-items:center; }
+    .classes-learn-promo h2 { font-family:var(--font-heading); font-size:clamp(2.55rem,4.5vw,4.5rem); line-height:1.08; color:var(--evergreen-deep); font-weight:400; }
+    .classes-learn-promo p { color:var(--text-soft); font-size:1.05rem; line-height:1.85; margin-bottom:1.5rem; }
+    .classes-learn-promo .eyebrow { margin-bottom:1rem; }
+    @media(max-width:860px) { .classes-learn-promo .wrap { grid-template-columns:1fr; } }
+
   </style>
 </head>
 
@@ -1313,6 +1329,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="learn.html" class="active" aria-current="page">Learn</a></li>
+        <li><a href="menstrual-classes.html">Classes</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -1479,6 +1496,14 @@
     </div>
   </section>
 
+
+  <section class="classes-learn-promo" aria-labelledby="learn-classes">
+    <div class="wrap">
+      <div><p class="eyebrow">Learn together</p><h2 id="learn-classes">Want to bring this into your school or group?</h2></div>
+      <div><p>I'm developing menstrual health classes and workshops for young women. See the topics I'm building around and how to inquire about hosting a session.</p><a href="menstrual-classes.html" class="btn-primary">Explore Menstrual Classes</a></div>
+    </div>
+  </section>
+
   <section class="closing-cta reveal"><div class="closing-cta-inner"><p>Have a question about your period, hormones, or something you heard online and do not know what to believe?</p><a href="contact.html" class="btn-primary">Send It My Way</a></div></section>
 </main>
 
@@ -1494,6 +1519,7 @@
         <ul class="site-footer-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="learn.html" aria-current="page">Learn</a></li>
+          <li><a href="menstrual-classes.html">Menstrual Classes</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -1534,6 +1560,7 @@
   <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
     <a href="learn.html" class="active" aria-current="page">Learn</a>
+    <a href="menstrual-classes.html">Classes</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>

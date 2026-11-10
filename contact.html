@@ -800,6 +800,13 @@
       }
     }
 
+
+    /* Navigation sizing with the Classes link */
+    @media (min-width: 1121px) {
+      .nav-links { gap: clamp(0.9rem, 1.7vw, 1.75rem); }
+      .nav-links a, .nav-cta { letter-spacing: 0.10em; font-size: 0.81rem; }
+    }
+
   </style>
 </head>
 
@@ -815,6 +822,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="learn.html">Learn</a></li>
+        <li><a href="menstrual-classes.html">Classes</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
@@ -864,6 +872,7 @@
               <option>Wellness program or consulting</option>
               <option>Women's health research or education</option>
               <option>Speaking or workshop</option>
+              <option value="Menstrual class or workshop">Menstrual class or workshop</option>
               <option>Rooted Rhythm</option>
               <option>Press or media inquiry</option>
               <option>General question about Poiema Project</option>
@@ -917,6 +926,7 @@
         <ul class="site-footer-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="learn.html">Learn</a></li>
+          <li><a href="menstrual-classes.html">Menstrual Classes</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
@@ -957,6 +967,7 @@
   <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
     <a href="learn.html">Learn</a>
+    <a href="menstrual-classes.html">Classes</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="active" aria-current="page">Contact</a>
@@ -964,6 +975,14 @@
   </div>
 
   <script>
+
+    // Select the class inquiry topic when linked here from the Classes page.
+    var topicField = document.getElementById('topic');
+    var requestedTopic = new URLSearchParams(window.location.search).get('topic');
+    if (topicField && requestedTopic === 'Menstrual class or workshop') {
+      topicField.value = requestedTopic;
+    }
+
     var reveals = document.querySelectorAll('.reveal');
 
     if ('IntersectionObserver' in window) {
