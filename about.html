@@ -1190,8 +1190,19 @@
       }
     }
 
+  
+/* Only requested change: larger navigation text. Retains original colors and fonts. */
+@media (min-width: 1121px) {
+  nav .nav-links { gap: clamp(.78rem, 1.25vw, 1.35rem); }
+  nav .nav-links a, nav .nav-cta {
+    font-size: 1.04rem;
+    letter-spacing: .055em;
+  }
+  nav .nav-logo-text { font-size: 1.27rem; }
+}
+.mobile-menu a { font-size: 1.15rem; }
+
   </style>
-  <link rel="stylesheet" href="poiema-editorial.css?v=2026-11-16" />
 </head>
 
 <body>
